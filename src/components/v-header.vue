@@ -1,4 +1,189 @@
-<template></template>
-<script setup></script>
+<template>
+  <header :class="{ hide: isHide }">
+    <nav>
+      <div class="header__logo">
+        <img src="" alt="" />
+      </div>
+      <div class="header__nav">
+        <div class="header__nav__link"><span>01.</span> About</div>
+        <div class="header__nav__link"><span>02.</span> Experience</div>
+        <div class="header__nav__link"><span>03.</span> Work</div>
+        <div class="header__nav__link"><span>04.</span> Contact</div>
+        <div class="header__nav__btn">Resume</div>
+      </div>
 
-<style scoped></style>
+      <VBurgerMenu
+        class="burger"
+        @onClick="turnMobileMenu()"
+        :isHide="isMobileMenu"
+      />
+    </nav>
+    <div class="blur" v-if="isMobileMenu" @click="turnMobileMenu()" />
+    <aside class="mobile__header__menu" :class="{ 'fade-in': isMobileMenu }">
+      <div class="header__nav__link"><span>01.</span> About</div>
+      <div class="header__nav__link"><span>02.</span> Experience</div>
+      <div class="header__nav__link"><span>03.</span> Work</div>
+      <div class="header__nav__link"><span>04.</span> Contact</div>
+      <div class="header__nav__btn">Resume</div>
+    </aside>
+  </header>
+</template>
+<script setup>
+import { onMounted, ref } from "vue";
+import VBurgerMenu from "./UI/v-burger-menu.vue";
+
+const isHide = ref(false);
+const isMobileMenu = ref(false);
+
+const emits = defineEmits(["onScroll", "offScroll", "test"]);
+
+onMounted(() => {
+  document.addEventListener(
+    "wheel",
+    (e) => {
+      if (!isMobileMenu.value) {
+        e.deltaY > 0 ? hideHeader() : showHeader();
+      } else {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    },
+    { passive: false }
+  );
+});
+
+function hideHeader() {
+  isHide.value = true;
+}
+function showHeader() {
+  isHide.value = false;
+}
+
+function turnMobileMenu() {
+  if (isMobileMenu.value) {
+    isMobileMenu.value = false;
+    emits("offScroll");
+  } else {
+    isMobileMenu.value = true;
+    emits("onScroll");
+  }
+}
+</script>
+
+<style scoped>
+header {
+  user-select: none;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  box-sizing: border-box;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  top: 0;
+  left: 0;
+  padding: 0 40px;
+  height: var(--nav-scroll-height);
+  transform: translateY(0px);
+  background-color: rgba(10, 25, 47, 0.85);
+  box-shadow: 0 10px 30px -10px var(--navy-shadow);
+  transition: transform 0.2s ease-in-out;
+}
+nav {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header__logo {
+  width: 42px;
+  height: 42px;
+  background-color: aquamarine;
+}
+.header__nav {
+  font-size: 13px;
+  font-family: "Roboto Mono", monospace;
+  display: flex;
+  align-items: center;
+}
+
+.header__nav__link {
+  transition: color 0.2s ease-in-out;
+  cursor: pointer;
+  padding: 10px;
+  margin: 0 5px;
+  color: var(--lightest-slate);
+}
+.header__nav__link span {
+  color: var(--green);
+}
+.header__nav__link:hover {
+  color: var(--green);
+}
+.header__nav__btn {
+  color: var(--green);
+  border: 1px solid var(--green);
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+.header__nav__btn:hover {
+  background-color: var(--green-tint);
+}
+.hide {
+  transform: translateY(-100%);
+}
+.blur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(10, 25, 47, 0.85);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+}
+.mobile__header__menu {
+  z-index: 200;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 70%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--light-navy);
+  box-shadow: -10px 0px 30px -15px var(--navy-shadow);
+  transform: translateX(100vw);
+  transition: transform 0.2s ease-in-out;
+}
+.mobile__header__menu .header__nav__link {
+  margin: 10px 0;
+  font-size: 25px;
+}
+.mobile__header__menu .header__nav__btn {
+  padding: 15px 40px;
+  font-size: 20px;
+  margin-top: 60px;
+}
+.fade-in {
+  transform: translateX(0vw);
+}
+
+@media (max-width: 700px) {
+  header {
+    padding: 0 20px;
+  }
+  .header__nav {
+    display: none;
+  }
+}
+@media (min-width: 700px) {
+  .burger {
+    display: none;
+  }
+}
+</style>
