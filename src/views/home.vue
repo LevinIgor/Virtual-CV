@@ -39,7 +39,12 @@ main {
 }
 @media (max-width: 800px) {
   main {
-    padding: 0px 40px;
+    padding: 0px 100px;
+  }
+}
+@media (max-width: 500px) {
+  main {
+    padding: 0px 30px;
   }
 }
 </style>
