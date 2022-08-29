@@ -30,11 +30,16 @@ main {
 
   margin: 0 auto;
   color: aliceblue;
-  padding: 0px 100px;
+  padding: 0px 150px;
   min-height: 100%;
   overflow: hidden;
 }
 .scroll {
   overflow: hidden;
+}
+@media (max-width: 800px) {
+  main {
+    padding: 0px 40px;
+  }
 }
 </style>
