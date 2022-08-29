@@ -36,6 +36,11 @@
   position: relative;
   font-weight: normal;
 }
+a {
+  text-decoration: none;
+  color: inherit;
+  font-family: "Roboto Mono", monospace;
+}
 
 body {
   margin: 0;

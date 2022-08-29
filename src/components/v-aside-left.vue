@@ -88,14 +88,11 @@ aside {
   bottom: 0;
   left: 20px;
   right: auto;
-  width: 100px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
 a {
-  color: inherit;
   box-sizing: content-box;
   padding: 10px;
   transition: all 0.2s ease-in-out;
