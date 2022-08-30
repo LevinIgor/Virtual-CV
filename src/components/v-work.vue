@@ -121,7 +121,6 @@ const lineStyle = computed(() => {
 <style scoped>
 .work {
   margin-top: 100px;
-  margin-bottom: 300px;
 }
 .title {
   display: flex;
@@ -141,6 +140,14 @@ const lineStyle = computed(() => {
   font-family: "Roboto", sans-serif;
   font-size: clamp(16px, 3vw, 20px);
   font-weight: 400;
+}
+.title::after {
+  content: "";
+  width: 200px;
+  height: 1px;
+  bottom: -4px;
+  background-color: var(--lightest-navy);
+  margin-left: 20px;
 }
 .inner {
   display: flex;
@@ -255,7 +262,11 @@ li::before {
   }
   ul {
     margin: 0;
+    margin-top: 10px;
     padding: 0;
+  }
+  li {
+    font-size: 14px;
   }
   .line {
     width: var(--tab-width);
