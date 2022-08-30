@@ -27,9 +27,7 @@ import VAsideRight from "@/components/v-aside-right.vue";
 main {
   box-sizing: border-box;
   width: var(--main-width);
-
   margin: 0 auto;
-  color: aliceblue;
   padding: 0px 150px;
   min-height: 100%;
   overflow: hidden;
