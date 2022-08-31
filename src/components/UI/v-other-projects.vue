@@ -2,7 +2,7 @@
   <div class="other__projects">
     <div class="title">Other Noteworthy Projects</div>
     <div class="projects">
-      <div class="project" v-for=" in 10" :key="index">
+      <div class="project" v-for=" in 10">
         <div class="project__header">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -63,18 +63,15 @@
 }
 
 .folder {
-  color: var(--green);
   width: 40px;
   height: 40px;
+  transition: color 0.2s ease-in-out;
 }
 .link {
   width: 30px;
   height: 30px;
   cursor: pointer;
   transition: color 0.2s ease-in-out;
-}
-.link:hover {
-  color: var(--green);
 }
 .title {
   font-weight: 600;
@@ -123,5 +120,18 @@
 }
 .project:hover .project__name {
   color: var(--green);
+}
+.project:hover .folder{
+  color: var(--green);
+}
+
+@media (max-width: 400px) {
+.project__name{
+  font-size: 16px;
+}
+.project__desc{
+  font-size: 14px;
+
+}
 }
 </style>

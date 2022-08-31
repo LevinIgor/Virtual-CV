@@ -80,7 +80,6 @@ import VOtherProjects from "./UI/v-other-projects.vue";
 <style scoped>
 .some__build {
   margin-top: 200px;
-  margin-bottom: 300px;
 }
 .icon {
   width: 24px;
