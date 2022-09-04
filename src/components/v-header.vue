@@ -1,5 +1,5 @@
 <template>
-  <header :class="{ hide: isHide }">
+  <header :class="{ hide: isHide, off__shadow: isBoxShadow }">
     <nav>
       <div class="header__logo">
         <img src="" alt="" />
@@ -34,23 +34,9 @@ import VBurgerMenu from "./UI/v-burger-menu.vue";
 
 const isHide = ref(false);
 const isMobileMenu = ref(false);
+const isBoxShadow = ref(false);
 
-const emits = defineEmits(["onScroll", "offScroll", "test"]);
-
-onMounted(() => {
-  document.addEventListener(
-    "wheel",
-    (e) => {
-      if (!isMobileMenu.value) {
-        e.deltaY > 0 ? hideHeader() : showHeader();
-      } else {
-        e.preventDefault();
-        e.stopPropagation();
-      }
-    },
-    { passive: false }
-  );
-});
+const emits = defineEmits(["onScroll", "offScroll"]);
 
 function hideHeader() {
   isHide.value = true;
@@ -68,6 +54,22 @@ function turnMobileMenu() {
     emits("onScroll");
   }
 }
+
+onMounted(() => {
+  document.addEventListener(
+    "wheel",
+    (e) => {
+      if (!isMobileMenu.value) {
+        e.deltaY > 0 ? hideHeader() : showHeader();
+        isBoxShadow.value = window.scrollY == 0 ? true : false;
+      } else {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    },
+    { passive: false }
+  );
+});
 </script>
 
 <style scoped>
@@ -109,12 +111,30 @@ nav {
 }
 
 .header__nav__link {
-  transition: color 0.2s ease-in-out;
   cursor: pointer;
   padding: 10px;
   margin: 0 5px;
   color: var(--lightest-slate);
+  opacity: 0;
+  animation-name: fadeIn;
+  animation-fill-mode: forwards;
 }
+.header__nav__link:nth-child(1) {
+  animation-duration: 1s;
+}
+.header__nav__link:nth-child(2) {
+  animation-duration: 1.5s;
+}
+.header__nav__link:nth-child(3) {
+  animation-duration: 2s;
+}
+.header__nav__link:nth-child(4) {
+  animation-duration: 2.5s;
+}
+.header__nav__link:nth-child(5) {
+  animation-duration: 3s;
+}
+
 .header__nav__link span {
   color: var(--green);
 }
@@ -127,12 +147,17 @@ nav {
   border-radius: 5px;
   padding: 10px 15px;
   cursor: pointer;
+  animation-name: fadeIn;
+  animation-duration: 3.5s;
 }
 .header__nav__btn:hover {
   background-color: var(--green-tint);
 }
 .hide {
   transform: translateY(-100%);
+}
+.off__shadow {
+  box-shadow: none;
 }
 .blur {
   position: fixed;
@@ -172,6 +197,16 @@ nav {
 .fade-in {
   transform: translateX(0vw);
 }
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
 
 @media (max-width: 700px) {
   header {
@@ -185,5 +220,15 @@ nav {
   .burger {
     display: none;
   }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

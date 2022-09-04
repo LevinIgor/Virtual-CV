@@ -121,17 +121,16 @@
 .project:hover .project__name {
   color: var(--green);
 }
-.project:hover .folder{
+.project:hover .folder {
   color: var(--green);
 }
 
 @media (max-width: 400px) {
-.project__name{
-  font-size: 16px;
-}
-.project__desc{
-  font-size: 14px;
-
-}
+  .project__name {
+    font-size: 16px;
+  }
+  .project__desc {
+    font-size: 14px;
+  }
 }
 </style>
