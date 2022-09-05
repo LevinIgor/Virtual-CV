@@ -1,5 +1,9 @@
 <template>
-  <div class="some__build" :style="intersection ? fadeDown : null">
+  <section
+    class="some__build"
+    :style="intersection ? fadeDown : null"
+    id="work"
+  >
     <div class="title">Some Things I’ve Built</div>
     <div class="project">
       <div class="project__img" :style="intersection ? fadeLeft : null">
@@ -35,10 +39,10 @@
       </div>
     </div>
     <VOtherProjects />
-  </div>
+  </section>
 </template>
 <script setup>
-import VOtherProjects from "./UI/v-other-projects.vue";
+import VOtherProjects from "@/components/v-other-projects.vue";
 import externalIcon from "@/components/icons/external.vue";
 import githubIcon from "@/components/icons/github.vue";
 import { ref, computed } from "vue";
@@ -208,12 +212,10 @@ const scale = computed(() => ({
   .project__bg {
     position: absolute;
     width: 100%;
+    left: 0px;
     height: 100%;
     top: 0;
-    left: 0;
-    background-image: url("https://halcyon-theme.netlify.app/static/demo-30184fa83cb4ab8fb7809cf95cc8aec3.png");
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color: rgba(8, 160, 255, 0.078);
     z-index: -1;
   }
   .project__text {

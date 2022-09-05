@@ -1,5 +1,5 @@
 <template>
-  <div class="contact" :style="intersection ? style : null">
+  <section class="contact" :style="intersection ? style : null" id="contact">
     <div class="title">What’s Next?</div>
     <div class="heading">Get In Touch</div>
     <p class="text">
@@ -8,7 +8,7 @@
       my best to get back to you!
     </p>
     <a class="btn" href="mailto:lytghzys@gmail.com">Say Hello</a>
-  </div>
+  </section>
   <div class="" v-intersection="onIntersection" />
 </template>
 <script setup>

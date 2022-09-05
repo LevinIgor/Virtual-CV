@@ -1,5 +1,5 @@
 <template>
-  <section class="about">
+  <section class="about" id="about">
     <div
       class="about__title fade"
       :style="isIntersection ? style : null"

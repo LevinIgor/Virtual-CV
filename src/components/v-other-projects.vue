@@ -28,8 +28,8 @@
   </div>
 </template>
 <script setup>
-import FolderIcon from "../icons/folder.vue";
-import ExternalIcon from "../icons/external.vue";
+import FolderIcon from "@/components/icons/folder.vue";
+import ExternalIcon from "@/components/icons/external.vue";
 import { ref } from "vue";
 
 const count = ref(0);

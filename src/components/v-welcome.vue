@@ -1,5 +1,5 @@
 <template>
-  <div class="welcome">
+  <section class="welcome" id="welcome">
     <span
       class="hi fade"
       v-intersection="onIntersection"
@@ -20,7 +20,7 @@
     <a href="" class="resume__btn fade" :style="isIntersection ? fade : null"
       >Check out my Resume!</a
     >
-  </div>
+  </section>
 </template>
 <script setup>
 import { computed, ref } from "vue";

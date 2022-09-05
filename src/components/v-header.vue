@@ -5,10 +5,18 @@
         <img src="" alt="" />
       </div>
       <div class="header__nav">
-        <div class="header__nav__link"><span>01.</span> About</div>
-        <div class="header__nav__link"><span>02.</span> Experience</div>
-        <div class="header__nav__link"><span>03.</span> Work</div>
-        <div class="header__nav__link"><span>04.</span> Contact</div>
+        <div class="header__nav__link" @click="scrollTo('about')">
+          <span>01.</span> About
+        </div>
+        <div class="header__nav__link" @click="scrollTo('experience')">
+          <span>02.</span> Experience
+        </div>
+        <div class="header__nav__link" @click="scrollTo('work')">
+          <span>03.</span> Work
+        </div>
+        <div class="header__nav__link" @click="scrollTo('contact')">
+          <span>04.</span> Contact
+        </div>
         <div class="header__nav__btn">Resume</div>
       </div>
 
@@ -53,6 +61,12 @@ function turnMobileMenu() {
     isMobileMenu.value = true;
     emits("onScroll");
   }
+}
+
+function scrollTo(id) {
+  const el = document.getElementById(id);
+  el.scrollIntoView({ behavior: "smooth" });
+  hideHeader()
 }
 
 onMounted(() => {
