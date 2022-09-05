@@ -1,11 +1,11 @@
 <template>
-  <div class="some__build">
+  <div class="some__build" :style="intersection ? fadeDown : null">
     <div class="title" v-intersection="test">Some Things I’ve Built</div>
     <div class="project">
-      <div class="project__img">
+      <div class="project__img" :style="intersection ? fadeLeft : null">
         <img src="@/assets/icons/vscode.png" alt="" />
       </div>
-      <div class="project__text">
+      <div class="project__text" :style="intersection ? fadeLeft : null">
         <div class="project__bg" />
         <div class="featured">Featured Project</div>
         <div class="project__name">Halcyon Theme</div>
@@ -16,11 +16,11 @@
         </div>
 
         <ul class="project__tags">
-          <li>VS Code</li>
-          <li>Sublime Text</li>
-          <li>Atom</li>
-          <li>iTerm</li>
-          <li>Hyper</li>
+          <li :style="intersection ? scale : null">VS Code</li>
+          <li :style="intersection ? scale : null">Sublime Text</li>
+          <li :style="intersection ? scale : null">Atom</li>
+          <li :style="intersection ? scale : null">iTerm</li>
+          <li :style="intersection ? scale : null">Hyper</li>
         </ul>
 
         <div class="project__links">
@@ -40,15 +40,33 @@
 import VOtherProjects from "./UI/v-other-projects.vue";
 import externalIcon from "@/components/icons/external.vue";
 import githubIcon from "@/components/icons/github.vue";
+import { ref, computed } from "vue";
+const intersection = ref(false);
 
 function test() {
   console.log("intersection Some");
+  intersection.value = true;
 }
+const fadeDown = computed(() => ({
+  opacity: 1,
+  transform: "translateY(0)",
+}));
+const fadeLeft = computed(() => ({
+  opacity: 1,
+  transform: "translateX(0)",
+}));
+const scale = computed(() => ({
+  opacity: 1,
+  transform: "scale(1)",
+}));
 </script>
 
 <style scoped>
 .some__build {
   margin-top: 200px;
+  transform: translateY(200px);
+  opacity: 0;
+  transition: all 2s ease-in-out;
 }
 .icon {
   width: 24px;
@@ -93,6 +111,9 @@ function test() {
   max-width: 70%;
   right: 0;
   text-align: right;
+  transform: translateX(200px);
+  opacity: 0;
+  transition: all 3s ease-in-out;
 }
 .project__img {
   position: absolute;
@@ -101,6 +122,9 @@ function test() {
   left: 0;
   height: min-content;
   overflow: hidden;
+  transform: translateX(-200px);
+  opacity: 0;
+  transition: all 3s ease-in-out;
 }
 .project__img img {
   height: 100%;
@@ -140,7 +164,30 @@ function test() {
   font-weight: 400;
   font-size: 13px;
   user-select: none;
+  opacity: 0;
+  transition: all 0s ease-in-out 2s;
+  transform: scale(0);
 }
+.project__tags li:nth-child(1) {
+  transition-duration: 1.2s;
+}
+.project__tags li:nth-child(2) {
+  transition-duration: 1.4s;
+}
+.project__tags li:nth-child(3) {
+  transition-duration: 1.6s;
+}
+
+.project__tags li:nth-child(4) {
+  transition-duration: 1.8s;
+}
+.project__tags li:nth-child(5) {
+  transition-duration: 2s;
+}
+.project__tags li:nth-child(6) {
+  transition-duration: 2.2s;
+}
+
 .project__links {
   margin-top: 10px;
   display: flex;

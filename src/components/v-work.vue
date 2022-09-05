@@ -75,7 +75,7 @@ const lineStyle = computed(() => {
   margin-top: 100px;
   opacity: 0;
   transform: translateY(200px);
-  transition: transform 3s, opacity 1s;
+  transition: transform 3s, opacity 3s;
 }
 .title {
   display: flex;
