@@ -1,16 +1,14 @@
 <template>
-  <div class="some__build">
+  <div class="some__build" :style="intersection ? fadeDown : null">
     <div class="title">Some Things I’ve Built</div>
     <div class="project">
-      <div class="project__img">
-        <img
-          src="https://halcyon-theme.netlify.app/static/demo-30184fa83cb4ab8fb7809cf95cc8aec3.png"
-          alt=""
-        />
+      <div class="project__img" :style="intersection ? fadeLeft : null">
+        <img src="@/assets/icons/vscode.png" alt="" />
       </div>
-      <div class="project__text">
+      <div class="project__text" :style="intersection ? fadeLeft : null">
         <div class="project__bg" />
         <div class="featured">Featured Project</div>
+        <div v-intersection="onIntersection" class="intersection" />
         <div class="project__name">Halcyon Theme</div>
         <div class="project__details">
           A minimal, dark blue theme for VS Code, Sublime Text, Atom, iTerm, and
@@ -19,53 +17,19 @@
         </div>
 
         <ul class="project__tags">
-          <li>VS Code</li>
-          <li>Sublime Text</li>
-          <li>Atom</li>
-          <li>iTerm</li>
-          <li>Hyper</li>
+          <li :style="intersection ? scale : null">VS Code</li>
+          <li :style="intersection ? scale : null">Sublime Text</li>
+          <li :style="intersection ? scale : null">Atom</li>
+          <li :style="intersection ? scale : null">iTerm</li>
+          <li :style="intersection ? scale : null">Hyper</li>
         </ul>
 
         <div class="project__links">
           <a href="" class="project__link">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              role="img"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="icon"
-            >
-              <title>External Link</title>
-
-              <path
-                d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-              />
-              <polyline points="15 3 21 3 21 9" />
-
-              <line x1="10" y1="14" x2="21" y2="3" />
-            </svg>
+            <externalIcon />
           </a>
           <a href="" class="project__link">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              role="img"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="icon"
-            >
-              <title>GitHub</title>
-              <path
-                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
-              ></path>
-            </svg>
+            <githubIcon class="icon" />
           </a>
         </div>
       </div>
@@ -75,11 +39,34 @@
 </template>
 <script setup>
 import VOtherProjects from "./UI/v-other-projects.vue";
+import externalIcon from "@/components/icons/external.vue";
+import githubIcon from "@/components/icons/github.vue";
+import { ref, computed } from "vue";
+const intersection = ref(false);
+
+function onIntersection() {
+  intersection.value = true;
+}
+const fadeDown = computed(() => ({
+  opacity: 1,
+  transform: "translateY(0)",
+}));
+const fadeLeft = computed(() => ({
+  opacity: 1,
+  transform: "translateX(0)",
+}));
+const scale = computed(() => ({
+  opacity: 1,
+  transform: "scale(1)",
+}));
 </script>
 
 <style scoped>
 .some__build {
-  margin-top: 200px;
+  margin-top: 100px;
+  transform: translateY(200px);
+  opacity: 0;
+  transition: all 1s ease-in-out;
 }
 .icon {
   width: 24px;
@@ -96,7 +83,7 @@ import VOtherProjects from "./UI/v-other-projects.vue";
   font-family: "Inter", sans-serif;
 }
 .title::before {
-  content: "02.";
+  content: "03.";
   position: relative;
   bottom: -4px;
   margin-right: 10px;
@@ -124,6 +111,9 @@ import VOtherProjects from "./UI/v-other-projects.vue";
   max-width: 70%;
   right: 0;
   text-align: right;
+  transform: translateX(200px);
+  opacity: 0;
+  transition: all 1.5s ease-in-out;
 }
 .project__img {
   position: absolute;
@@ -132,6 +122,9 @@ import VOtherProjects from "./UI/v-other-projects.vue";
   left: 0;
   height: min-content;
   overflow: hidden;
+  transform: translateX(-200px);
+  opacity: 0;
+  transition: all 1s ease-in-out;
 }
 .project__img img {
   height: 100%;
@@ -171,7 +164,30 @@ import VOtherProjects from "./UI/v-other-projects.vue";
   font-weight: 400;
   font-size: 13px;
   user-select: none;
+  opacity: 0;
+  transition: all 0s ease-in-out 1s;
+  transform: scale(0);
 }
+.project__tags li:nth-child(1) {
+  transition-duration: 1.2s;
+}
+.project__tags li:nth-child(2) {
+  transition-duration: 1.4s;
+}
+.project__tags li:nth-child(3) {
+  transition-duration: 1.6s;
+}
+
+.project__tags li:nth-child(4) {
+  transition-duration: 1.8s;
+}
+.project__tags li:nth-child(5) {
+  transition-duration: 2s;
+}
+.project__tags li:nth-child(6) {
+  transition-duration: 2.2s;
+}
+
 .project__links {
   margin-top: 10px;
   display: flex;

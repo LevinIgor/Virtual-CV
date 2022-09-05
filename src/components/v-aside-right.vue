@@ -1,10 +1,28 @@
 <template>
   <aside class="right">
-    <a class="email" href="mailto:lytghzys@gmail.com">lytghzys@gmail.com</a>
-    <div class="line" />
+    <a
+      class="email"
+      href="mailto:lytghzys@gmail.com"
+      :style="isLoaded ? style : null"
+      >lytghzys@gmail.com</a
+    >
+    <div class="line" :style="isLoaded ? style : null" />
   </aside>
 </template>
-<script setup></script>
+<script setup>
+import { ref, onMounted, computed } from "vue";
+const isLoaded = ref(false);
+const style = computed(() => ({
+  opacity: 1,
+  transform: "translateX(0)",
+}));
+
+onMounted(() => {
+  setTimeout(() => {
+    isLoaded.value = true;
+  }, 2500);
+});
+</script>
 
 <style scoped>
 .right {
@@ -20,7 +38,9 @@
 .email {
   font-size: 12px;
   writing-mode: vertical-rl;
-  transition: all 0.2s ease-in-out;
+  opacity: 0;
+  transform: translateX(200px);
+  transition: all 0.5s ease-in-out;
 }
 .email:hover {
   color: var(--green);
@@ -32,7 +52,11 @@
   background-color: var(--light-slate);
   margin: 0 auto;
   margin-top: 30px;
+  opacity: 0;
+  transform: translateX(200px);
+  transition: all 0.5s ease-in-out;
 }
+
 @media (max-width: 800px) {
   .right {
     display: none;

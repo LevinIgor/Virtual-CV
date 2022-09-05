@@ -1,19 +1,60 @@
 <template>
   <div class="welcome">
-    <span class="hi">Hi, my name is </span>
-    <span class="my__name">Levin Ihor.</span>
-    <span class="build__think">I build things for the web.</span>
-    <p>
+    <span
+      class="hi fade"
+      v-intersection="onIntersection"
+      :style="isIntersection ? fade : null"
+      >Hi, my name is
+    </span>
+    <span class="my__name fade" :style="isIntersection ? fade : null"
+      >Levin Ihor.</span
+    >
+    <span class="build__think fade" :style="isIntersection ? fade : null"
+      >I build things for the web.</span
+    >
+    <p class="fade" :style="isIntersection ? fade : null">
       I’m a software engineer specializing in building (and occasionally
       designing) exceptional digital experiences. Currently, I’m focused on
       building accessible, human-centered products.
     </p>
-    <a href="" class="resume__btn">Check out my Resume!</a>
+    <a href="" class="resume__btn fade" :style="isIntersection ? fade : null"
+      >Check out my Resume!</a
+    >
   </div>
 </template>
-<script setup></script>
+<script setup>
+import { computed, ref } from "vue";
+const isIntersection = ref(false);
+const fade = computed(() => ({
+  opacity: 1,
+  transform: "translateY(0px)",
+}));
+
+function onIntersection() {
+  isIntersection.value = true;
+}
+</script>
 
 <style scoped>
+.fade {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.fade:nth-child(1) {
+  transition: all 0.4s ease-in-out;
+}
+.fade:nth-child(2) {
+  transition: all 0.6s ease-in-out;
+}
+.fade:nth-child(3) {
+  transition: all 0.8s ease-in-out;
+}
+.fade:nth-child(4) {
+  transition: all 1s ease-in-out;
+}
+.fade:nth-child(5) {
+  transition: all 1.1s ease-in-out;
+}
 .welcome {
   margin-top: 100px;
   display: flex;

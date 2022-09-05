@@ -1,47 +1,108 @@
 <template>
   <section class="about">
-    <div class="about__title">About me</div>
+    <div
+      class="about__title fade"
+      :style="isIntersection ? style : null"
+      v-intersection="onIntersection"
+    >
+      About me
+    </div>
     <article class="inner">
       <div class="text">
-        <p>
+        <p class="fade" :style="isIntersection ? style : null">
           Hello! My name is Brittany and I enjoy creating things that live on
           the internet. My interest in web development started back in 2012 when
           I decided to try editing custom Tumblr themes — turns out hacking
           together a custom reblog button taught me a lot about HTML & CSS!
         </p>
-        <p>
+        <p class="fade" :style="isIntersection ? style : null">
           Fast-forward to today, and I’ve had the privilege of working at an
           advertising agency, a start-up, a huge corporation, and a student-led
           design studio. My main focus these days is building accessible,
           inclusive products and digital experiences at Upstatement for a
           variety of clients.
         </p>
-        <p>
+        <p class="fade" :style="isIntersection ? style : null">
           I also recently launched a course that covers everything you need to
           build a web app with the Spotify API using Node & React.
         </p>
-        <p>Here are a few technologies I’ve been working with recently:</p>
+        <p class="fade" :style="isIntersection ? style : null">
+          Here are a few technologies I’ve been working with recently:
+        </p>
         <div class="technologies">
           <ul class="skills__list">
-            <li>JavaScript (ES6+)</li>
-            <li>Typescript</li>
-            <li>VueJs 3</li>
-            <li>Firebase</li>
-            <li>Vercel</li>
-            <li>Node.js</li>
+            <li class="fade" :style="isIntersection ? style : null">
+              JavaScript (ES6+)
+            </li>
+            <li class="fade" :style="isIntersection ? style : null">
+              Typescript
+            </li>
+            <li class="fade" :style="isIntersection ? style : null">VueJs 3</li>
+            <li class="fade" :style="isIntersection ? style : null">
+              Firebase
+            </li>
+            <li class="fade" :style="isIntersection ? style : null">Vercel</li>
+            <li class="fade" :style="isIntersection ? style : null">Node.js</li>
           </ul>
         </div>
       </div>
-      <section class="section__img">
-        <img src="../assets/icons/developer.jpg" alt="developer" class="img" />
-        <div class="blur" />
+      <section class="section__img fade" :style="isIntersection ? style : null">
+        <!-- <img src="../assets/icons/developer.jpg" alt="developer" class="img" /> -->
       </section>
     </article>
   </section>
 </template>
-<script setup></script>
+<script setup>
+import { ref, computed } from "vue";
+
+const style = computed(() => ({
+  opacity: 1,
+  transform: "translateY(0px)",
+}));
+const isIntersection = ref(false);
+function onIntersection() {
+  isIntersection.value = true;
+}
+</script>
 
 <style scoped>
+.fade {
+  opacity: 0;
+  transform: translateY(200px);
+}
+.fade:nth-child(1) {
+  transition: all 1s ease-in-out;
+}
+.fade:nth-child(2) {
+  transition: all 1.4s ease-in-out;
+}
+.fade:nth-child(3) {
+  transition: all 1.8s ease-in-out;
+}
+.fade:nth-child(4) {
+  transition: all 2.2s ease-in-out;
+}
+.fade:nth-child(5) {
+  transition: all 2.6s ease-in-out;
+}
+.fade:nth-child(6) {
+  transition: all 3s ease-in-out;
+}
+.fade:nth-child(7) {
+  transition: all 3.4s ease-in-out;
+}
+.fade:nth-child(8) {
+  transition: all 3.8s ease-in-out;
+}
+.fade:nth-child(9) {
+  transition: all 4.4s ease-in-out;
+}
+.fade:nth-child(10) {
+  transition: all 4.8s ease-in-out;
+}
+.fade:nth-child(11) {
+  transition: all 5.2s ease-in-out;
+}
 .about {
   margin-top: 100px;
   max-width: 900px;
@@ -67,17 +128,6 @@ section {
   aspect-ratio: 1;
   transition: all 0.3s ease-in-out;
 }
-.blur {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--green);
-  opacity: 0.4;
-  transition: all 0.2s ease-in-out;
-  border-radius: 5px;
-}
 .img {
   width: 100%;
   height: 100%;
@@ -85,7 +135,6 @@ section {
   object-fit: cover;
   border-radius: 5px;
   overflow: hidden;
-  filter: grayscale(1);
 }
 .section__img::after {
   content: "";
@@ -103,12 +152,6 @@ section {
 .section__img:hover::after {
   top: 10px;
   left: 10px;
-}
-.section__img:hover .blur {
-  opacity: 0;
-}
-.section__img:hover .img {
-  filter: grayscale(0);
 }
 
 .about__title {

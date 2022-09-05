@@ -1,12 +1,14 @@
 <template>
   <main>
     <VHeader />
-    <VWelcome />
-    <VAbout />
-    <VWork />
-    <VSomeBuild />
-    <VContact />
-    <VFooter />
+    <article v-if="timer">
+      <VWelcome />
+      <VAbout />
+      <VWork />
+      <VSomeBuild />
+      <VContact />
+      <VFooter />
+    </article>
     <VAsideLeft />
     <VAsideRight />
   </main>
@@ -22,6 +24,12 @@ import VFooter from "@/components/v-footer.vue";
 import VAsideLeft from "@/components/v-aside-left.vue";
 import VAsideRight from "@/components/v-aside-right.vue";
 
+import { ref } from "vue";
+const timer = ref(false);
+
+setTimeout(() => {
+  timer.value = true;
+}, 1000);
 </script>
 
 <style scoped>

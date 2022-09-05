@@ -1,5 +1,5 @@
 <template>
-  <div class="work">
+  <div class="work" :style="isIntersection ? style : null">
     <div class="title">Where I’ve Worked</div>
     <div class="inner">
       <div class="tab__list">
@@ -29,70 +29,14 @@
       </transition>
     </div>
   </div>
+  <div v-intersection="onIntersection" />
 </template>
 <script setup>
 import { ref, computed } from "vue";
+import works from "@/JSON/works.json";
 
 const selectTab = ref(0);
 const fade = ref(true);
-const works = ref([
-  {
-    name: "Upstatement",
-    title: "Engineer",
-    url: ["@Upstatement", "https://upstatement.com/"],
-    range: "May 2018 - Present",
-    list: [
-      "Write modern, performant, maintainable code for a diverse array of client and internal projects",
-      "Work with a variety of different languages, platforms, frameworks, and content management systems such as JavaScript, TypeScript, Gatsby, React, Craft, WordPress, Prismic, and Netlifyz",
-      "Communicate with multi-disciplinary teams of engineers, designers, producers, and clients on a daily basis",
-    ],
-  },
-  {
-    name: "Scout",
-    title: "Studio Developer",
-    url: ["@Scout", "https://scout.com/"],
-    range: "January - April 2018",
-    list: [
-      "Worked with a team of three designers to build a marketing website and e-commerce platform for blistabloc, an ambitious startup originating from Northeastern",
-      "Helped solidify a brand direction for blistabloc that spans both packaging and web",
-      "Interfaced with clients on a weekly basis, providing technological expertise",
-    ],
-  },
-  {
-    name: "Apple",
-    title: "UI Engineer Co-op",
-    url: ["@Apple", "https://apple.com/"],
-    range: "July - December 2017",
-    list: [
-      "Developed and shipped highly interactive web applications for Apple Music using Ember.js",
-      "Built and shipped the Apple Music Extension within Facebook Messenger leveraging third-party and internal APIs",
-      "Architected and implemented the front-end of Apple Music's embeddable web player widget, which lets users log in and listen to full songs in the browser",
-      "Contributed extensively to MusicKit.js, a JavaScript framework that allows developers to add an Apple Music player to their web apps",
-    ],
-  },
-  {
-    name: "Starry",
-    title: "Software Engineer Co-op",
-    url: ["@Starry", "https://starry.com/"],
-    range: "July - December 2016",
-    list: [
-      "Engineered and maintained major features of Starry's customer-facing web app using ES6, Handlebars, Backbone, Marionette and CSS",
-      "Proposed and implemented scalable solutions to issues identified with cloud services and applications responsible for communicating with Starry Station",
-      "Interfaced with user experience designers and other developers to ensure thoughtful and coherent user experiences across Starry’s iOS and Android mobile apps",
-    ],
-  },
-  {
-    name: "MullenLowe",
-    title: "Creative Technologist Co-op",
-    url: ["@MullenLowe", "https://mullenlowe.com/"],
-    range: "July - December 2015",
-    list: [
-      "Developed and maintained code for in-house and client websites primarily using HTML, CSS, Sass, JavaScript, and jQuery",
-      "Manually tested sites in various browsers and mobile devices to ensure cross-browser compatibility and responsiveness",
-      "Clients included JetBlue, Lovesac, U.S. Cellular, U.S. Department of Defense, and more",
-    ],
-  },
-]);
 
 function onTabClick(index) {
   fade.value = false;
@@ -102,8 +46,17 @@ function onTabClick(index) {
   }, 100);
 }
 
+const isIntersection = ref(false);
+function onIntersection() {
+  isIntersection.value = true;
+}
+
+const style = computed(() => ({
+  opacity: 1,
+  transform: "translateY(0)",
+}));
 const work = computed(() => {
-  return works.value[selectTab.value];
+  return works[selectTab.value];
 });
 
 const lineStyle = computed(() => {
@@ -121,6 +74,9 @@ const lineStyle = computed(() => {
 <style scoped>
 .work {
   margin-top: 100px;
+  opacity: 0;
+  transform: translateY(200px);
+  transition: transform 1.5s, opacity 1.5s;
 }
 .title {
   display: flex;
