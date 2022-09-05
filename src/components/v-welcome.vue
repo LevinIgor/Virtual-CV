@@ -98,7 +98,7 @@ p {
   padding: 15px 20px;
   border-radius: 5px;
   font-size: 14px;
-  transition: background-color 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: all 0.25s;
 }
 .resume__btn:hover {
   background-color: var(--green-tint);

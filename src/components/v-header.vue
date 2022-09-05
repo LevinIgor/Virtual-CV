@@ -1,9 +1,8 @@
 <template>
   <header :class="{ hide: isHide, off__shadow: isBoxShadow }">
     <nav>
-      <div class="header__logo">
-        <img src="" alt="" />
-      </div>
+      <LogoIcon class="header__logo" />
+
       <div class="header__nav">
         <div class="header__nav__link" @click="scrollTo('about')">
           <span>01.</span> About
@@ -39,6 +38,7 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import VBurgerMenu from "./UI/v-burger-menu.vue";
+import LogoIcon from "@/components/icons/logo.vue";
 
 const isHide = ref(false);
 const isMobileMenu = ref(false);
@@ -66,7 +66,7 @@ function turnMobileMenu() {
 function scrollTo(id) {
   const el = document.getElementById(id);
   el.scrollIntoView({ behavior: "smooth" });
-  hideHeader()
+  hideHeader();
 }
 
 onMounted(() => {
@@ -115,8 +115,8 @@ nav {
 .header__logo {
   width: 42px;
   height: 42px;
-  background-color: aquamarine;
 }
+
 .header__nav {
   font-size: 13px;
   font-family: "Roboto Mono", monospace;
@@ -163,6 +163,7 @@ nav {
   cursor: pointer;
   animation-name: fadeIn;
   animation-duration: 3.5s;
+  transition: all 0.2s ease-in-out;
 }
 .header__nav__btn:hover {
   background-color: var(--green-tint);
