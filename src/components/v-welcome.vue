@@ -2,7 +2,7 @@
   <div class="welcome">
     <span
       class="hi fade"
-      v-intersection="test"
+      v-intersection="onIntersection"
       :style="isIntersection ? fade : null"
       >Hi, my name is
     </span>
@@ -30,8 +30,7 @@ const fade = computed(() => ({
   transform: "translateY(0px)",
 }));
 
-function test() {
-  console.log("Intersection Welcome");
+function onIntersection() {
   isIntersection.value = true;
 }
 </script>

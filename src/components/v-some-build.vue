@@ -1,6 +1,6 @@
 <template>
   <div class="some__build" :style="intersection ? fadeDown : null">
-    <div class="title" v-intersection="test">Some Things I’ve Built</div>
+    <div class="title">Some Things I’ve Built</div>
     <div class="project">
       <div class="project__img" :style="intersection ? fadeLeft : null">
         <img src="@/assets/icons/vscode.png" alt="" />
@@ -8,6 +8,7 @@
       <div class="project__text" :style="intersection ? fadeLeft : null">
         <div class="project__bg" />
         <div class="featured">Featured Project</div>
+        <div v-intersection="onIntersection" class="intersection" />
         <div class="project__name">Halcyon Theme</div>
         <div class="project__details">
           A minimal, dark blue theme for VS Code, Sublime Text, Atom, iTerm, and
@@ -43,8 +44,7 @@ import githubIcon from "@/components/icons/github.vue";
 import { ref, computed } from "vue";
 const intersection = ref(false);
 
-function test() {
-  console.log("intersection Some");
+function onIntersection() {
   intersection.value = true;
 }
 const fadeDown = computed(() => ({
@@ -63,10 +63,10 @@ const scale = computed(() => ({
 
 <style scoped>
 .some__build {
-  margin-top: 200px;
+  margin-top: 100px;
   transform: translateY(200px);
   opacity: 0;
-  transition: all 2s ease-in-out;
+  transition: all 1s ease-in-out;
 }
 .icon {
   width: 24px;
@@ -113,7 +113,7 @@ const scale = computed(() => ({
   text-align: right;
   transform: translateX(200px);
   opacity: 0;
-  transition: all 3s ease-in-out;
+  transition: all 1.5s ease-in-out;
 }
 .project__img {
   position: absolute;
@@ -124,7 +124,7 @@ const scale = computed(() => ({
   overflow: hidden;
   transform: translateX(-200px);
   opacity: 0;
-  transition: all 3s ease-in-out;
+  transition: all 1s ease-in-out;
 }
 .project__img img {
   height: 100%;
@@ -165,7 +165,7 @@ const scale = computed(() => ({
   font-size: 13px;
   user-select: none;
   opacity: 0;
-  transition: all 0s ease-in-out 2s;
+  transition: all 0s ease-in-out 1s;
   transform: scale(0);
 }
 .project__tags li:nth-child(1) {

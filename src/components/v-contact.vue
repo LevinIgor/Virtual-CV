@@ -1,5 +1,5 @@
 <template>
-  <div class="contact">
+  <div class="contact" :style="intersection ? style : null">
     <div class="title">What’s Next?</div>
     <div class="heading">Get In Touch</div>
     <p class="text">
@@ -9,8 +9,20 @@
     </p>
     <a class="btn" href="mailto:lytghzys@gmail.com">Say Hello</a>
   </div>
+  <div class="" v-intersection="onIntersection" />
 </template>
-<script setup></script>
+<script setup>
+import { ref, computed } from "vue";
+const intersection = ref(false);
+function onIntersection() {
+  intersection.value = true;
+}
+
+const style = computed(() => ({
+  opacity: 1,
+  transform: "scale(1)",
+}));
+</script>
 
 <style scoped>
 .contact {
@@ -18,6 +30,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 1s;
 }
 .title {
   color: var(--green);

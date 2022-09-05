@@ -3,7 +3,7 @@
     <div
       class="about__title fade"
       :style="isIntersection ? style : null"
-      v-intersection="test"
+      v-intersection="onIntersection"
     >
       About me
     </div>
@@ -60,8 +60,7 @@ const style = computed(() => ({
   transform: "translateY(0px)",
 }));
 const isIntersection = ref(false);
-function test() {
-  console.log("intersection About");
+function onIntersection() {
   isIntersection.value = true;
 }
 </script>

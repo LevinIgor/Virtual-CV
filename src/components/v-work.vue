@@ -1,6 +1,6 @@
 <template>
   <div class="work" :style="isIntersection ? style : null">
-    <div class="title" v-intersection="test">Where I’ve Worked</div>
+    <div class="title">Where I’ve Worked</div>
     <div class="inner">
       <div class="tab__list">
         <span
@@ -29,6 +29,7 @@
       </transition>
     </div>
   </div>
+  <div v-intersection="onIntersection" />
 </template>
 <script setup>
 import { ref, computed } from "vue";
@@ -46,7 +47,7 @@ function onTabClick(index) {
 }
 
 const isIntersection = ref(false);
-function test() {
+function onIntersection() {
   isIntersection.value = true;
 }
 
@@ -75,7 +76,7 @@ const lineStyle = computed(() => {
   margin-top: 100px;
   opacity: 0;
   transform: translateY(200px);
-  transition: transform 3s, opacity 3s;
+  transition: transform 1.5s, opacity 1.5s;
 }
 .title {
   display: flex;
