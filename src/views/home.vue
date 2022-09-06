@@ -51,7 +51,7 @@ main {
 }
 @media (max-width: 500px) {
   main {
-    padding: 0px 30px;
+    padding: 0px 15px;
   }
 }
 </style>

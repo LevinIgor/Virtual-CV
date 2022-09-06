@@ -179,6 +179,7 @@ const scale = computed(() => ({
   opacity: 0;
   transition: all 0s ease-in-out 1s;
   transform: scale(0);
+  text-align: center;
 }
 .project__tags li:nth-child(1) {
   transition-duration: 1.2s;
@@ -250,6 +251,9 @@ const scale = computed(() => ({
   .project__details {
     font-size: 14px;
     padding: 10px;
+  }
+  .project__tags li {
+    font-size: 10px;
   }
 }
 </style>

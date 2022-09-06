@@ -93,6 +93,11 @@ function increment() {
   padding: 20px;
   margin: 10px;
 }
+@media (max-width: 600px) {
+  .project {
+    margin: 10px 0;
+  }
+}
 .project__header {
   display: flex;
   justify-content: space-between;
