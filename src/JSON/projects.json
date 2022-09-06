@@ -1,0 +1,23 @@
+[
+  {
+    "id": 0,
+    "title": "Google Keeps CLone",
+    "description": "A simple clone of Google Keep, build with Vue.js and Firebase",
+    "tags": ["Vue.js", "Firebase", "PWA"],
+    "url": "https://keeps-sigma.vercel.app/"
+  },
+  {
+    "id": 1,
+    "title": "JSON online reader",
+    "description": "A simple web app to read JSON files, build with Vue.js and Axios",
+    "tags": ["Vue.js", "Axios", "PWA"],
+    "url": "https://axiosjson.vercel.app/"
+  },
+  {
+    "id": 2,
+    "title": "Game Geopardy",
+    "description": "The game is designed for several teams. The goal is to score as many points as possible by answering questions of different categories",
+    "tags": ["Nuxt.js", "SSR", "Vue.js", "Firebase"],
+    "url": "https://levinigor.github.io/geopardy/"
+  }
+]

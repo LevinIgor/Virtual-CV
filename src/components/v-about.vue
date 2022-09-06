@@ -10,21 +10,20 @@
     <article class="inner">
       <div class="text">
         <p class="fade" :style="isIntersection ? style : null">
-          Hello! My name is Brittany and I enjoy creating things that live on
-          the internet. My interest in web development started back in 2012 when
-          I decided to try editing custom Tumblr themes — turns out hacking
-          together a custom reblog button taught me a lot about HTML & CSS!
+          Hello! My name is Ihor and I enjoy creating things that live on the
+          internet. My interest in web development started back in 2018 when I
+          tried to create an application for solving equations with high
+          mathematics, with implementations of many solution methods
         </p>
         <p class="fade" :style="isIntersection ? style : null">
-          Fast-forward to today, and I’ve had the privilege of working at an
-          advertising agency, a start-up, a huge corporation, and a student-led
-          design studio. My main focus these days is building accessible,
-          inclusive products and digital experiences at Upstatement for a
+          Fast-forward to today, and I’ve had the privilege of working at a
+          start-up, and a student-led design studio. My main focus these days is
+          building accessible, inclusive products and digital experiences for a
           variety of clients.
         </p>
         <p class="fade" :style="isIntersection ? style : null">
-          I also recently launched a course that covers everything you need to
-          build a web app with the Spotify API using Node & React.
+          I also take various courses from Cisco, on network routing in
+          particular
         </p>
         <p class="fade" :style="isIntersection ? style : null">
           Here are a few technologies I’ve been working with recently:
@@ -37,12 +36,15 @@
             <li class="fade" :style="isIntersection ? style : null">
               Typescript
             </li>
-            <li class="fade" :style="isIntersection ? style : null">VueJs 3</li>
+            <li class="fade" :style="isIntersection ? style : null">
+              VueJs 3</li>
             <li class="fade" :style="isIntersection ? style : null">
               Firebase
             </li>
-            <li class="fade" :style="isIntersection ? style : null">Vercel</li>
-            <li class="fade" :style="isIntersection ? style : null">Node.js</li>
+            <li class="fade" :style="isIntersection ? style : null">
+              Vercel</li>
+            <li class="fade" :style="isIntersection ? style : null">
+              Node.js</li>
           </ul>
         </div>
       </div>

@@ -13,26 +13,34 @@
         <div class="project__bg" />
         <div class="featured">Featured Project</div>
         <div v-intersection="onIntersection" class="intersection" />
-        <div class="project__name">Halcyon Theme</div>
+        <div class="project__name">My personal website</div>
         <div class="project__details">
-          A minimal, dark blue theme for VS Code, Sublime Text, Atom, iTerm, and
-          more. Available on Visual Studio Marketplace, Package Control, Atom
-          Package Manager, and npm.
+          A small site that describes my path in programming. It shows my work
+          experience, my projects, my skills and technologies that I have come
+          across.
         </div>
 
         <ul class="project__tags">
           <li :style="intersection ? scale : null">VS Code</li>
-          <li :style="intersection ? scale : null">Sublime Text</li>
-          <li :style="intersection ? scale : null">Atom</li>
-          <li :style="intersection ? scale : null">iTerm</li>
-          <li :style="intersection ? scale : null">Hyper</li>
+          <li :style="intersection ? scale : null">Vue.js</li>
+          <li :style="intersection ? scale : null">JS(ES6)</li>
+          <li :style="intersection ? scale : null">VueUse</li>
+          <li :style="intersection ? scale : null">Composition API</li>
         </ul>
 
         <div class="project__links">
-          <a href="" class="project__link">
+          <a
+            href="https://virtual-cv.vercel.app/"
+            class="project__link"
+            target="_blank"
+          >
             <externalIcon />
           </a>
-          <a href="" class="project__link">
+          <a
+            href="https://github.com/LevinIgor/virtual-cv"
+            class="project__link"
+            target="_blank"
+          >
             <githubIcon class="icon" />
           </a>
         </div>
