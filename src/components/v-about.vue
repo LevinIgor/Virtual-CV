@@ -46,14 +46,17 @@
           </ul>
         </div>
       </div>
-      <section class="section__img fade" :style="isIntersection ? style : null">
-        <!-- <img src="../assets/icons/developer.jpg" alt="developer" class="img" /> -->
-      </section>
+      <section
+        class="section__img fade"
+        :style="isIntersection ? style : null"
+      ></section>
     </article>
   </section>
 </template>
 <script setup>
 import { ref, computed } from "vue";
+import glassesIcon from "./icons/glasses.vue";
+import hand from "./icons/hand.vue";
 
 const style = computed(() => ({
   opacity: 1,
@@ -128,14 +131,7 @@ section {
   aspect-ratio: 1;
   transition: all 0.3s ease-in-out;
 }
-.img {
-  width: 100%;
-  height: 100%;
 
-  object-fit: cover;
-  border-radius: 5px;
-  overflow: hidden;
-}
 .section__img::after {
   content: "";
   box-sizing: border-box;
@@ -148,6 +144,7 @@ section {
   z-index: -1;
   border-radius: 5px;
   transition: all 0.3s ease-in-out;
+  background-color: rgba(24, 1, 105, 0.226);
 }
 .section__img:hover::after {
   top: 10px;
