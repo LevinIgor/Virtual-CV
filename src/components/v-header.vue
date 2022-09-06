@@ -69,14 +69,12 @@ function turnMobileMenu() {
     isMobileMenu.value = true;
     emits("onScroll");
   }
-  
 }
 
 function scrollTo(id) {
   const el = document.getElementById(id);
   el.scrollIntoView({ behavior: "smooth" });
-  hideHeader();
-  turnMobileMenu();
+  isMobileMenu.value ? turnMobileMenu() : hideHeader();
 }
 
 onMounted(() => {
