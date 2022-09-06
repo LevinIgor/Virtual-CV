@@ -57,8 +57,6 @@
 </template>
 <script setup>
 import { ref, computed } from "vue";
-import glassesIcon from "./icons/glasses.vue";
-import hand from "./icons/hand.vue";
 
 const style = computed(() => ({
   opacity: 1,
@@ -216,6 +214,7 @@ section {
   .section__img {
     margin: 0 auto;
     margin-top: 40px;
+    display: none;
   }
 }
 </style>
