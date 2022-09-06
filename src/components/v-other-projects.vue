@@ -4,23 +4,22 @@
     <div class="projects">
       <div class="intersection" v-intersection="onIntersection" />
       <TransitionGroup name="list">
-        <div class="project" v-for="index in count" :key="index">
+        <div class="project" v-for="project in newProjects" :key="project.id">
           <div class="project__header">
             <FolderIcon class="folder" />
-            <ExternalIcon class="link" />
+            <a :href="project.url" target="_blank">
+              <ExternalIcon class="link"
+            /></a>
           </div>
           <div class="project__name">
-            Integrating Algolia Search with WordPress Multisite
+            {{ project.title }}
           </div>
           <p class="project__desc">
-            Building a custom multisite compatible WordPress plugin to build
-            global search with Algolia
+            {{ project.description }}
           </p>
 
           <ul class="project__tags">
-            <li>Algolia</li>
-            <li>WordPress</li>
-            <li>PHP</li>
+            <li v-for="(tag, index) in project.tags" :key="index">{{ tag }}</li>
           </ul>
         </div>
       </TransitionGroup>
@@ -28,11 +27,14 @@
   </div>
 </template>
 <script setup>
-import FolderIcon from "../icons/folder.vue";
-import ExternalIcon from "../icons/external.vue";
+import FolderIcon from "@/components/icons/folder.vue";
+import ExternalIcon from "@/components/icons/external.vue";
+import projects from "@/JSON/projects.json";
 import { ref } from "vue";
 
+const newProjects = ref([]);
 const count = ref(0);
+
 function onIntersection() {
   start();
 }
@@ -43,7 +45,9 @@ function start() {
 }
 
 function increment() {
-  count.value >= 9 ? clearInterval(interval) : count.value++;
+  newProjects.value.length == projects.length
+    ? clearInterval(interval)
+    : (newProjects.value.push(projects[count.value]), count.value++);
 }
 </script>
 <style scoped>
@@ -66,6 +70,9 @@ function increment() {
   height: 30px;
   cursor: pointer;
   transition: color 0.2s ease-in-out;
+}
+.link:hover {
+  color: #ff6b6b;
 }
 .title {
   font-weight: 600;
@@ -102,6 +109,7 @@ function increment() {
   font-size: 16px;
 }
 .project__tags {
+  user-select: none;
   margin-top: 10px;
   display: flex;
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="work" :style="isIntersection ? style : null">
+  <section class="work" :style="isIntersection ? style : null" id="experience">
     <div class="title">Where I’ve Worked</div>
     <div class="inner">
       <div class="tab__list">
@@ -28,7 +28,7 @@
         </div>
       </transition>
     </div>
-  </div>
+  </section>
   <div v-intersection="onIntersection" />
 </template>
 <script setup>

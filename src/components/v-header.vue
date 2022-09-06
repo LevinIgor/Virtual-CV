@@ -1,14 +1,21 @@
 <template>
   <header :class="{ hide: isHide, off__shadow: isBoxShadow }">
     <nav>
-      <div class="header__logo">
-        <img src="" alt="" />
-      </div>
+      <LogoIcon class="header__logo" />
+
       <div class="header__nav">
-        <div class="header__nav__link"><span>01.</span> About</div>
-        <div class="header__nav__link"><span>02.</span> Experience</div>
-        <div class="header__nav__link"><span>03.</span> Work</div>
-        <div class="header__nav__link"><span>04.</span> Contact</div>
+        <div class="header__nav__link" @click="scrollTo('about')">
+          <span>01.</span> About
+        </div>
+        <div class="header__nav__link" @click="scrollTo('experience')">
+          <span>02.</span> Experience
+        </div>
+        <div class="header__nav__link" @click="scrollTo('work')">
+          <span>03.</span> Work
+        </div>
+        <div class="header__nav__link" @click="scrollTo('contact')">
+          <span>04.</span> Contact
+        </div>
         <div class="header__nav__btn">Resume</div>
       </div>
 
@@ -20,10 +27,18 @@
     </nav>
     <div class="blur" v-if="isMobileMenu" @click="turnMobileMenu()" />
     <aside class="mobile__header__menu" :class="{ 'fade-in': isMobileMenu }">
-      <div class="header__nav__link"><span>01.</span> About</div>
-      <div class="header__nav__link"><span>02.</span> Experience</div>
-      <div class="header__nav__link"><span>03.</span> Work</div>
-      <div class="header__nav__link"><span>04.</span> Contact</div>
+      <div class="header__nav__link" @click="scrollTo('about')">
+        <span>01.</span> About
+      </div>
+      <div class="header__nav__link" @click="scrollTo('experience')">
+        <span>02.</span> Experience
+      </div>
+      <div class="header__nav__link" @click="scrollTo('work')">
+        <span>03.</span> Work
+      </div>
+      <div class="header__nav__link" @click="scrollTo('contact')">
+        <span>04.</span> Contact
+      </div>
       <div class="header__nav__btn">Resume</div>
     </aside>
   </header>
@@ -31,6 +46,7 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import VBurgerMenu from "./UI/v-burger-menu.vue";
+import LogoIcon from "@/components/icons/logo.vue";
 
 const isHide = ref(false);
 const isMobileMenu = ref(false);
@@ -53,6 +69,14 @@ function turnMobileMenu() {
     isMobileMenu.value = true;
     emits("onScroll");
   }
+  
+}
+
+function scrollTo(id) {
+  const el = document.getElementById(id);
+  el.scrollIntoView({ behavior: "smooth" });
+  hideHeader();
+  turnMobileMenu();
 }
 
 onMounted(() => {
@@ -101,8 +125,8 @@ nav {
 .header__logo {
   width: 42px;
   height: 42px;
-  background-color: aquamarine;
 }
+
 .header__nav {
   font-size: 13px;
   font-family: "Roboto Mono", monospace;
@@ -149,6 +173,7 @@ nav {
   cursor: pointer;
   animation-name: fadeIn;
   animation-duration: 3.5s;
+  transition: all 0.2s ease-in-out;
 }
 .header__nav__btn:hover {
   background-color: var(--green-tint);
