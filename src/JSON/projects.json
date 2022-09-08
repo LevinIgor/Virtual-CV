@@ -19,5 +19,12 @@
     "description": "The game is designed for several teams. The goal is to score as many points as possible by answering questions of different categories",
     "tags": ["Nuxt.js", "SSR", "Vue.js", "Firebase"],
     "url": "https://levinigor.github.io/geopardy/"
+  },
+  {
+    "id": 3,
+    "title": "Simple Language & Theme switcher",
+    "description": "Simple example of a language and theme switcher",
+    "tags": ["Vue.js ", "Composition API", "Typescript"],
+    "url": "https://language-and-theme-change.vercel.app/"
   }
 ]
