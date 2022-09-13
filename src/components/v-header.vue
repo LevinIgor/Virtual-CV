@@ -27,18 +27,12 @@
     </nav>
     <div class="blur" v-if="isMobileMenu" @click="turnMobileMenu()" />
     <aside class="mobile__header__menu" :class="{ 'fade-in': isMobileMenu }">
-      <div class="header__nav__link" @click="scrollTo('about')">
-        <span>01.</span> About
-      </div>
-      <div class="header__nav__link" @click="scrollTo('experience')">
-        <span>02.</span> Experience
-      </div>
-      <div class="header__nav__link" @click="scrollTo('work')">
-        <span>03.</span> Work
-      </div>
-      <div class="header__nav__link" @click="scrollTo('contact')">
-        <span>04.</span> Contact
-      </div>
+      <ul class="mobile__menu">
+        <li @click="scrollTo('about')"><span>01.</span> About</li>
+        <li @click="scrollTo('experience')"><span>02.</span> Experience</li>
+        <li @click="scrollTo('work')"><span>03.</span> Work</li>
+        <li @click="scrollTo('contact')"><span>04.</span> Contact</li>
+      </ul>
       <div class="header__nav__btn">Resume</div>
     </aside>
   </header>
@@ -132,7 +126,8 @@ nav {
   align-items: center;
 }
 
-.header__nav__link {
+.header__nav__link,
+.mobile__menu li {
   cursor: pointer;
   padding: 10px;
   margin: 0 5px;
@@ -157,10 +152,10 @@ nav {
   animation-duration: 3s;
 }
 
-.header__nav__link span {
+.mobile__menu span {
   color: var(--green);
 }
-.header__nav__link:hover {
+.mobile__menu li:hover {
   color: var(--green);
 }
 .header__nav__btn {
@@ -208,7 +203,7 @@ nav {
   transform: translateX(100vw);
   transition: transform 0.2s ease-in-out;
 }
-.mobile__header__menu .header__nav__link {
+.mobile__header__menu li {
   margin: 10px 0;
   font-size: 25px;
 }
