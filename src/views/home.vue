@@ -1,7 +1,7 @@
 <template>
   <main>
     <VHeader />
-    <article v-if="timer">
+    <article v-if="isTimerDone">
       <VWelcome />
       <VAbout />
       <VWork />
@@ -9,26 +9,29 @@
       <VContact />
       <VFooter />
     </article>
-    <VAsideLeft />
-    <VAsideRight />
+    <VAsideLeft v-if="isComputerDevice"/>
+    <VAsideRight v-if="isComputerDevice"/>
   </main>
 </template>
 <script setup>
-import VHeader from "@/components/v-header.vue";
-import VWelcome from "@/components/v-welcome.vue";
-import VAbout from "@/components/v-about.vue";
-import VWork from "@/components/v-work.vue";
-import VSomeBuild from "@/components/v-some-build.vue";
-import VContact from "@/components/v-contact.vue";
-import VFooter from "@/components/v-footer.vue";
-import VAsideLeft from "@/components/v-aside-left.vue";
-import VAsideRight from "@/components/v-aside-right.vue";
+import { ref, defineAsyncComponent ,computed,watch} from "vue";
 
-import { ref } from "vue";
-const timer = ref(false);
+const VHeader = defineAsyncComponent(() => import("@/components/v-header.vue"));
+const VWelcome = defineAsyncComponent(() => import("@/components/v-welcome.vue"));
+const VAbout = defineAsyncComponent(() => import("@/components/v-about.vue"));
+const VWork = defineAsyncComponent(() => import("@/components/v-work.vue"));
+const VSomeBuild = defineAsyncComponent(() => import("@/components/v-some-build.vue"));
+const VContact = defineAsyncComponent(() => import("@/components/v-contact.vue"));
+const VFooter = defineAsyncComponent(() => import("@/components/v-footer.vue"));
+const VAsideLeft = defineAsyncComponent(() => import("@/components/v-aside-left.vue"));
+const VAsideRight = defineAsyncComponent(() => import("@/components/v-aside-right.vue"));
+
+const isTimerDone = ref(false);
+const isComputerDevice = computed(()=>{ return window.innerWidth > 800})
+
 
 setTimeout(() => {
-  timer.value = true;
+  isTimerDone.value = true;
 }, 1000);
 </script>
 

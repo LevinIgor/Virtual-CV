@@ -57,9 +57,5 @@ onMounted(() => {
   transition: all 0.5s ease-in-out;
 }
 
-@media (max-width: 800px) {
-  .right {
-    display: none;
-  }
-}
+
 </style>
