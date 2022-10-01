@@ -2,12 +2,12 @@
   <section
     class="some__build"
     :style="intersection ? fadeDown : null"
-    id="work"
+    id="Work"
   >
     <div class="title">Some Things I’ve Built</div>
     <div class="project">
       <div class="project__img" :style="intersection ? fadeLeft : null">
-        <img src="@/assets/icons/vscode.png" alt="" />
+        <img src="@/assets/icons/code.jpg" alt="" />
       </div>
       <div class="project__text" :style="intersection ? fadeLeft : null">
         <div class="project__bg" />
@@ -50,7 +50,7 @@
   </section>
 </template>
 <script setup>
-import VOtherProjects from "@/components/v-other-projects.vue";
+import VOtherProjects from "@/components/sections/v-other-projects.vue";
 import externalIcon from "@/components/icons/external.vue";
 import githubIcon from "@/components/icons/github.vue";
 import { ref, computed } from "vue";

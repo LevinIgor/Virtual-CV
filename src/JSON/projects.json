@@ -26,5 +26,12 @@
     "description": "Simple example of a language and theme switcher",
     "tags": ["Vue.js ", "Composition API", "Typescript"],
     "url": "https://language-and-theme-change.vercel.app/"
+  },
+  {
+    "id": 4,
+    "title": "Web site for a create post",
+    "description": "Simple web site for create, edit, delete post. In development...",
+    "tags": ["Vue.js ", "Composition API", "Firebase"],
+    "url": "https://my-journal-smoky.vercel.app/"
   }
 ]

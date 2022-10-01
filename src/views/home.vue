@@ -9,26 +9,45 @@
       <VContact />
       <VFooter />
     </article>
-    <VAsideLeft v-if="isComputerDevice"/>
-    <VAsideRight v-if="isComputerDevice"/>
+    <VAsideLeft v-if="isComputerDevice" />
+    <VAsideRight v-if="isComputerDevice" />
   </main>
 </template>
 <script setup>
-import { ref, defineAsyncComponent ,computed,watch} from "vue";
+import { ref, defineAsyncComponent, computed } from "vue";
 
-const VHeader = defineAsyncComponent(() => import("@/components/v-header.vue"));
-const VWelcome = defineAsyncComponent(() => import("@/components/v-welcome.vue"));
-const VAbout = defineAsyncComponent(() => import("@/components/v-about.vue"));
-const VWork = defineAsyncComponent(() => import("@/components/v-work.vue"));
-const VSomeBuild = defineAsyncComponent(() => import("@/components/v-some-build.vue"));
-const VContact = defineAsyncComponent(() => import("@/components/v-contact.vue"));
-const VFooter = defineAsyncComponent(() => import("@/components/v-footer.vue"));
-const VAsideLeft = defineAsyncComponent(() => import("@/components/v-aside-left.vue"));
-const VAsideRight = defineAsyncComponent(() => import("@/components/v-aside-right.vue"));
+const VHeader = defineAsyncComponent(() =>
+  import("@/components/sections/v-header.vue")
+);
+const VWelcome = defineAsyncComponent(() =>
+  import("@/components/sections/v-welcome.vue")
+);
+const VAbout = defineAsyncComponent(() =>
+  import("@/components/sections/v-about.vue")
+);
+const VWork = defineAsyncComponent(() =>
+  import("@/components/sections/v-work.vue")
+);
+const VSomeBuild = defineAsyncComponent(() =>
+  import("@/components/sections/v-some-build.vue")
+);
+const VContact = defineAsyncComponent(() =>
+  import("@/components/sections/v-contact.vue")
+);
+const VFooter = defineAsyncComponent(() =>
+  import("@/components/sections/v-footer.vue")
+);
+const VAsideLeft = defineAsyncComponent(() =>
+  import("@/components/asides/v-aside-left.vue")
+);
+const VAsideRight = defineAsyncComponent(() =>
+  import("@/components/asides/v-aside-right.vue")
+);
 
 const isTimerDone = ref(false);
-const isComputerDevice = computed(()=>{ return window.innerWidth > 800})
-
+const isComputerDevice = computed(() => {
+  return window.innerWidth > 800;
+});
 
 setTimeout(() => {
   isTimerDone.value = true;

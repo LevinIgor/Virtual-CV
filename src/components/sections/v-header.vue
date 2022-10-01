@@ -4,34 +4,34 @@
       <LogoIcon class="header__logo" />
 
       <div class="header__nav">
-        <div class="header__nav__link" @click="scrollTo('about')">
-          <span>01.</span> About
-        </div>
-        <div class="header__nav__link" @click="scrollTo('experience')">
-          <span>02.</span> Experience
-        </div>
-        <div class="header__nav__link" @click="scrollTo('work')">
-          <span>03.</span> Work
-        </div>
-        <div class="header__nav__link" @click="scrollTo('contact')">
-          <span>04.</span> Contact
+        <div
+          class="header__nav__link"
+          v-for="(item, index) in menu"
+          :key="item"
+          @click="onMenuClick(item)"
+        >
+          <span>0{{ index + 1 }}.</span> {{ item }}
         </div>
         <div class="header__nav__btn">Resume</div>
       </div>
 
       <VBurgerMenu
         class="burger"
-        @onClick="turnMobileMenu()"
+        @onClick="showMobileMenu()"
         :isHide="isMobileMenu"
       />
     </nav>
-    <div class="blur" v-if="isMobileMenu" @click="turnMobileMenu()" />
+    <div class="blur" v-if="isMobileMenu" @click="showMobileMenu()" />
     <aside class="mobile__header__menu" :class="{ 'fade-in': isMobileMenu }">
       <ul class="mobile__menu">
-        <li @click="scrollTo('about')"><span>01.</span> About</li>
-        <li @click="scrollTo('experience')"><span>02.</span> Experience</li>
-        <li @click="scrollTo('work')"><span>03.</span> Work</li>
-        <li @click="scrollTo('contact')"><span>04.</span> Contact</li>
+        <li
+          v-for="(item, index) in menu"
+          :key="item"
+          @click="onMenuClick(item)"
+        >
+          <span>0{{ index + 1 }}</span
+          >. {{ item }}
+        </li>
       </ul>
       <div class="header__nav__btn">Resume</div>
     </aside>
@@ -39,36 +39,43 @@
 </template>
 <script setup>
 import { onMounted, ref } from "vue";
-import VBurgerMenu from "./UI/v-burger-menu.vue";
+import VBurgerMenu from "@/components/UI/v-burger-menu.vue";
 import LogoIcon from "@/components/icons/logo.vue";
 
 const isHide = ref(false);
 const isMobileMenu = ref(false);
 const isBoxShadow = ref(false);
+const menu = ref(["About", "Experience", "Work", "Contact"]);
 
 const emits = defineEmits(["onScroll", "offScroll"]);
 
 function hideHeader() {
   isHide.value = true;
 }
+
 function showHeader() {
   isHide.value = false;
 }
 
-function turnMobileMenu() {
+function showMobileMenu() {
   if (isMobileMenu.value) {
+
     isMobileMenu.value = false;
     emits("offScroll");
   } else {
+
     isMobileMenu.value = true;
     emits("onScroll");
   }
 }
 
-function scrollTo(id) {
+function onMenuClick(id) {
   const el = document.getElementById(id);
+
   el.scrollIntoView({ behavior: "smooth" });
-  isMobileMenu.value ? turnMobileMenu() : hideHeader();
+
+  isMobileMenu.value ? showMobileMenu() : hideHeader();
+
 }
 
 onMounted(() => {
@@ -136,6 +143,11 @@ nav {
   animation-name: fadeIn;
   animation-fill-mode: forwards;
 }
+.header__nav__link span,
+.mobile__menu li span {
+  color: var(--green);
+  margin-right: 5px;
+}
 .header__nav__link:nth-child(1) {
   animation-duration: 1s;
 }
@@ -150,10 +162,6 @@ nav {
 }
 .header__nav__link:nth-child(5) {
   animation-duration: 3s;
-}
-
-.mobile__menu span {
-  color: var(--green);
 }
 .mobile__menu li:hover {
   color: var(--green);
