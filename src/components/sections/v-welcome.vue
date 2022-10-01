@@ -1,5 +1,5 @@
 <template>
-  <section class="welcome" id="welcome">
+  <section class="welcome" id="Welcome">
     <span
       class="hi fade"
       v-intersection="onIntersection"

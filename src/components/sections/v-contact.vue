@@ -1,5 +1,5 @@
 <template>
-  <section class="contact" :style="intersection ? style : null" id="contact">
+  <section class="contact" :style="intersection ? style : null" id="Contact">
     <div class="title">What’s Next?</div>
     <div class="heading">Get In Touch</div>
     <p class="text">

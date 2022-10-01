@@ -1,5 +1,5 @@
 <template>
-  <section class="about" id="about">
+  <section class="about" id="About">
     <div
       class="about__title fade"
       :style="isIntersection ? style : null"
@@ -48,10 +48,9 @@
           </ul>
         </div>
       </div>
-      <section
-        class="section__img fade"
-        :style="isIntersection ? style : null"
-      ></section>
+      <section class="section__img fade" :style="isIntersection ? style : null">
+        <img src="@/../public/about_pics.jpg" alt="" />
+      </section>
     </article>
   </section>
 </template>
@@ -125,11 +124,18 @@ p {
 section {
   height: max-content;
 }
+
 .section__img {
   display: block;
   max-width: 300px;
   aspect-ratio: 1;
   transition: all 0.3s ease-in-out;
+}
+.section__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 .section__img::after {

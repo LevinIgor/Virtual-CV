@@ -1,5 +1,5 @@
 <template>
-  <section class="work" :style="isIntersection ? style : null" id="experience">
+  <section class="work" :style="isIntersection ? style : null" id="Experience">
     <div class="title">Where I’ve Worked</div>
     <div class="inner">
       <div class="tab__list">
