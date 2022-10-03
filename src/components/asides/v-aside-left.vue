@@ -1,47 +1,27 @@
 <template>
   <aside class="left">
-    <a
-      href="https://github.com/LevinIgor"
-      class="icon"
-      target="_blank"
-      :style="isLoaded ? style : null"
-    >
-      <githubIcon />
-    </a>
-    <a
-      href="https://www.linkedin.com/in/levin-igor/"
-      class="icon"
-      target="_blank"
-      :style="isLoaded ? style : null"
-    >
-      <linkedinIcon />
-    </a>
-    <a
-      href="https://t.me/Levin_Ihor"
-      class="icon"
-      target="_blank"
-      :style="isLoaded ? style : null"
-    >
-      <telegramIcon />
-    </a>
-    <a
-      href="https://www.instagram.com/levin_ihor/"
-      class="icon"
-      target="_blank"
-      :style="isLoaded ? style : null"
-    >
-      <instagramIcon />
-    </a>
+    <VGitLink :style="isLoaded ? style : null" />
+
+    <VLinkedinLink :style="isLoaded ? style : null" />
+
+    <VCodewarsLink :style="isLoaded ? style : null" />
+
+    <VTelegramLink :style="isLoaded ? style : null" />
+
+    <VInstagramLink :style="isLoaded ? style : null" />
+
     <div class="line" :style="isLoaded ? style : null" />
   </aside>
 </template>
 <script setup>
-import githubIcon from "@/components/icons/github.vue";
-import linkedinIcon from "@/components/icons/linkedin.vue";
-import telegramIcon from "@/components/icons/telegram.vue";
-import instagramIcon from "@/components/icons/instagram.vue";
+import VGitLink from "@/components/iconsLink/v-gitLink.vue";
+import VLinkedinLink from "@/components/iconsLink/v-linkedinLink.vue";
+import VTelegramLink from "@/components/iconsLink/v-telegramLink.vue";
+import VInstagramLink from "@/components/iconsLink/v-instagramLink.vue";
+import VCodewarsLink from "@/components/iconsLink/v-codewarsLink.vue";
 
 import { ref, onMounted, computed } from "vue";
+
 const isLoaded = ref(false);
 const style = computed(() => ({
   opacity: 1,
@@ -80,6 +60,7 @@ a:hover {
   opacity: 0;
   transform: translateY(100px);
 }
+
 .icon:nth-child(1) {
   transition: all 0.3s ease-in-out 0.5s;
 }
@@ -92,18 +73,16 @@ a:hover {
 .icon:nth-child(4) {
   transition: all 0.3s ease-in-out 0.8s;
 }
-
-svg {
-  width: 100%;
-  height: 100%;
+.icon:nth-child(5) {
+  transition: all 0.3s ease-in-out 0.9s;
 }
+
 .line {
   margin-top: 30px;
   width: 1px;
   height: 100px;
   background-color: var(--light-slate);
   opacity: 0;
-  transition: all 0.5s ease-in-out 0.9s;
+  transition: all 0.5s ease-in-out;
 }
-
 </style>
