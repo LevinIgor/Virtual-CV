@@ -5,66 +5,47 @@
       :style="isIntersection ? style : null"
       v-intersection="onIntersection"
     >
-      About me
+      {{ about.title }}
     </div>
     <article class="inner">
-      <div class="text">
-        <p class="fade" :style="isIntersection ? style : null">
-          Hello! My name is Ihor and I enjoy creating things that live on the
-          internet. My interest in web development started back in 2018 when I
-          tried to create an application for solving equations with high
-          mathematics, with implementations of many solution methods
-        </p>
-        <p class="fade" :style="isIntersection ? style : null">
-          Fast-forward to today, and I’ve had the privilege of working at a
-          start-up, and a student-led design studio. My main focus these days is
-          building accessible, inclusive products and digital experiences for a
-          variety of clients.
-        </p>
-        <p class="fade" :style="isIntersection ? style : null">
-          I also take various courses from Cisco, on network routing in
-          particular
-        </p>
-        <p class="fade" :style="isIntersection ? style : null">
-          Here are a few technologies I’ve been working with recently:
-        </p>
-        <div class="technologies">
-          <ul class="skills__list">
-            <li class="fade" :style="isIntersection ? style : null">
-              JavaScript (ES6+)
-            </li>
-            <li class="fade" :style="isIntersection ? style : null">
-              Typescript
-            </li>
-            <li class="fade" :style="isIntersection ? style : null">
-              VueJs 3</li>
-            <li class="fade" :style="isIntersection ? style : null">
-              Firebase
-            </li>
-            <li class="fade" :style="isIntersection ? style : null">
-              Vercel</li>
-            <li class="fade" :style="isIntersection ? style : null">
-              Node.js</li>
-          </ul>
-        </div>
+      <p
+        class="fade"
+        :style="isIntersection ? style : null"
+        v-for="paragraph in about.paragraphs"
+      >
+        {{ paragraph }}
+      </p>
+      <div class="technologies">
+        <ul class="tech__list">
+          <li
+            v-for="tech in about.technologies"
+            class="fade"
+            :style="isIntersection ? style : null"
+          >
+            {{ tech }}
+          </li>
+        </ul>
       </div>
-      <section class="section__img fade" :style="isIntersection ? style : null">
-        <img src="@/../public/about_pics.jpg" alt="" />
-      </section>
     </article>
   </section>
 </template>
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
+import about from "@/JSON/about.json";
 
+// let about = ref({});
 const style = computed(() => ({
   opacity: 1,
   transform: "translateY(0px)",
 }));
+
 const isIntersection = ref(false);
 function onIntersection() {
   isIntersection.value = true;
 }
+onMounted(() => {
+  console.log(about);
+});
 </script>
 
 <style scoped>
@@ -109,11 +90,6 @@ function onIntersection() {
   margin-top: 100px;
   max-width: 900px;
 }
-article {
-  display: grid;
-  grid-template-columns: 3fr 2fr;
-  gap: 50px;
-}
 p {
   color: var(--slate);
   font-family: "Inter", sans-serif;
@@ -124,39 +100,6 @@ p {
 section {
   height: max-content;
 }
-
-.section__img {
-  display: block;
-  max-width: 300px;
-  aspect-ratio: 1;
-  transition: all 0.3s ease-in-out;
-}
-.section__img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-.section__img::after {
-  content: "";
-  box-sizing: border-box;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border: 2px solid var(--green);
-  top: 20px;
-  left: 20px;
-  z-index: -1;
-  border-radius: 5px;
-  transition: all 0.3s ease-in-out;
-  background-color: rgba(24, 1, 105, 0.226);
-}
-.section__img:hover::after {
-  top: 10px;
-  left: 10px;
-}
-
 .about__title {
   display: flex;
   align-items: center;
@@ -188,7 +131,7 @@ section {
   margin-left: 20px;
 }
 
-.skills__list {
+.tech__list {
   display: grid;
   grid-template-columns: repeat(2, minmax(160px, 200px));
   gap: 0px 10px;
@@ -197,7 +140,7 @@ section {
   overflow: hidden;
   list-style: none;
 }
-.skills__list li {
+.tech__list li {
   position: relative;
   color: var(--slate);
   font-family: "Roboto", monospace;
@@ -205,7 +148,7 @@ section {
   padding-left: 20px;
   font-size: 13px;
 }
-.skills__list li::before {
+.tech__list li::before {
   content: "▹";
 
   color: var(--green);
