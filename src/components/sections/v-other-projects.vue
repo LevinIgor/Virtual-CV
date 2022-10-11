@@ -1,10 +1,9 @@
 <template>
   <div class="other__projects">
-    <div class="title">Other Noteworthy Projects</div>
+    <div class="title">{{ project.title }}</div>
     <div class="projects">
-      <div class="intersection" v-intersection="onIntersection" />
       <TransitionGroup name="list">
-        <div class="project" v-for="project in newProjects" :key="project.id">
+        <div class="project" v-for="project in project.list" :key="project.id">
           <div class="project__header">
             <FolderIcon class="folder" />
             <a :href="project.url" target="_blank">
@@ -29,33 +28,9 @@
 <script setup>
 import FolderIcon from "@/components/icons/folder.vue";
 import ExternalIcon from "@/components/icons/external.vue";
-import projects from "@/JSON/projects.json";
-import { ref } from "vue";
-
-const newProjects = ref([]);
-const count = ref(0);
-
-function onIntersection() {
-  start();
-}
-
-let interval = null;
-function start() {
-  interval = setInterval(increment, 300);
-}
-
-function increment() {
-  newProjects.value.length == projects.length
-    ? clearInterval(interval)
-    : (newProjects.value.push(projects[count.value]), count.value++);
-}
+import project from "@/JSON/projects.json";
 </script>
 <style scoped>
-.intersection {
-  height: 0;
-  width: 0;
-  position: absolute;
-}
 .other__projects {
   margin-top: 150px;
 }
@@ -139,21 +114,5 @@ function increment() {
   .project__desc {
     font-size: 14px;
   }
-}
-list-move,
-list-enter-active,
-.list-leave-active {
-  transition: all 5s ease;
-}
-.list-enter-from,
-.list-leave-to {
-  opacity: 0;
-  transform: translateY(60px);
-}
-.list-active {
-  transition: all 5s ease;
-}
-.list-enter-active {
-  transition: all 1s ease 1s;
 }
 </style>
