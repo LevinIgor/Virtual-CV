@@ -4,26 +4,29 @@
       class="hi fade"
       v-intersection="onIntersection"
       :style="isIntersection ? fade : null"
-      >Hi, my name is
+      >{{ welcome.upTitle }}
     </span>
-    <span class="my__name fade" :style="isIntersection ? fade : null"
-      >Levin Ihor.</span
-    >
-    <span class="build__think fade" :style="isIntersection ? fade : null"
-      >I build things for the web.</span
-    >
+    <span class="my__name fade" :style="isIntersection ? fade : null">{{
+      welcome.name
+    }}</span>
+    <span class="build__think fade" :style="isIntersection ? fade : null">{{
+      welcome.downTitle
+    }}</span>
     <p class="fade" :style="isIntersection ? fade : null">
-      I’m a software engineer specializing in building (and occasionally
-      designing) exceptional digital experiences. Currently, I’m focused on
-      building accessible, human-centered products.
+      {{ welcome.paragraph }}
     </p>
-    <a href="" class="resume__btn fade" :style="isIntersection ? fade : null"
-      >Check out my Resume!</a
+    <a
+      href="https://drive.google.com/file/d/1tXaUzx0NZ1roew3hPHaYk0JcOU48VWtG/view?usp=sharing"
+      class="resume__btn fade"
+      target="_blank"
+      :style="isIntersection ? fade : null"
+      >{{ welcome.button }}</a
     >
   </section>
 </template>
 <script setup>
 import { computed, ref } from "vue";
+import welcome from "@/JSON/welcome.json";
 const isIntersection = ref(false);
 const fade = computed(() => ({
   opacity: 1,

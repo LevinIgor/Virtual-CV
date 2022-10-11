@@ -3,29 +3,27 @@
     class="some__build"
     :style="intersection ? fadeDown : null"
     id="Work"
+    v-intersection="handlerIntersection"
   >
-    <div class="title">Some Things I’ve Built</div>
+    <div class="title">{{ someBuild.title }}</div>
     <div class="project">
       <div class="project__img" :style="intersection ? fadeLeft : null">
         <img src="@/assets/icons/code.jpg" alt="" />
       </div>
       <div class="project__text" :style="intersection ? fadeLeft : null">
-        <div class="project__bg" />
-        <div class="featured">Featured Project</div>
-        <div v-intersection="onIntersection" class="intersection" />
-        <div class="project__name">My personal website</div>
+        <div class="featured">{{ someBuild.subTitle }}</div>
+        <div class="project__name">{{ someBuild.name }}</div>
         <div class="project__details">
-          A small site that describes my path in programming. It shows my work
-          experience, my projects, my skills and technologies that I have come
-          across.
+          {{ someBuild.paragraph }}
         </div>
 
         <ul class="project__tags">
-          <li :style="intersection ? scale : null">VS Code</li>
-          <li :style="intersection ? scale : null">Vue.js</li>
-          <li :style="intersection ? scale : null">JS(ES6)</li>
-          <li :style="intersection ? scale : null">VueUse</li>
-          <li :style="intersection ? scale : null">Composition API</li>
+          <li
+            v-for="tech in someBuild.technologies"
+            :style="intersection ? scale : null"
+          >
+            {{ tech }}
+          </li>
         </ul>
 
         <div class="project__links">
@@ -36,13 +34,7 @@
           >
             <externalIcon />
           </a>
-          <a
-            href="https://github.com/LevinIgor/virtual-cv"
-            class="project__link"
-            target="_blank"
-          >
-            <githubIcon class="icon" />
-          </a>
+          <VGitLink />
         </div>
       </div>
     </div>
@@ -51,12 +43,17 @@
 </template>
 <script setup>
 import VOtherProjects from "@/components/sections/v-other-projects.vue";
+
 import externalIcon from "@/components/icons/external.vue";
-import githubIcon from "@/components/icons/github.vue";
+import VGitLink from "../iconsLink/v-gitLink.vue";
+
+import someBuild from "@/JSON/some-build.json";
+
 import { ref, computed } from "vue";
+
 const intersection = ref(false);
 
-function onIntersection() {
+function handlerIntersection() {
   intersection.value = true;
 }
 const fadeDown = computed(() => ({
@@ -218,15 +215,7 @@ const scale = computed(() => ({
   .project__img {
     display: none;
   }
-  .project__bg {
-    position: absolute;
-    width: 100%;
-    left: 0px;
-    height: 100%;
-    top: 0;
-    background-color: rgba(8, 160, 255, 0.078);
-    z-index: -1;
-  }
+
   .project__text {
     padding: 40px;
     max-width: 100%;

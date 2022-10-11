@@ -12,7 +12,12 @@
         >
           <span>0{{ index + 1 }}.</span> {{ item }}
         </div>
-        <div class="header__nav__btn">Resume</div>
+        <a
+          href="https://drive.google.com/file/d/1tXaUzx0NZ1roew3hPHaYk0JcOU48VWtG/view?usp=sharing"
+          class="header__nav__btn"
+          target="_blank"
+          >Resume</a
+        >
       </div>
 
       <VBurgerMenu
@@ -59,11 +64,9 @@ function showHeader() {
 
 function showMobileMenu() {
   if (isMobileMenu.value) {
-
     isMobileMenu.value = false;
     emits("offScroll");
   } else {
-
     isMobileMenu.value = true;
     emits("onScroll");
   }
@@ -75,7 +78,6 @@ function onMenuClick(id) {
   el.scrollIntoView({ behavior: "smooth" });
 
   isMobileMenu.value ? showMobileMenu() : hideHeader();
-
 }
 
 onMounted(() => {

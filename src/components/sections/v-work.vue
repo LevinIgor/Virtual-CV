@@ -1,11 +1,11 @@
 <template>
   <section class="work" :style="isIntersection ? style : null" id="Experience">
-    <div class="title">Where I’ve Worked</div>
+    <div class="title">{{ work.title }}</div>
     <div class="inner">
       <div class="tab__list">
         <span
           class="tab__item"
-          v-for="(item, index) in works"
+          v-for="(item, index) in work.list"
           :key="index"
           :class="{ tab__active: index === selectTab }"
           @click="onTabClick(index)"
@@ -16,12 +16,12 @@
       <transition name="fade" mode="out-in">
         <div class="tab__content" v-show="fade">
           <span class="content__title"
-            >{{ work.title }}
-            <a :href="work.url[1]" target="_blank">{{ work.url[0] }}</a>
+            >{{ workTab.title }}
+            <a :href="workTab.url[1]" target="_blank">{{ workTab.url[0] }}</a>
           </span>
-          <span class="content__range">{{ work.range }}</span>
+          <span class="content__range">{{ workTab.range }}</span>
           <ul>
-            <li v-for="(item, index) in work.list" :key="index">
+            <li v-for="(item, index) in workTab.list" :key="index">
               {{ item }}
             </li>
           </ul>
@@ -29,11 +29,11 @@
       </transition>
     </div>
   </section>
-  <div v-intersection="onIntersection" />
+  <div v-intersection="handlerIntersection" />
 </template>
 <script setup>
 import { ref, computed } from "vue";
-import works from "@/JSON/works.json";
+import work from "@/JSON/work.json";
 
 const selectTab = ref(0);
 const fade = ref(true);
@@ -47,7 +47,7 @@ function onTabClick(index) {
 }
 
 const isIntersection = ref(false);
-function onIntersection() {
+function handlerIntersection() {
   isIntersection.value = true;
 }
 
@@ -55,8 +55,9 @@ const style = computed(() => ({
   opacity: 1,
   transform: "translateY(0)",
 }));
-const work = computed(() => {
-  return works[selectTab.value];
+
+const workTab = computed(() => {
+  return work.list[selectTab.value];
 });
 
 const lineStyle = computed(() => {
