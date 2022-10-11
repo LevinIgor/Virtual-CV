@@ -3,11 +3,12 @@
     <div
       class="about__title fade"
       :style="isIntersection ? style : null"
-      v-intersection="onIntersection"
+      v-intersection="handlerIntersection"
     >
       {{ about.title }}
     </div>
-    <article class="inner">
+
+    <section class="inner">
       <p
         class="fade"
         :style="isIntersection ? style : null"
@@ -15,6 +16,7 @@
       >
         {{ paragraph }}
       </p>
+
       <div class="technologies">
         <ul class="tech__list">
           <li
@@ -26,26 +28,23 @@
           </li>
         </ul>
       </div>
-    </article>
+    </section>
   </section>
 </template>
 <script setup>
-import { ref, computed, onMounted } from "vue";
+import { ref, computed } from "vue";
 import about from "@/JSON/about.json";
 
-// let about = ref({});
+const isIntersection = ref(false);
+
 const style = computed(() => ({
   opacity: 1,
   transform: "translateY(0px)",
 }));
 
-const isIntersection = ref(false);
-function onIntersection() {
+function handlerIntersection() {
   isIntersection.value = true;
 }
-onMounted(() => {
-  console.log(about);
-});
 </script>
 
 <style scoped>
