@@ -17,7 +17,8 @@ button {
   color: var(--green);
   border: 1px solid var(--green);
   border-radius: 5px;
-  padding: 10px 15px;
+  padding: 10px 20px;
+  max-width: max-content;
   cursor: pointer;
   opacity: 0;
   animation-name: fadeIn;

@@ -1,63 +1,47 @@
 <template>
   <section class="welcome" id="Welcome">
-    <span
-      class="hi fade"
-      v-intersection="onIntersection"
-      :style="isIntersection ? fade : null"
-      >{{ welcome.upTitle }}
-    </span>
-    <span class="my__name fade" :style="isIntersection ? fade : null">{{
-      welcome.name
-    }}</span>
-    <span class="build__think fade" :style="isIntersection ? fade : null">{{
-      welcome.downTitle
-    }}</span>
-    <p class="fade" :style="isIntersection ? fade : null">
+    <span class="hi fade">{{ welcome.upTitle }} </span>
+    <span class="my__name fade">{{ welcome.name }}</span>
+    <span class="build__think fade">{{ welcome.downTitle }}</span>
+    <p class="fade">
       {{ welcome.paragraph }}
     </p>
-    <a
-      href="https://drive.google.com/file/d/1tXaUzx0NZ1roew3hPHaYk0JcOU48VWtG/view?usp=sharing"
-      class="resume__btn fade"
-      target="_blank"
-      :style="isIntersection ? fade : null"
-      >{{ welcome.button }}</a
-    >
+    <VBtnResumeLink class="resume__btn fade" :text="welcome.button" :fontSize="14" />
   </section>
 </template>
 <script setup>
-import { computed, ref } from "vue";
 import welcome from "@/JSON/welcome.json";
-const isIntersection = ref(false);
-const fade = computed(() => ({
-  opacity: 1,
-  transform: "translateY(0px)",
-}));
-
-function onIntersection() {
-  isIntersection.value = true;
-}
+import VBtnResumeLink from "@/components/links/v-btn-resumeLink.vue";
 </script>
 
 <style scoped>
 .fade {
   opacity: 0;
   transform: translateY(30px);
+  animation-name: fade;
+  animation-fill-mode: forwards;
 }
 .fade:nth-child(1) {
-  transition: all 0.4s ease-in-out;
+  animation-delay: 0.5s;
+  animation-duration: 0.5s;
 }
 .fade:nth-child(2) {
-  transition: all 0.6s ease-in-out;
+  animation-delay: 0.6s;
+  animation-duration: 0.5s;
 }
 .fade:nth-child(3) {
-  transition: all 0.8s ease-in-out;
+  animation-delay: 0.7s;
+  animation-duration: 0.5s;
 }
 .fade:nth-child(4) {
-  transition: all 1s ease-in-out;
+  animation-delay: 0.8s;
+  animation-duration: 0.5s;
 }
 .fade:nth-child(5) {
-  transition: all 1.1s ease-in-out;
+  animation-delay: 0.9s;
+  animation-duration: 1.3s;
 }
+
 .welcome {
   margin-top: 100px;
   display: flex;
@@ -92,19 +76,18 @@ p {
   margin-top: 40px;
 }
 .resume__btn {
-  margin-top: 50px;
-  box-sizing: content-box;
-  border: 1px solid var(--green);
-  color: var(--green);
-  width: max-content;
-  text-align: center;
-  padding: 15px 20px;
-  border-radius: 5px;
-  font-size: 14px;
-  transition: all 0.25s;
+  margin-top: 40px;
+  padding: 15px 30px;
 }
-.resume__btn:hover {
-  background-color: var(--green-tint);
-  outline: none;
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
 }
 </style>
