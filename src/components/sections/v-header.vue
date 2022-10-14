@@ -1,7 +1,7 @@
 <template>
   <header :class="{ hide: isHide, off__shadow: isBoxShadow }">
     <nav>
-      <LogoIcon class="header__logo" :animation="animations.logo" />
+      <LogoIcon class="header__logo" :animation="headerAnimation.logo" />
       <div class="header__nav">
         <div
           class="header__nav__link"
@@ -12,10 +12,10 @@
           <VNav_link
             :number="index"
             :text="item"
-            :animation="animations.links[index]"
+            :animation="headerAnimation.links[index]"
           />
         </div>
-        <VBtnResumeLink :animation="animations.button" />
+        <VBtnResumeLink :animation="headerAnimation.button" />
       </div>
 
       <VBurgerMenu
@@ -45,40 +45,13 @@ import VBurgerMenu from "@/components/UI/v-burger-menu.vue";
 import LogoIcon from "@/components/icons/logo.vue";
 import VNav_link from "@/components/UI/v-nav_link.vue";
 import VBtnResumeLink from "@/components/links/v-btn-resumeLink.vue";
+import { headerAnimation } from "@/animations";
 
 const isHide = ref(false);
 const isMobileMenu = ref(false);
 const isBoxShadow = ref(false);
 const menu = ref(["About", "Experience", "Work", "Contact"]);
 
-const animations = ref({
-  logo: {
-    duration: 0.5,
-    delay: 0.5,
-  },
-  links: [
-    {
-      duration: 1,
-      delay: 0.1,
-    },
-    {
-      duration: 1.5,
-      delay: 0.2,
-    },
-    {
-      duration: 2,
-      delay: 0.3,
-    },
-    {
-      duration: 2,
-      delay: 0.4,
-    },
-  ],
-  button: {
-    duration: 2.2,
-    delay: 1,
-  },
-});
 const emits = defineEmits(["onScroll", "offScroll"]);
 
 function hideHeader() {
