@@ -1,8 +1,7 @@
 <template>
   <header :class="{ hide: isHide, off__shadow: isBoxShadow }">
     <nav>
-      <LogoIcon class="header__logo" />
-
+      <LogoIcon class="header__logo" :animation="animations.logo" />
       <div class="header__nav">
         <div
           class="header__nav__link"
@@ -10,14 +9,13 @@
           :key="item"
           @click="onMenuClick(item)"
         >
-          <span>0{{ index + 1 }}.</span> {{ item }}
+          <VNav_link
+            :number="index"
+            :text="item"
+            :animation="animations.links[index]"
+          />
         </div>
-        <a
-          href="https://drive.google.com/file/d/1tXaUzx0NZ1roew3hPHaYk0JcOU48VWtG/view?usp=sharing"
-          class="header__nav__btn"
-          target="_blank"
-          >Resume</a
-        >
+        <VBtnResumeLink :animation="animations.button" />
       </div>
 
       <VBurgerMenu
@@ -34,11 +32,10 @@
           :key="item"
           @click="onMenuClick(item)"
         >
-          <span>0{{ index + 1 }}</span
-          >. {{ item }}
+          <VNav_link :number="index" :text="item" />
         </li>
       </ul>
-      <div class="header__nav__btn">Resume</div>
+      <VBtnResumeLink :fontSize="22" />
     </aside>
   </header>
 </template>
@@ -46,12 +43,42 @@
 import { onMounted, ref } from "vue";
 import VBurgerMenu from "@/components/UI/v-burger-menu.vue";
 import LogoIcon from "@/components/icons/logo.vue";
+import VNav_link from "@/components/UI/v-nav_link.vue";
+import VBtnResumeLink from "@/components/links/v-btn-resumeLink.vue";
 
 const isHide = ref(false);
 const isMobileMenu = ref(false);
 const isBoxShadow = ref(false);
 const menu = ref(["About", "Experience", "Work", "Contact"]);
 
+const animations = ref({
+  logo: {
+    duration: 0.5,
+    delay: 0.5,
+  },
+  links: [
+    {
+      duration: 1,
+      delay: 0.1,
+    },
+    {
+      duration: 1.5,
+      delay: 0.2,
+    },
+    {
+      duration: 2,
+      delay: 0.3,
+    },
+    {
+      duration: 2,
+      delay: 0.4,
+    },
+  ],
+  button: {
+    duration: 2.2,
+    delay: 1,
+  },
+});
 const emits = defineEmits(["onScroll", "offScroll"]);
 
 function hideHeader() {
@@ -135,7 +162,6 @@ nav {
   align-items: center;
 }
 
-.header__nav__link,
 .mobile__menu li {
   cursor: pointer;
   padding: 10px;
@@ -145,42 +171,14 @@ nav {
   animation-name: fadeIn;
   animation-fill-mode: forwards;
 }
-.header__nav__link span,
 .mobile__menu li span {
   color: var(--green);
   margin-right: 5px;
 }
-.header__nav__link:nth-child(1) {
-  animation-duration: 1s;
-}
-.header__nav__link:nth-child(2) {
-  animation-duration: 1.5s;
-}
-.header__nav__link:nth-child(3) {
-  animation-duration: 2s;
-}
-.header__nav__link:nth-child(4) {
-  animation-duration: 2.5s;
-}
-.header__nav__link:nth-child(5) {
-  animation-duration: 3s;
-}
 .mobile__menu li:hover {
   color: var(--green);
 }
-.header__nav__btn {
-  color: var(--green);
-  border: 1px solid var(--green);
-  border-radius: 5px;
-  padding: 10px 15px;
-  cursor: pointer;
-  animation-name: fadeIn;
-  animation-duration: 3.5s;
-  transition: all 0.2s ease-in-out;
-}
-.header__nav__btn:hover {
-  background-color: var(--green-tint);
-}
+
 .hide {
   transform: translateY(-100%);
 }

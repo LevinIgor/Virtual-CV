@@ -45,7 +45,7 @@
 import VOtherProjects from "@/components/sections/v-other-projects.vue";
 
 import externalIcon from "@/components/icons/external.vue";
-import VGitLink from "../iconsLink/v-gitLink.vue";
+import VGitLink from "@/components/links/v-gitLink.vue";
 
 import someBuild from "@/JSON/some-build.json";
 

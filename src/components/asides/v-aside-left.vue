@@ -14,11 +14,11 @@
   </aside>
 </template>
 <script setup>
-import VGitLink from "@/components/iconsLink/v-gitLink.vue";
-import VLinkedinLink from "@/components/iconsLink/v-linkedinLink.vue";
-import VTelegramLink from "@/components/iconsLink/v-telegramLink.vue";
-import VInstagramLink from "@/components/iconsLink/v-instagramLink.vue";
-import VCodewarsLink from "@/components/iconsLink/v-codewarsLink.vue";
+import VGitLink from "@/components/links/v-gitLink.vue";
+import VLinkedinLink from "@/components/links/v-linkedinLink.vue";
+import VTelegramLink from "@/components/links/v-telegramLink.vue";
+import VInstagramLink from "@/components/links/v-instagramLink.vue";
+import VCodewarsLink from "@/components/links/v-codewarsLink.vue";
 
 import { ref, onMounted, computed } from "vue";
 

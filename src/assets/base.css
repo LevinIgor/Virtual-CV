@@ -46,9 +46,16 @@ a {
 li {
   list-style: none;
 }
-ul{
+ul {
   margin: 0;
   padding: 0;
+}
+button {
+  border: none;
+  background: none;
+  outline: none;
+  cursor: pointer;
+  font-family: "Roboto Mono", monospace;
 }
 
 body {
