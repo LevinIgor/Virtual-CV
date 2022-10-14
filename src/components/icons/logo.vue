@@ -1,3 +1,14 @@
+<script setup>
+import { computed } from "vue";
+const props = defineProps(["animation"]);
+const animationStyle = computed(() => {
+  return {
+    animationDuration: `${props.animation.duration}s`,
+    animationDelay: `${props.animation.delay}s`,
+  };
+});
+</script>
+
 <template>
   <svg
     id="etWoU4bjmEr1"
@@ -6,6 +17,8 @@
     viewBox="0 0 100 100"
     shape-rendering="geometricPrecision"
     text-rendering="geometricPrecision"
+    image-rendering="optimizeQuality"
+    :style="[animationStyle]"
   >
     <polygon
       points="0,-52.538198 45.499414,-26.269099 45.499414,26.269099 0,52.538198 -45.499414,26.269099 -45.499414,-26.269099 0,-52.538198"
@@ -18,7 +31,6 @@
     <text
       dx="0"
       dy="0"
-      font-family='"etWoU4bjmEr1:::Roboto"'
       font-size="70"
       font-weight="400"
       transform="translate(31.165978 74.467842)"
@@ -30,7 +42,23 @@
   </svg>
 </template>
 <style>
+svg {
+  opacity: 0;
+  animation-name: fadeIn;
+  animation-fill-mode: forwards;
+}
 text {
   font-family: "Roboto Mono", monospace;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.5);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+    opacity: 1;
+  }
 }
 </style>
