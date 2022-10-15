@@ -41,7 +41,7 @@ const animationStyle = computed(() => {
     </text>
   </svg>
 </template>
-<style>
+<style scoped>
 svg {
   opacity: 0;
   animation-name: fadeIn;

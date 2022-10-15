@@ -27,6 +27,7 @@ button {
 }
 button:hover {
   background-color: var(--green-tint);
+  filter: drop-shadow(0 0 0.75rem var(--green));
 }
 @keyframes fadeIn {
   0% {

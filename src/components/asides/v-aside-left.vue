@@ -1,16 +1,16 @@
 <template>
   <aside class="left">
-    <VGitLink :style="isLoaded ? style : null" />
+    <VGitLink class="link" :style="getAnimationOptions(0)" />
 
-    <VLinkedinLink :style="isLoaded ? style : null" />
+    <VLinkedinLink class="link" :style="getAnimationOptions(1)" />
 
-    <VCodewarsLink :style="isLoaded ? style : null" />
+    <VCodewarsLink class="link" :style="getAnimationOptions(2)" />
 
-    <VTelegramLink :style="isLoaded ? style : null" />
+    <VTelegramLink class="link" :style="getAnimationOptions(3)" />
 
-    <VInstagramLink :style="isLoaded ? style : null" />
+    <VInstagramLink class="link" :style="getAnimationOptions(4)" />
 
-    <div class="line" :style="isLoaded ? style : null" />
+    <div class="line" :style="getAnimationOptions(5)" />
   </aside>
 </template>
 <script setup>
@@ -19,20 +19,14 @@ import VLinkedinLink from "@/components/links/v-linkedinLink.vue";
 import VTelegramLink from "@/components/links/v-telegramLink.vue";
 import VInstagramLink from "@/components/links/v-instagramLink.vue";
 import VCodewarsLink from "@/components/links/v-codewarsLink.vue";
+import { leftAsideAnimation } from "@/animations.js";
 
-import { ref, onMounted, computed } from "vue";
-
-const isLoaded = ref(false);
-const style = computed(() => ({
-  opacity: 1,
-  transform: "translateY(0)",
-}));
-
-onMounted(() => {
-  setTimeout(() => {
-    isLoaded.value = true;
-  }, 2500);
-});
+function getAnimationOptions(index) {
+  return {
+    animationDuration: `${leftAsideAnimation[index].duration}s`,
+    animationDelay: `${leftAsideAnimation[index].delay}s`,
+  };
+}
 </script>
 
 <style scoped>
@@ -46,43 +40,35 @@ aside {
   flex-direction: column;
   align-items: center;
 }
-a {
-  box-sizing: content-box;
-  padding: 10px;
+.link {
+  margin-bottom: 1rem;
+  transition: color 0.3s;
 }
-a:hover {
+.link:hover {
   color: var(--green);
-  transform: translateY(-5px);
+  filter: drop-shadow(0 0 0.75rem var(--green));
 }
-.icon {
-  width: 20px;
-  height: 20px;
-  opacity: 0;
-  transform: translateY(100px);
-}
-
-.icon:nth-child(1) {
-  transition: all 0.3s ease-in-out 0.5s;
-}
-.icon:nth-child(2) {
-  transition: all 0.3s ease-in-out 0.6s;
-}
-.icon:nth-child(3) {
-  transition: all 0.3s ease-in-out 0.7s;
-}
-.icon:nth-child(4) {
-  transition: all 0.3s ease-in-out 0.8s;
-}
-.icon:nth-child(5) {
-  transition: all 0.3s ease-in-out 0.9s;
-}
-
 .line {
   margin-top: 30px;
   width: 1px;
   height: 100px;
   background-color: var(--light-slate);
+}
+
+.line,
+.link {
+  animation-name: fadeIn;
+  animation-fill-mode: forwards;
   opacity: 0;
-  transition: all 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(100px) scale(4);
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
 }
 </style>

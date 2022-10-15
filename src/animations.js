@@ -26,3 +26,24 @@ export const headerAnimation = {
     delay: 1,
   },
 };
+export const leftAsideAnimation = [
+  {
+    duration: 0.2,
+    delay: 3,
+  },
+  {
+    duration: 0.2,
+    delay: 2.8,
+  },
+  {
+    duration: 0.2,
+    delay: 2.6,
+  },
+  {
+    duration: 0.2,
+    delay: 2.4,
+  },
+  { duration: 0.2, delay: 2.2 },
+
+  { duration: 1, delay: 3.4 },
+];

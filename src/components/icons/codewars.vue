@@ -19,7 +19,8 @@
   </svg>
 </template>
 <style scoped>
-path {
-  color: #a8b2d1;
+svg {
+  width: 1.3rem;
+  height: 1.3rem;
 }
 </style>

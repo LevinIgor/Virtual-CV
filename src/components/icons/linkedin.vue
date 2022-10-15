@@ -17,3 +17,9 @@
     <circle cx="4" cy="4" r="2"></circle>
   </svg>
 </template>
+<style scoped>
+svg {
+  width: 1.3rem;
+  height: 1.3rem;
+}
+</style>

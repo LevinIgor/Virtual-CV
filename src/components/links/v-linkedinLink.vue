@@ -10,4 +10,3 @@ import Linkedin from "../icons/linkedin.vue";
     <Linkedin />
   </a>
 </template>
-<style scoped></style>

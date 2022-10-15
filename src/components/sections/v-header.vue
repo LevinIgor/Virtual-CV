@@ -49,7 +49,7 @@ import { headerAnimation } from "@/animations";
 
 const isHide = ref(false);
 const isMobileMenu = ref(false);
-const isBoxShadow = ref(false);
+const isBoxShadow = ref(true);
 const menu = ref(["About", "Experience", "Work", "Contact"]);
 
 const emits = defineEmits(["onScroll", "offScroll"]);
@@ -219,15 +219,5 @@ nav {
   .burger {
     display: none;
   }
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 5s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
 }
 </style>

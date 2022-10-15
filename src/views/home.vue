@@ -1,20 +1,18 @@
 <template>
   <main>
     <VHeader />
-    <article v-if="isTimerDone">
-      <VWelcome />
-      <VAbout />
-      <VWork />
-      <VSomeBuild />
-      <VContact />
-      <VFooter />
-    </article>
+    <VWelcome />
+    <VAbout />
+    <VWork />
+    <VSomeBuild />
+    <VContact />
+    <VFooter />
     <VAsideLeft v-if="isComputerDevice" />
     <VAsideRight v-if="isComputerDevice" />
   </main>
 </template>
 <script setup>
-import { ref, defineAsyncComponent, computed } from "vue";
+import { defineAsyncComponent, computed } from "vue";
 
 const VHeader = defineAsyncComponent(() =>
   import("@/components/sections/v-header.vue")
@@ -44,14 +42,9 @@ const VAsideRight = defineAsyncComponent(() =>
   import("@/components/asides/v-aside-right.vue")
 );
 
-const isTimerDone = ref(false);
 const isComputerDevice = computed(() => {
   return window.innerWidth > 800;
 });
-
-setTimeout(() => {
-  isTimerDone.value = true;
-}, 1000);
 </script>
 
 <style scoped>
