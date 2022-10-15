@@ -1,5 +1,5 @@
 <template>
-  <section class="work" :style="isIntersection ? style : null" id="Experience">
+  <article class="work" id="Experience" v-intersection>
     <div class="title">{{ work.title }}</div>
     <div class="inner">
       <div class="tab__list">
@@ -13,6 +13,7 @@
         >
         <div class="line" :style="lineStyle" />
       </div>
+
       <transition name="fade" mode="out-in">
         <div class="tab__content" v-show="fade">
           <span class="content__title"
@@ -28,8 +29,7 @@
         </div>
       </transition>
     </div>
-  </section>
-  <div v-intersection="handlerIntersection" />
+  </article>
 </template>
 <script setup>
 import { ref, computed } from "vue";
@@ -44,11 +44,6 @@ function onTabClick(index) {
     fade.value = true;
     selectTab.value = index;
   }, 100);
-}
-
-const isIntersection = ref(false);
-function handlerIntersection() {
-  isIntersection.value = true;
 }
 
 const style = computed(() => ({
@@ -75,9 +70,12 @@ const lineStyle = computed(() => {
 <style scoped>
 .work {
   margin-top: 100px;
-  opacity: 0;
-  transform: translateY(200px);
   transition: transform 1.5s, opacity 1.5s;
+  opacity: 0;
+  margin-bottom: 150px;
+}
+.active {
+  opacity: 1;
 }
 .title {
   display: flex;

@@ -1,93 +1,42 @@
 <template>
-  <section class="about" id="About">
-    <div
-      class="about__title fade"
-      :style="isIntersection ? style : null"
-      v-intersection="handlerIntersection"
-    >
+  <article class="about" id="About" v-intersection>
+    <div class="about__title">
       {{ about.title }}
     </div>
 
-    <section class="inner">
-      <p
-        class="fade"
-        :style="isIntersection ? style : null"
-        v-for="paragraph in about.paragraphs"
-      >
+    <section class="text">
+      <p class="fade" v-for="paragraph in about.paragraphs">
         {{ paragraph }}
       </p>
 
       <div class="technologies">
         <ul class="tech__list">
-          <li
-            v-for="tech in about.technologies"
-            class="fade"
-            :style="isIntersection ? style : null"
-          >
+          <li v-for="tech in about.technologies">
             {{ tech }}
           </li>
         </ul>
       </div>
     </section>
-  </section>
+  </article>
 </template>
 <script setup>
 import { ref, computed } from "vue";
 import about from "@/JSON/about.json";
 
-const isIntersection = ref(false);
-
 const style = computed(() => ({
   opacity: 1,
   transform: "translateY(0px)",
 }));
-
-function handlerIntersection() {
-  isIntersection.value = true;
-}
 </script>
 
 <style scoped>
-.fade {
-  opacity: 0;
-  transform: translateY(200px);
-}
-.fade:nth-child(1) {
-  transition: all 1s ease-in-out;
-}
-.fade:nth-child(2) {
-  transition: all 1.4s ease-in-out;
-}
-.fade:nth-child(3) {
-  transition: all 1.8s ease-in-out;
-}
-.fade:nth-child(4) {
-  transition: all 2.2s ease-in-out;
-}
-.fade:nth-child(5) {
-  transition: all 2.6s ease-in-out;
-}
-.fade:nth-child(6) {
-  transition: all 3s ease-in-out;
-}
-.fade:nth-child(7) {
-  transition: all 3.4s ease-in-out;
-}
-.fade:nth-child(8) {
-  transition: all 3.8s ease-in-out;
-}
-.fade:nth-child(9) {
-  transition: all 4.4s ease-in-out;
-}
-.fade:nth-child(10) {
-  transition: all 4.8s ease-in-out;
-}
-.fade:nth-child(11) {
-  transition: all 5.2s ease-in-out;
-}
 .about {
-  margin-top: 100px;
   max-width: 900px;
+  opacity: 0;
+  margin-bottom: 150px;
+}
+.active {
+  opacity: 1;
 }
 p {
   color: var(--slate);
@@ -95,9 +44,6 @@ p {
   font-size: 18px;
   margin: 0;
   margin-bottom: 15px;
-}
-section {
-  height: max-content;
 }
 .about__title {
   display: flex;
@@ -149,14 +95,13 @@ section {
 }
 .tech__list li::before {
   content: "▹";
-
   color: var(--green);
   font-size: 12px;
   line-height: 12px;
   margin-right: 5px;
 }
 @media (max-width: 800px) {
-  .inner {
+  .text {
     display: block;
   }
   .section__img {

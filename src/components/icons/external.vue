@@ -18,3 +18,9 @@
     <line x1="10" y1="14" x2="21" y2="3" />
   </svg>
 </template>
+<style scoped>
+svg {
+  width: 100%;
+  height: 100%;
+}
+</style>

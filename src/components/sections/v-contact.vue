@@ -1,5 +1,5 @@
 <template>
-  <section class="contact" :style="intersection ? style : null" id="Contact">
+  <article class="contact" id="Contact" v-intersection>
     <div class="title">{{ contact.title }}</div>
     <div class="heading">{{ contact.subTitle }}</div>
     <p class="text">
@@ -9,18 +9,12 @@
     <VBtn class="btn" :fontSize="14"
       ><a href="mailto:lytghzys@gmail.com">{{ contact.button }}</a></VBtn
     >
-  </section>
-  <div class="" v-intersection="onIntersection" />
+  </article>
 </template>
 <script setup>
 import { ref, computed } from "vue";
 import contact from "@/JSON/contact.json";
 import VBtn from "@/components/UI/v-btn.vue";
-
-const intersection = ref(false);
-function onIntersection() {
-  intersection.value = true;
-}
 
 const style = computed(() => ({
   opacity: 1,
@@ -37,6 +31,10 @@ const style = computed(() => ({
   opacity: 0;
   transform: scale(0);
   transition: all 1s;
+}
+.active {
+  opacity: 1;
+  transform: scale(1);
 }
 .title {
   color: var(--green);

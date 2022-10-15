@@ -58,3 +58,26 @@ export const rightAsideAnimation = [
     delay: 3.4,
   },
 ];
+
+export const projectsAnimation = [
+  {
+    duration: 0.5,
+    delay: 0.4,
+  },
+  {
+    duration: 0.5,
+    delay: 0.6,
+  },
+  {
+    duration: 0.5,
+    delay: 0.8,
+  },
+  {
+    duration: 0.5,
+    delay: 1,
+  },
+  {
+    duration: 0.5,
+    delay: 1,
+  },
+];

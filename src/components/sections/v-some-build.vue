@@ -1,16 +1,11 @@
 <template>
-  <section
-    class="some__build"
-    :style="intersection ? fadeDown : null"
-    id="Work"
-    v-intersection="handlerIntersection"
-  >
+  <article class="some__build" id="Work" v-intersection>
     <div class="title">{{ someBuild.title }}</div>
     <div class="project">
-      <div class="project__img" :style="intersection ? fadeLeft : null">
-        <img src="@/assets/icons/code.jpg" alt="" />
+      <div class="project__img">
+        <img src="@/assets/icons/code.jpg" alt="code img" />
       </div>
-      <div class="project__text" :style="intersection ? fadeLeft : null">
+      <div class="project__text">
         <div class="featured">{{ someBuild.subTitle }}</div>
         <div class="project__name">{{ someBuild.name }}</div>
         <div class="project__details">
@@ -18,68 +13,40 @@
         </div>
 
         <ul class="project__tags">
-          <li
-            v-for="tech in someBuild.technologies"
-            :style="intersection ? scale : null"
-          >
+          <li v-for="tech in someBuild.technologies">
             {{ tech }}
           </li>
         </ul>
 
         <div class="project__links">
-          <a
-            href="https://virtual-cv.vercel.app/"
-            class="project__link"
-            target="_blank"
-          >
-            <externalIcon />
-          </a>
+          <VExternalLink
+            class="external"
+            :href="'https://virtual-cv.vercel.app/'"
+          />
           <VGitLink />
         </div>
       </div>
     </div>
     <VOtherProjects />
-  </section>
+  </article>
 </template>
 <script setup>
 import VOtherProjects from "@/components/sections/v-other-projects.vue";
 
-import externalIcon from "@/components/icons/external.vue";
+import VExternalLink from "../links/v-externalLink.vue";
 import VGitLink from "@/components/links/v-gitLink.vue";
 
 import someBuild from "@/JSON/some-build.json";
-
-import { ref, computed } from "vue";
-
-const intersection = ref(false);
-
-function handlerIntersection() {
-  intersection.value = true;
-}
-const fadeDown = computed(() => ({
-  opacity: 1,
-  transform: "translateY(0)",
-}));
-const fadeLeft = computed(() => ({
-  opacity: 1,
-  transform: "translateX(0)",
-}));
-const scale = computed(() => ({
-  opacity: 1,
-  transform: "scale(1)",
-}));
 </script>
 
 <style scoped>
 .some__build {
-  margin-top: 100px;
-  transform: translateY(200px);
-  opacity: 0;
   transition: all 1s ease-in-out;
+  margin-bottom: 150px;
 }
-.icon {
-  width: 24px;
-  height: 24px;
+.external {
+  width: 1.3rem;
+  height: 1.3rem;
 }
 .title {
   white-space: nowrap;
@@ -115,14 +82,14 @@ const scale = computed(() => ({
   display: flex;
   justify-content: right;
   min-width: 100%;
+  margin-bottom: 50px;
 }
 .project__text {
   max-width: 70%;
   right: 0;
   text-align: right;
-  transform: translateX(200px);
-  opacity: 0;
   transition: all 1.5s ease-in-out;
+  cursor: default;
 }
 .project__img {
   position: absolute;
@@ -131,8 +98,6 @@ const scale = computed(() => ({
   left: 0;
   height: min-content;
   overflow: hidden;
-  transform: translateX(-200px);
-  opacity: 0;
   transition: all 1s ease-in-out;
 }
 .project__img img {
@@ -173,29 +138,8 @@ const scale = computed(() => ({
   font-weight: 400;
   font-size: 13px;
   user-select: none;
-  opacity: 0;
   transition: all 0s ease-in-out 1s;
-  transform: scale(0);
   text-align: center;
-}
-.project__tags li:nth-child(1) {
-  transition-duration: 1.2s;
-}
-.project__tags li:nth-child(2) {
-  transition-duration: 1.4s;
-}
-.project__tags li:nth-child(3) {
-  transition-duration: 1.6s;
-}
-
-.project__tags li:nth-child(4) {
-  transition-duration: 1.8s;
-}
-.project__tags li:nth-child(5) {
-  transition-duration: 2s;
-}
-.project__tags li:nth-child(6) {
-  transition-duration: 2.2s;
 }
 
 .project__links {
