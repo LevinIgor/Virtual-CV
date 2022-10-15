@@ -1,18 +1,22 @@
 <template>
   <section class="contact" :style="intersection ? style : null" id="Contact">
-    <div class="title">What’s Next?</div>
-    <div class="heading">Get In Touch</div>
+    <div class="title">{{ contact.title }}</div>
+    <div class="heading">{{ contact.subTitle }}</div>
     <p class="text">
-      Although I’m not currently looking for any new opportunities, my inbox is
-      always open. Whether you have a question or just want to say hi, I’ll try
-      my best to get back to you!
+      {{ contact.paragraph }}
     </p>
-    <a class="btn" href="mailto:lytghzys@gmail.com">Say Hello</a>
+
+    <VBtn class="btn" :fontSize="14"
+      ><a href="mailto:lytghzys@gmail.com">{{ contact.button }}</a></VBtn
+    >
   </section>
   <div class="" v-intersection="onIntersection" />
 </template>
 <script setup>
 import { ref, computed } from "vue";
+import contact from "@/JSON/contact.json";
+import VBtn from "@/components/UI/v-btn.vue";
+
 const intersection = ref(false);
 function onIntersection() {
   intersection.value = true;
@@ -56,21 +60,7 @@ const style = computed(() => ({
   text-align: center;
 }
 .btn {
-  color: var(--green);
-  background-color: transparent;
-  border: 1px solid var(--green);
-  border-radius: 5px;
-  padding: 1.25rem 1.75rem;
-  font-size: 14px;
-  font-family: "Roboto", monospace;
-  line-height: 1;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  margin-top: 50px;
-  max-width: max-content;
-}
-.btn:hover {
-  background-color: var(--green-tint);
+  margin-top: 20px;
+  padding: 20px 30px;
 }
 </style>
