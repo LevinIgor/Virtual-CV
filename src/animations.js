@@ -47,3 +47,14 @@ export const leftAsideAnimation = [
 
   { duration: 1, delay: 3.4 },
 ];
+
+export const rightAsideAnimation = [
+  {
+    duration: 0.5,
+    delay: 2.7,
+  },
+  {
+    duration: 1,
+    delay: 3.4,
+  },
+];
