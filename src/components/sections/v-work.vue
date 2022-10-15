@@ -164,6 +164,20 @@ const lineStyle = computed(() => {
   cursor: pointer;
   color: var(--green);
 }
+.content__title a::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--green);
+  transition: width 0.3s;
+}
+.content__title a:hover::after {
+  width: 100%;
+}
 
 .content__range {
   color: var(--light-slate);
