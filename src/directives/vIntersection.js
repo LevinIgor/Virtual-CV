@@ -1,12 +1,13 @@
 export default {
-  mounted(el) {
+  mounted(el, binding) {
     var options = {
       rootMargin: "0px",
       threshold: 0.3,
     };
     var callback = function (entries) {
       if (entries[0].isIntersecting) {
-        entries[0].target.classList.add("active");
+        binding.value();
+        
       }
     };
     var observer = new IntersectionObserver(callback, options);

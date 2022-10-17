@@ -81,3 +81,44 @@ export const projectsAnimation = [
     delay: 1,
   },
 ];
+
+export const aboutAnimation = {
+  duration: "0.9s",
+  title: {
+    delay: "0.1s",
+  },
+  paragraphs: [
+    {
+      delay: "0.4s",
+    },
+    {
+      delay: "0.5s",
+    },
+    {
+      delay: "0.6s",
+    },
+    {
+      delay: "0.7s",
+    },
+  ],
+  technologies: [
+    {
+      delay: "1s",
+    },
+    {
+      delay: "1.1s",
+    },
+    {
+      delay: "1.2s",
+    },
+    {
+      delay: "1.3s",
+    },
+    {
+      delay: "1.4s",
+    },
+    {
+      delay: "1.5s",
+    },
+  ],
+};
