@@ -20,7 +20,6 @@
   </article>
 </template>
 <script setup>
-import { computed } from "vue";
 import about from "@/JSON/about.json";
 </script>
 

@@ -13,28 +13,14 @@
 </template>
 <script setup>
 import { defineAsyncComponent, computed } from "vue";
+import VHeader from "@/components/sections/v-header.vue";
+import VWelcome from "@/components/sections/v-welcome.vue";
+import VAbout from "@/components/sections/v-about.vue";
+import VWork from "@/components/sections/v-work.vue";
+import VSomeBuild from "@/components/sections/v-some-build.vue";
+import VContact from "@/components/sections/v-contact.vue";
+import VFooter from "@/components/sections/v-footer.vue";
 
-const VHeader = defineAsyncComponent(() =>
-  import("@/components/sections/v-header.vue")
-);
-const VWelcome = defineAsyncComponent(() =>
-  import("@/components/sections/v-welcome.vue")
-);
-const VAbout = defineAsyncComponent(() =>
-  import("@/components/sections/v-about.vue")
-);
-const VWork = defineAsyncComponent(() =>
-  import("@/components/sections/v-work.vue")
-);
-const VSomeBuild = defineAsyncComponent(() =>
-  import("@/components/sections/v-some-build.vue")
-);
-const VContact = defineAsyncComponent(() =>
-  import("@/components/sections/v-contact.vue")
-);
-const VFooter = defineAsyncComponent(() =>
-  import("@/components/sections/v-footer.vue")
-);
 const VAsideLeft = defineAsyncComponent(() =>
   import("@/components/asides/v-aside-left.vue")
 );
