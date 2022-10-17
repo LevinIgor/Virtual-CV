@@ -3,7 +3,7 @@
     <VHeader />
     <VWelcome />
     <VAbout />
-    <VWork />
+    <VExperience />
     <VSomeBuild />
     <VContact />
     <VFooter />
@@ -16,7 +16,7 @@ import { defineAsyncComponent, computed } from "vue";
 import VHeader from "@/components/sections/v-header.vue";
 import VWelcome from "@/components/sections/v-welcome.vue";
 import VAbout from "@/components/sections/v-about.vue";
-import VWork from "@/components/sections/v-work.vue";
+import VExperience from "@/components/sections/v-experience.vue";
 import VSomeBuild from "@/components/sections/v-some-build.vue";
 import VContact from "@/components/sections/v-contact.vue";
 import VFooter from "@/components/sections/v-footer.vue";

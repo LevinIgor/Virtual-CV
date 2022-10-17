@@ -30,7 +30,6 @@ const animations = computed(() => {
 function intersectionHandler() {
   isIntersecting.value = true;
 }
-console.log(aboutAnimation);
 </script>
 
 <style scoped>
@@ -39,7 +38,7 @@ console.log(aboutAnimation);
 }
 .fade__animation {
   opacity: 0;
-  animation-name: fadeIn;
+  animation-name: fadeInUpDown;
   animation-fill-mode: forwards;
   animation-duration: v-bind("aboutAnimation.duration");
 }
@@ -85,17 +84,6 @@ p {
   font-size: 12px;
   line-height: 12px;
   margin-right: 5px;
-}
-
-@keyframes fadeIn {
-  from {
-    transform: translateY(100px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0px);
-    opacity: 1;
-  }
 }
 
 .fade__animation:nth-child(1) {

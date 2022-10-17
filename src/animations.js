@@ -122,3 +122,13 @@ export const aboutAnimation = {
     },
   ],
 };
+
+export const experienceOptions = {
+  title: "fadeInRotateX 0.5s ease-in-out 1s forwards",
+  tabs: [
+    "fadeInDownUp 0.5s ease-in-out 1s forwards",
+    "fadeInUpDown 0.5s ease-in-out 1.2s forwards",
+    "fadeInUpDown 0.5s ease-in-out 1.4s forwards",
+  ],
+  content: "fadeInRightLeft 0.2s ease-in-out 1.6s forwards",
+};
