@@ -5,7 +5,7 @@
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
-    stroke-width="1"
+    stroke-width=".7"
     stroke-linecap="round"
     stroke-linejoin="round"
   >
@@ -15,3 +15,9 @@
     />
   </svg>
 </template>
+<style scoped>
+svg {
+  width: 1.3rem;
+  height: 1.3rem;
+}
+</style>

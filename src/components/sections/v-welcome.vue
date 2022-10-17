@@ -1,13 +1,17 @@
 <template>
-  <section class="welcome" id="Welcome">
+  <article class="welcome" id="Welcome">
     <span class="hi fade">{{ welcome.upTitle }} </span>
     <span class="my__name fade">{{ welcome.name }}</span>
     <span class="build__think fade">{{ welcome.downTitle }}</span>
     <p class="fade">
       {{ welcome.paragraph }}
     </p>
-    <VBtnResumeLink class="resume__btn fade" :text="welcome.button" :fontSize="14" />
-  </section>
+    <VBtnResumeLink
+      class="resume__btn fade"
+      :text="welcome.button"
+      :fontSize="14"
+    />
+  </article>
 </template>
 <script setup>
 import welcome from "@/JSON/welcome.json";
@@ -15,35 +19,9 @@ import VBtnResumeLink from "@/components/links/v-btn-resumeLink.vue";
 </script>
 
 <style scoped>
-.fade {
-  opacity: 0;
-  transform: translateY(30px);
-  animation-name: fade;
-  animation-fill-mode: forwards;
-}
-.fade:nth-child(1) {
-  animation-delay: 0.5s;
-  animation-duration: 0.5s;
-}
-.fade:nth-child(2) {
-  animation-delay: 0.6s;
-  animation-duration: 0.5s;
-}
-.fade:nth-child(3) {
-  animation-delay: 0.7s;
-  animation-duration: 0.5s;
-}
-.fade:nth-child(4) {
-  animation-delay: 0.8s;
-  animation-duration: 0.5s;
-}
-.fade:nth-child(5) {
-  animation-delay: 0.9s;
-  animation-duration: 1.3s;
-}
-
 .welcome {
   margin-top: 100px;
+  padding-bottom: 150px;
   display: flex;
   flex-direction: column;
 }
@@ -78,6 +56,32 @@ p {
 .resume__btn {
   margin-top: 40px;
   padding: 15px 30px;
+}
+.fade {
+  opacity: 0;
+  transform: translateY(30px);
+  animation-name: fade;
+  animation-fill-mode: forwards;
+}
+.fade:nth-child(1) {
+  animation-delay: 0.5s;
+  animation-duration: 0.5s;
+}
+.fade:nth-child(2) {
+  animation-delay: 0.6s;
+  animation-duration: 0.5s;
+}
+.fade:nth-child(3) {
+  animation-delay: 0.7s;
+  animation-duration: 0.5s;
+}
+.fade:nth-child(4) {
+  animation-delay: 0.8s;
+  animation-duration: 0.5s;
+}
+.fade:nth-child(5) {
+  animation-delay: 0.9s;
+  animation-duration: 1.3s;
 }
 
 @keyframes fade {

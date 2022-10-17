@@ -1,133 +1,63 @@
 <template>
-  <section class="about" id="About">
-    <div
-      class="about__title fade"
-      :style="isIntersection ? style : null"
-      v-intersection="handlerIntersection"
+  <article class="about" v-intersection="intersectionHandler" id="About">
+    <VTitle :title="about.title" number="1" :class="animations" />
+    <p
+      class="paragraphs"
+      v-for="paragraph in about.paragraphs"
+      :class="animations"
     >
-      {{ about.title }}
-    </div>
+      {{ paragraph }}
+    </p>
 
-    <section class="inner">
-      <p
-        class="fade"
-        :style="isIntersection ? style : null"
-        v-for="paragraph in about.paragraphs"
-      >
-        {{ paragraph }}
-      </p>
-
-      <div class="technologies">
-        <ul class="tech__list">
-          <li
-            v-for="tech in about.technologies"
-            class="fade"
-            :style="isIntersection ? style : null"
-          >
-            {{ tech }}
-          </li>
-        </ul>
-      </div>
-    </section>
-  </section>
+    <ul class="tech__list">
+      <li v-for="tech in about.technologies" :class="animations">
+        {{ tech }}
+      </li>
+    </ul>
+  </article>
 </template>
 <script setup>
-import { ref, computed } from "vue";
 import about from "@/JSON/about.json";
+import { computed, ref } from "vue";
+import VTitle from "@/components/UI/v-title.vue";
+import { aboutAnimation } from "@/animations.js";
+const isIntersecting = ref(false);
 
-const isIntersection = ref(false);
+const animations = computed(() => {
+  return isIntersecting.value ? "fade__animation" : "";
+});
 
-const style = computed(() => ({
-  opacity: 1,
-  transform: "translateY(0px)",
-}));
-
-function handlerIntersection() {
-  isIntersection.value = true;
+function intersectionHandler() {
+  isIntersecting.value = true;
 }
 </script>
 
 <style scoped>
-.fade {
+.title {
   opacity: 0;
-  transform: translateY(200px);
 }
-.fade:nth-child(1) {
-  transition: all 1s ease-in-out;
+.fade__animation {
+  opacity: 0;
+  animation-name: fadeInUpDown;
+  animation-fill-mode: forwards;
+  animation-duration: v-bind("aboutAnimation.duration");
 }
-.fade:nth-child(2) {
-  transition: all 1.4s ease-in-out;
-}
-.fade:nth-child(3) {
-  transition: all 1.8s ease-in-out;
-}
-.fade:nth-child(4) {
-  transition: all 2.2s ease-in-out;
-}
-.fade:nth-child(5) {
-  transition: all 2.6s ease-in-out;
-}
-.fade:nth-child(6) {
-  transition: all 3s ease-in-out;
-}
-.fade:nth-child(7) {
-  transition: all 3.4s ease-in-out;
-}
-.fade:nth-child(8) {
-  transition: all 3.8s ease-in-out;
-}
-.fade:nth-child(9) {
-  transition: all 4.4s ease-in-out;
-}
-.fade:nth-child(10) {
-  transition: all 4.8s ease-in-out;
-}
-.fade:nth-child(11) {
-  transition: all 5.2s ease-in-out;
-}
+
 .about {
-  margin-top: 100px;
   max-width: 900px;
+  margin-bottom: 150px;
 }
+.paragraphs {
+  opacity: 0;
+  margin-top: 20px;
+}
+
 p {
   color: var(--slate);
   font-family: "Inter", sans-serif;
   font-size: 18px;
   margin: 0;
   margin-bottom: 15px;
-}
-section {
-  height: max-content;
-}
-.about__title {
-  display: flex;
-  align-items: center;
-  position: relative;
-  margin: 10px 0px 40px;
-  width: 100%;
-  font-size: clamp(26px, 5vw, 32px);
-  white-space: nowrap;
-  font-weight: 600;
-  color: var(--lightest-slate);
-  font-family: "Inter", sans-serif;
-}
-.about__title::before {
-  content: "01.";
-  position: relative;
-  bottom: -4px;
-  margin-right: 10px;
-  color: var(--green);
-  font-family: "Roboto", sans-serif;
-  font-size: clamp(16px, 3vw, 20px);
-  font-weight: 400;
-}
-.about__title::after {
-  content: "";
-  width: 200px;
-  height: 1px;
-  bottom: -4px;
-  background-color: var(--lightest-navy);
-  margin-left: 20px;
 }
 
 .tech__list {
@@ -140,6 +70,7 @@ section {
   list-style: none;
 }
 .tech__list li {
+  opacity: 0;
   position: relative;
   color: var(--slate);
   font-family: "Roboto", monospace;
@@ -149,20 +80,44 @@ section {
 }
 .tech__list li::before {
   content: "▹";
-
   color: var(--green);
   font-size: 12px;
   line-height: 12px;
   margin-right: 5px;
 }
-@media (max-width: 800px) {
-  .inner {
-    display: block;
-  }
-  .section__img {
-    margin: 0 auto;
-    margin-top: 40px;
-    display: none;
-  }
+
+.fade__animation:nth-child(1) {
+  animation-delay: v-bind("aboutAnimation.title.delay");
+}
+.fade__animation:nth-child(2) {
+  animation-delay: v-bind("aboutAnimation.paragraphs[0].delay");
+}
+.fade__animation:nth-child(3) {
+  animation-delay: v-bind("aboutAnimation.paragraphs[1].delay");
+}
+.fade__animation:nth-child(4) {
+  animation-delay: v-bind("aboutAnimation.paragraphs[2].delay");
+}
+.fade__animation:nth-child(5) {
+  animation-delay: v-bind("aboutAnimation.paragraphs[3].delay");
+}
+
+.tech__list li:nth-child(1) {
+  animation-delay: v-bind("aboutAnimation.technologies[0].delay");
+}
+.tech__list li:nth-child(2) {
+  animation-delay: v-bind("aboutAnimation.technologies[1].delay");
+}
+.tech__list li:nth-child(3) {
+  animation-delay: v-bind("aboutAnimation.technologies[2].delay");
+}
+.tech__list li:nth-child(4) {
+  animation-delay: v-bind("aboutAnimation.technologies[3].delay");
+}
+.tech__list li:nth-child(5) {
+  animation-delay: v-bind("aboutAnimation.technologies[4].delay");
+}
+.tech__list li:nth-child(6) {
+  animation-delay: v-bind("aboutAnimation.technologies[5].delay");
 }
 </style>

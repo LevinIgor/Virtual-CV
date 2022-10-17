@@ -1,110 +1,84 @@
 <template>
-  <section class="work" :style="isIntersection ? style : null" id="Experience">
-    <div class="title">{{ work.title }}</div>
+  <article
+    class="experience"
+    id="Experience"
+    v-intersection="intersectionHandler"
+  >
+    <VTitle ref="title" :title="work.title" number="2" style="opacity: 0" />
     <div class="inner">
-      <div class="tab__list">
+      <div class="tab__list" ref="tabs">
         <span
           class="tab__item"
           v-for="(item, index) in work.list"
           :key="index"
           :class="{ tab__active: index === selectTab }"
+          ref="itemsRef"
           @click="onTabClick(index)"
           >{{ item.name }}</span
         >
         <div class="line" :style="lineStyle" />
       </div>
-      <transition name="fade" mode="out-in">
-        <div class="tab__content" v-show="fade">
+
+      <div class="tab__content" ref="content">
+        <div class="content__header">
           <span class="content__title"
-            >{{ workTab.title }}
-            <a :href="workTab.url[1]" target="_blank">{{ workTab.url[0] }}</a>
+            >{{ activeTab.title }}
+            <a :href="activeTab.url[1]" target="_blank">{{
+              activeTab.url[0]
+            }}</a>
           </span>
-          <span class="content__range">{{ workTab.range }}</span>
-          <ul>
-            <li v-for="(item, index) in workTab.list" :key="index">
-              {{ item }}
-            </li>
-          </ul>
+          <span class="content__range">{{ activeTab.range }}</span>
         </div>
-      </transition>
+        <ul>
+          <li v-for="(item, index) in activeTab.list" :key="index">
+            {{ item }}
+          </li>
+        </ul>
+      </div>
     </div>
-  </section>
-  <div v-intersection="handlerIntersection" />
+  </article>
 </template>
 <script setup>
 import { ref, computed } from "vue";
 import work from "@/JSON/work.json";
+import VTitle from "@/components/UI/v-title.vue";
+import { experienceOptions } from "@/animations.js";
 
 const selectTab = ref(0);
-const fade = ref(true);
-
+const title = ref(null);
+const tabs = ref(null);
+const content = ref(null);
+const itemsRef = ref([]);
+const defaultAnimation = "fadeInUpDown 0.5s ease-in-out 1.2s forwards";
 function onTabClick(index) {
-  fade.value = false;
-  setTimeout(() => {
-    fade.value = true;
-    selectTab.value = index;
-  }, 100);
+  selectTab.value = index;
 }
 
-const isIntersection = ref(false);
-function handlerIntersection() {
-  isIntersection.value = true;
-}
-
-const style = computed(() => ({
-  opacity: 1,
-  transform: "translateY(0)",
-}));
-
-const workTab = computed(() => {
+const activeTab = computed(() => {
   return work.list[selectTab.value];
 });
 
 const lineStyle = computed(() => {
-  let width = window.innerWidth;
-  let style;
-  if (width > 600) {
-    style = { transform: ` translateY(${selectTab.value * 100}%)` };
-  } else {
-    style = { transform: ` translateX(${selectTab.value * 100}%)` };
-  }
-  return style;
+  return window.innerWidth > 600
+    ? { transform: ` translateY(${selectTab.value * 100}%)` }
+    : { transform: ` translateX(${selectTab.value * 100}%)` };
 });
+
+function intersectionHandler() {
+  title.value.$el.style.animation = experienceOptions.title;
+  tabs.value.style.animation = "fadeInLeftRight 1s ease-in-out 0.5s forwards";
+  itemsRef.value.forEach((item, index) => {
+    item.style.animation = experienceOptions.tabs[index] || defaultAnimation;
+  });
+  content.value.style.animation = experienceOptions.content;
+}
 </script>
 
 <style scoped>
-.work {
+.experience {
   margin-top: 100px;
-  opacity: 0;
-  transform: translateY(200px);
   transition: transform 1.5s, opacity 1.5s;
-}
-.title {
-  display: flex;
-  align-items: center;
-  font-size: clamp(26px, 5vw, 32px);
-  font-weight: 600;
-  color: var(--lightest-slate);
-  line-height: 1.1;
-  font-family: "Inter", sans-serif;
-}
-.title::before {
-  content: "02.";
-  position: relative;
-  bottom: -4px;
-  margin-right: 10px;
-  color: var(--green);
-  font-family: "Roboto", sans-serif;
-  font-size: clamp(16px, 3vw, 20px);
-  font-weight: 400;
-}
-.title::after {
-  content: "";
-  width: 200px;
-  height: 1px;
-  bottom: -4px;
-  background-color: var(--lightest-navy);
-  margin-left: 20px;
+  margin-bottom: 150px;
 }
 .inner {
   display: flex;
@@ -114,8 +88,10 @@ const lineStyle = computed(() => {
 .tab__list {
   display: grid;
   height: max-content;
+  opacity: 0;
 }
 .tab__item {
+  opacity: 0;
   display: flex;
   align-items: center;
   user-select: none;
@@ -147,7 +123,12 @@ const lineStyle = computed(() => {
 }
 .tab__content {
   margin-left: 20px;
-  display: grid;
+  opacity: 0;
+  min-height: 200px;
+}
+.content__header {
+  display: flex;
+  flex-direction: column;
 }
 
 .content__title {
@@ -163,6 +144,20 @@ const lineStyle = computed(() => {
   font-weight: 600;
   cursor: pointer;
   color: var(--green);
+}
+.content__title a::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--green);
+  transition: width 0.3s;
+}
+.content__title a:hover::after {
+  width: 100%;
 }
 
 .content__range {
@@ -188,15 +183,6 @@ li::before {
   color: var(--green);
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
 @media (max-width: 600px) {
   .inner {
     display: flex;

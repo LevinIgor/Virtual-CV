@@ -1,113 +1,86 @@
 <template>
-  <section
-    class="some__build"
-    :style="intersection ? fadeDown : null"
-    id="Work"
-    v-intersection="handlerIntersection"
-  >
-    <div class="title">{{ someBuild.title }}</div>
+  <article class="some__build" id="Work" v-intersection="intersectionHandler">
+    <VTitle
+      ref="title"
+      :title="someBuild.title"
+      number="3"
+      style="opacity: 0"
+    />
     <div class="project">
-      <div class="project__img" :style="intersection ? fadeLeft : null">
-        <img src="@/assets/icons/code.jpg" alt="" />
-      </div>
-      <div class="project__text" :style="intersection ? fadeLeft : null">
-        <div class="featured">{{ someBuild.subTitle }}</div>
-        <div class="project__name">{{ someBuild.name }}</div>
-        <div class="project__details">
+      <img
+        class="project__img"
+        src="@/assets/icons/code.jpg"
+        alt="code img"
+        ref="img"
+      />
+      <div class="project__text">
+        <div class="featured" :ref="setRef">{{ someBuild.subTitle }}</div>
+        <div class="project__name" :ref="setRef">{{ someBuild.name }}</div>
+        <div class="project__details" :ref="setRef">
           {{ someBuild.paragraph }}
         </div>
 
         <ul class="project__tags">
-          <li
-            v-for="tech in someBuild.technologies"
-            :style="intersection ? scale : null"
-          >
+          <li v-for="tech in someBuild.technologies" ref="tags">
             {{ tech }}
           </li>
         </ul>
 
         <div class="project__links">
-          <a
-            href="https://virtual-cv.vercel.app/"
-            class="project__link"
-            target="_blank"
-          >
-            <externalIcon />
-          </a>
-          <VGitLink />
+          <VExternalLink
+            class="link"
+            :href="'https://virtual-cv.vercel.app/'"
+            ref="external"
+          />
+          <VGitLink ref="github" class="link" />
         </div>
       </div>
     </div>
     <VOtherProjects />
-  </section>
+  </article>
 </template>
 <script setup>
 import VOtherProjects from "@/components/sections/v-other-projects.vue";
-
-import externalIcon from "@/components/icons/external.vue";
+import VExternalLink from "../links/v-externalLink.vue";
 import VGitLink from "@/components/links/v-gitLink.vue";
-
 import someBuild from "@/JSON/some-build.json";
+import VTitle from "@/components/UI/v-title.vue";
+import { someThinksOptions } from "@/animations.js";
+import { ref } from "vue";
 
-import { ref, computed } from "vue";
-
-const intersection = ref(false);
-
-function handlerIntersection() {
-  intersection.value = true;
+const text = ref([]);
+const tags = ref([]);
+const img = ref(null);
+const title = ref(null);
+const external = ref(null);
+const github = ref(null);
+const defaultAnimation = "fadeInUpDown 1s ease-in-out 0.5s forward";
+function setRef(el) {
+  text.value.push(el);
 }
-const fadeDown = computed(() => ({
-  opacity: 1,
-  transform: "translateY(0)",
-}));
-const fadeLeft = computed(() => ({
-  opacity: 1,
-  transform: "translateX(0)",
-}));
-const scale = computed(() => ({
-  opacity: 1,
-  transform: "scale(1)",
-}));
+function intersectionHandler() {
+  title.value.$el.style.animation = someThinksOptions.title;
+  img.value.style.animation = someThinksOptions.img;
+  text.value.forEach((el, index) => {
+    el.style.animation = someThinksOptions.text[index] || defaultAnimation;
+  });
+  tags.value.forEach((el, index) => {
+    el.style.animation = someThinksOptions.tags[index] || defaultAnimation;
+  });
+  external.value.$el.style.animation = someThinksOptions.external;
+  github.value.$el.style.animation = someThinksOptions.github;
+}
 </script>
 
 <style scoped>
 .some__build {
-  margin-top: 100px;
-  transform: translateY(200px);
-  opacity: 0;
   transition: all 1s ease-in-out;
+  margin-bottom: 150px;
 }
-.icon {
-  width: 24px;
-  height: 24px;
-}
-.title {
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-  font-size: clamp(26px, 5vw, 32px);
-  font-weight: 600;
-  color: var(--lightest-slate);
-  line-height: 1.1;
-  font-family: "Inter", sans-serif;
-}
-.title::before {
-  content: "03.";
-  position: relative;
-  bottom: -4px;
-  margin-right: 10px;
-  color: var(--green);
-  font-family: "Roboto", sans-serif;
-  font-size: clamp(16px, 3vw, 20px);
-  font-weight: 400;
-}
-.title::after {
-  content: "";
-  width: 200px;
-  height: 1px;
-  bottom: -4px;
-  background-color: var(--lightest-navy);
-  margin-left: 20px;
+.externalLink {
+  opacity: 0;
+  width: 1.3rem;
+  height: 1.3rem;
 }
 
 .project {
@@ -115,32 +88,28 @@ const scale = computed(() => ({
   display: flex;
   justify-content: right;
   min-width: 100%;
+  margin-bottom: 50px;
 }
 .project__text {
   max-width: 70%;
   right: 0;
   text-align: right;
-  transform: translateX(200px);
-  opacity: 0;
   transition: all 1.5s ease-in-out;
+  cursor: default;
 }
 .project__img {
+  opacity: 0;
   position: absolute;
-  max-height: 100%;
-  max-width: 70%;
+  max-height: 300px;
+  width: 70%;
   left: 0;
   height: min-content;
   overflow: hidden;
-  transform: translateX(-200px);
-  opacity: 0;
   transition: all 1s ease-in-out;
-}
-.project__img img {
-  height: 100%;
-  width: 100%;
   object-fit: cover;
 }
 .featured {
+  opacity: 0;
   margin: 10px 0px;
   color: var(--green);
   font-family: "Roboto", monospace;
@@ -148,10 +117,12 @@ const scale = computed(() => ({
   font-weight: 400;
 }
 .project__name {
+  opacity: 0;
   color: var(--lightest-slate);
   font-size: clamp(24px, 5vw, 28px);
 }
 .project__details {
+  opacity: 0;
   margin-top: 20px;
   box-shadow: 0 10px 30px -15px var(--navy-shadow);
   transition: var(--transition);
@@ -168,47 +139,29 @@ const scale = computed(() => ({
   justify-content: right;
 }
 .project__tags li {
+  opacity: 0;
   margin-right: 10px;
   color: var(--light-slate);
   font-weight: 400;
   font-size: 13px;
   user-select: none;
-  opacity: 0;
-  transition: all 0s ease-in-out 1s;
-  transform: scale(0);
   text-align: center;
 }
-.project__tags li:nth-child(1) {
-  transition-duration: 1.2s;
-}
-.project__tags li:nth-child(2) {
-  transition-duration: 1.4s;
-}
-.project__tags li:nth-child(3) {
-  transition-duration: 1.6s;
-}
-
-.project__tags li:nth-child(4) {
-  transition-duration: 1.8s;
-}
-.project__tags li:nth-child(5) {
-  transition-duration: 2s;
-}
-.project__tags li:nth-child(6) {
-  transition-duration: 2.2s;
-}
-
 .project__links {
-  margin-top: 10px;
+  margin-top: 20px;
   display: flex;
-  justify-content: right;
+  justify-content: flex-end;
 }
-.project__links a {
-  transition: color 0.25s ease-in-out;
+.link {
+  opacity: 0;
   margin-left: 20px;
+  width: 1.3rem;
+  height: 1.3rem;
+  transition: all 0.2s ease-in-out;
 }
-.project__links a:hover {
+.link:hover {
   color: var(--green);
+  filter: drop-shadow(0 0 0.75rem var(--green));
 }
 
 @media (max-width: 800px) {

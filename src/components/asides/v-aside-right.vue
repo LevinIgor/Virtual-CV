@@ -3,25 +3,20 @@
     <a
       class="email"
       href="mailto:lytghzys@gmail.com"
-      :style="isLoaded ? style : null"
+      :style="getAnimationStyle(0)"
       >lytghzys@gmail.com</a
     >
-    <div class="line" :style="isLoaded ? style : null" />
+    <div class="line" :style="getAnimationStyle(1)" />
   </aside>
 </template>
 <script setup>
-import { ref, onMounted, computed } from "vue";
-const isLoaded = ref(false);
-const style = computed(() => ({
-  opacity: 1,
-  transform: "translateX(0)",
-}));
-
-onMounted(() => {
-  setTimeout(() => {
-    isLoaded.value = true;
-  }, 2500);
-});
+import { rightAsideAnimation } from "@/animations.js";
+function getAnimationStyle(index) {
+  return {
+    animationDuration: `${rightAsideAnimation[index].duration}s`,
+    animationDelay: `${rightAsideAnimation[index].delay}s`,
+  };
+}
 </script>
 
 <style scoped>
@@ -38,9 +33,7 @@ onMounted(() => {
 .email {
   font-size: 12px;
   writing-mode: vertical-rl;
-  opacity: 0;
-  transform: translateX(200px);
-  transition: all 0.5s ease-in-out;
+  animation-name: fadeIn;
 }
 .email:hover {
   color: var(--green);
@@ -52,10 +45,32 @@ onMounted(() => {
   background-color: var(--light-slate);
   margin: 0 auto;
   margin-top: 30px;
+  animation-name: fadeDown;
+}
+.line,
+.email {
   opacity: 0;
-  transform: translateX(200px);
-  transition: all 0.5s ease-in-out;
+  animation-fill-mode: forwards;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 </style>

@@ -1,27 +1,30 @@
 <template>
-  <section class="contact" :style="intersection ? style : null" id="Contact">
-    <div class="title">What’s Next?</div>
-    <div class="heading">Get In Touch</div>
+  <article
+    class="contact"
+    id="Contact"
+    ref="contactRef"
+    v-intersection="intersectionObserver"
+  >
+    <div class="title">{{ contact.title }}</div>
+    <div class="heading">{{ contact.subTitle }}</div>
     <p class="text">
-      Although I’m not currently looking for any new opportunities, my inbox is
-      always open. Whether you have a question or just want to say hi, I’ll try
-      my best to get back to you!
+      {{ contact.paragraph }}
     </p>
-    <a class="btn" href="mailto:lytghzys@gmail.com">Say Hello</a>
-  </section>
-  <div class="" v-intersection="onIntersection" />
+
+    <VBtn class="btn" :fontSize="14"
+      ><a href="mailto:lytghzys@gmail.com">{{ contact.button }}</a></VBtn
+    >
+  </article>
 </template>
 <script setup>
-import { ref, computed } from "vue";
-const intersection = ref(false);
-function onIntersection() {
-  intersection.value = true;
-}
+import { ref } from "vue";
+import contact from "@/JSON/contact.json";
+import VBtn from "@/components/UI/v-btn.vue";
 
-const style = computed(() => ({
-  opacity: 1,
-  transform: "scale(1)",
-}));
+const contactRef = ref(null);
+function intersectionObserver() {
+  contactRef.value.style.opacity = 1;
+}
 </script>
 
 <style scoped>
@@ -31,8 +34,7 @@ const style = computed(() => ({
   flex-direction: column;
   align-items: center;
   opacity: 0;
-  transform: scale(0);
-  transition: all 1s;
+  transition: opacity 1s ease-in-out;
 }
 .title {
   color: var(--green);
@@ -56,21 +58,16 @@ const style = computed(() => ({
   text-align: center;
 }
 .btn {
-  color: var(--green);
-  background-color: transparent;
-  border: 1px solid var(--green);
-  border-radius: 5px;
-  padding: 1.25rem 1.75rem;
-  font-size: 14px;
-  font-family: "Roboto", monospace;
-  line-height: 1;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  margin-top: 50px;
-  max-width: max-content;
+  margin-top: 20px;
+  padding: 20px 30px;
 }
-.btn:hover {
-  background-color: var(--green-tint);
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 </style>

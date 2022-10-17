@@ -2,16 +2,6 @@
   "title": "Where I’ve Worked",
   "list": [
     {
-      "name": "Freelance",
-      "title": "Full Stack Developer",
-      "url": ["@Fiverr", "https://www.fiverr.com/?source=top_nav"],
-      "range": "May 2022 - Present",
-      "list": [
-        "Engineered and maintained major features customer-facing web app using ES6, Vue.js and CSS",
-        "Interfaced with user experience designers and other developers to ensure thoughtful and coherent user experiences across iOS and Android mobile apps"
-      ]
-    },
-    {
       "name": "Church",
       "title": "Front-End Developer",
       "url": ["@oikoumene", "https://www.oikoumene.org/"],
@@ -20,6 +10,16 @@
         "Developed and maintained code for in-house and client websites primarily using HTML, CSS, Sass, JavaScript, and Vue.js",
         "Manually tested sites in various browsers and mobile devices to ensure cross-browser compatibility and responsiveness",
         "Clients included Protestant Lutheran Church , german church, and more"
+      ]
+    },
+    {
+      "name": "Freelance",
+      "title": "Full Stack Developer",
+      "url": ["@Fiverr", "https://www.fiverr.com/?source=top_nav"],
+      "range": "May 2022 - Present",
+      "list": [
+        "Engineered and maintained major features customer-facing web app using ES6, Vue.js and CSS",
+        "Interfaced with user experience designers and other developers to ensure thoughtful and coherent user experiences across iOS and Android mobile apps"
       ]
     },
     {

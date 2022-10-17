@@ -41,7 +41,7 @@ const animationStyle = computed(() => {
     </text>
   </svg>
 </template>
-<style>
+<style scoped>
 svg {
   opacity: 0;
   animation-name: fadeIn;
@@ -54,11 +54,11 @@ text {
 @keyframes fadeIn {
   0% {
     opacity: 0;
-    transform: rotate(0deg) scale(0.5);
+    transform: translateY(-30px);
   }
   100% {
-    transform: rotate(360deg) scale(1);
     opacity: 1;
+    transform: translateY(0);
   }
 }
 </style>
