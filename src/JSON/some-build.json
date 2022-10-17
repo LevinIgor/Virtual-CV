@@ -1,0 +1,7 @@
+{
+  "title": "Some Things I’ve Built",
+  "subTitle": "Featured Project",
+  "name": "My personal website",
+  "paragraph": "A small site that describes my path in programming. It shows my work experience, my projects, my skills and technologies that I have come across.",
+  "technologies": ["VS Code", "Vue.js", "JS(ES6+)", "Composition API", "VueUse"]
+}

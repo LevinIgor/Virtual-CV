@@ -1,11 +1,10 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
+import { createApp } from "vue";
+import App from "./App.vue";
 
-import './assets/main.css'
+import vIntersection from "./directives/vIntersection";
+import "./assets/main.css";
 
-const app = createApp(App)
+const app = createApp(App);
 
-app.use(router)
-
-app.mount('#app')
+app.directive("intersection", vIntersection);
+app.mount("#app");

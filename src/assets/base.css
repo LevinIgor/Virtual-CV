@@ -34,7 +34,6 @@
 *::before,
 *::after {
   box-sizing: border-box;
-
   position: relative;
   font-weight: normal;
 }
@@ -46,9 +45,16 @@ a {
 li {
   list-style: none;
 }
-ul{
+ul {
   margin: 0;
   padding: 0;
+}
+button {
+  border: none;
+  background: none;
+  outline: none;
+  cursor: pointer;
+  font-family: "Roboto Mono", monospace;
 }
 
 body {
@@ -56,10 +62,6 @@ body {
   min-height: 100vh;
   background: var(--navy);
   color: var(--slate);
-  transition: color 0.5s, background-color 0.5s;
   line-height: 1.6;
   font-family: "Inter", sans-serif;
-  /* text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; */
 }

@@ -1,0 +1,40 @@
+{
+  "title": "Other Noteworthy Projects",
+  "list": [
+    {
+      "id": 0,
+      "title": "Google Keeps CLone",
+      "description": "A simple clone of Google Keep, build with Vue.js and Firebase",
+      "tags": ["Vue.js", "Firebase", "PWA"],
+      "url": "https://keeps-sigma.vercel.app/"
+    },
+    {
+      "id": 1,
+      "title": "JSON online reader",
+      "description": "A simple web app to read JSON files, build with Vue.js and Axios",
+      "tags": ["Vue.js", "Axios", "PWA"],
+      "url": "https://axiosjson.vercel.app/"
+    },
+    {
+      "id": 2,
+      "title": "Game Geopardy",
+      "description": "The game is designed for several teams. The goal is to score as many points as possible by answering questions of different categories",
+      "tags": ["Nuxt.js", "SSR", "Vue.js", "Firebase"],
+      "url": "https://levinigor.github.io/geopardy/"
+    },
+    {
+      "id": 3,
+      "title": "Simple Language & Theme switcher",
+      "description": "Simple example of a language and theme switcher",
+      "tags": ["Vue.js ", "Composition API", "Typescript"],
+      "url": "https://language-and-theme-change.vercel.app/"
+    },
+    {
+      "id": 4,
+      "title": "Web site for a create post",
+      "description": "Simple web site for create, edit, delete post. In development...",
+      "tags": ["Vue.js ", "Composition API", "Firebase"],
+      "url": "https://my-journal-smoky.vercel.app/"
+    }
+  ]
+}

@@ -3,25 +3,34 @@
     <VHeader />
     <VWelcome />
     <VAbout />
-    <VWork />
+    <VExperience />
     <VSomeBuild />
     <VContact />
     <VFooter />
-    <VAsideLeft />
-    <VAsideRight />
+    <VAsideLeft v-if="isComputerDevice" />
+    <VAsideRight v-if="isComputerDevice" />
   </main>
 </template>
 <script setup>
-import VHeader from "@/components/v-header.vue";
-import VWelcome from "@/components/v-welcome.vue";
-import VAbout from "@/components/v-about.vue";
-import VWork from "@/components/v-work.vue";
-import VSomeBuild from "@/components/v-some-build.vue";
-import VContact from "@/components/v-contact.vue";
-import VFooter from "@/components/v-footer.vue";
-import VAsideLeft from "@/components/v-aside-left.vue";
-import VAsideRight from "@/components/v-aside-right.vue";
+import { defineAsyncComponent, computed } from "vue";
+import VHeader from "@/components/sections/v-header.vue";
+import VWelcome from "@/components/sections/v-welcome.vue";
+import VAbout from "@/components/sections/v-about.vue";
+import VExperience from "@/components/sections/v-experience.vue";
+import VSomeBuild from "@/components/sections/v-some-build.vue";
+import VContact from "@/components/sections/v-contact.vue";
+import VFooter from "@/components/sections/v-footer.vue";
 
+const VAsideLeft = defineAsyncComponent(() =>
+  import("@/components/asides/v-aside-left.vue")
+);
+const VAsideRight = defineAsyncComponent(() =>
+  import("@/components/asides/v-aside-right.vue")
+);
+
+const isComputerDevice = computed(() => {
+  return window.innerWidth > 800;
+});
 </script>
 
 <style scoped>
@@ -43,7 +52,7 @@ main {
 }
 @media (max-width: 500px) {
   main {
-    padding: 0px 30px;
+    padding: 0px 15px;
   }
 }
 </style>
