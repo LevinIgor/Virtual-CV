@@ -1,23 +1,31 @@
 <template>
-  <div class="other__projects">
-    <div class="title">{{ project.title }}</div>
+  <div class="other__projects" v-intersection="IntersectionObserver">
+    <div class="title" ref="title">{{ project.title }}</div>
     <div class="projects">
       <VProject
-        v-for="(prj, i) in project.list"
-        :key="project.id"
+        v-for="(prj, index) in project.list"
+        :key="index"
         :project="prj"
-        :animationOptions="projectsAnimation[i]"
+        :animationOptions="otherProjectsOptions"
       />
     </div>
   </div>
 </template>
 <script setup>
+import { ref } from "vue";
 import project from "@/JSON/projects.json";
-import VProject from "../UI/v-project.vue";
-import { projectsAnimation } from "@/animations.js";
+import VProject from "@/components/UI/v-project.vue";
+import { otherProjectsOptions } from "@/animations.js";
+
+const title = ref(null);
+
+function IntersectionObserver() {
+  title.value.style.animation = otherProjectsOptions.title;
+}
 </script>
 <style scoped>
 .title {
+  opacity: 0;
   font-weight: 600;
   color: var(--lightest-slate);
   line-height: 1.1;

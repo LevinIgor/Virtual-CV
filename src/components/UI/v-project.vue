@@ -1,29 +1,50 @@
 <script setup>
 import FolderIcon from "@/components/icons/folder.vue";
 import VExternalLink from "@/components/links/v-externalLink.vue";
-import { computed } from "vue";
-
-const animStyle = computed(() => ({
-  animationDelay: `${props?.animationOptions.delay}s`,
-  animationDuration: `${props?.animationOptions.duration}s`,
-}));
+import { ref } from "vue";
 const props = defineProps(["project", "animationOptions"]);
+const projectRef = ref(null);
+const folderRef = ref(null);
+const externalRef = ref(null);
+const title = ref(null);
+const desc = ref(null);
+const tagsRef = ref([]);
+const defaultAnimation = "fadeInUpDown 1s ease-in-out 0.5s forward";
+function intersectionHandler() {
+  projectRef.value.style.animation = props.animationOptions.projectFade;
+  folderRef.value.$el.style.animation = props.animationOptions.projectHeader[0];
+  externalRef.value.$el.style.animation =
+    props.animationOptions.projectHeader[1];
+  title.value.style.animation = props.animationOptions.projectTitle;
+  desc.value.style.animation = props.animationOptions.projectDesc;
+  tagsRef.value.forEach((tag, index) => {
+    tag.style.animation =
+      props.animationOptions.projectTags[index] || defaultAnimation;
+  });
+}
 </script>
 <template>
-  <div class="project" v-intersection :style="animStyle">
+  <div class="project" v-intersection="intersectionHandler" ref="projectRef">
     <div class="project__header">
-      <FolderIcon class="folder" />
-      <VExternalLink class="external" :href="project.url" />
+      <FolderIcon class="folder" style="opacity: 0" ref="folderRef" />
+      <VExternalLink
+        class="external"
+        style="opacity: 0"
+        :href="project.url"
+        ref="externalRef"
+      />
     </div>
-    <a class="project__name" target="_blank" :href="project.url">{{
+    <a class="project__name" target="_blank" :href="project.url" ref="title">{{
       project.title
     }}</a>
-    <p class="project__desc">
+    <p class="project__desc" ref="desc">
       {{ project.description }}
     </p>
 
     <ul class="project__tags">
-      <li v-for="(tag, index) in project.tags" :key="index">{{ tag }}</li>
+      <li v-for="(tag, index) in project.tags" :key="index" ref="tagsRef">
+        {{ tag }}
+      </li>
     </ul>
   </div>
 </template>
@@ -60,6 +81,7 @@ const props = defineProps(["project", "animationOptions"]);
   margin-bottom: 20px;
 }
 .project__name {
+  opacity: 0;
   margin-top: 20px;
   font-weight: 600;
   color: var(--lightest-slate);
@@ -69,6 +91,7 @@ const props = defineProps(["project", "animationOptions"]);
 .project__name::after {
   content: "";
   position: absolute;
+  left: 0;
   bottom: -5px;
   width: 0%;
   height: 1px;
@@ -80,6 +103,7 @@ const props = defineProps(["project", "animationOptions"]);
   width: 100%;
 }
 .project__desc {
+  opacity: 0;
   cursor: default;
   color: var(--light-slate);
   font-size: 16px;
@@ -90,6 +114,7 @@ const props = defineProps(["project", "animationOptions"]);
   display: flex;
 }
 .project__tags li {
+  opacity: 0;
   margin-right: 10px;
   font-size: 13px;
 }

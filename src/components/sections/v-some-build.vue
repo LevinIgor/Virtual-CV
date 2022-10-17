@@ -59,7 +59,6 @@ function setRef(el) {
   text.value.push(el);
 }
 function intersectionHandler() {
-  console.log("intersectionHandler");
   title.value.$el.style.animation = someThinksOptions.title;
   img.value.style.animation = someThinksOptions.img;
   text.value.forEach((el, index) => {

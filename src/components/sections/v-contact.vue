@@ -1,5 +1,10 @@
 <template>
-  <article class="contact" id="Contact" v-intersection>
+  <article
+    class="contact"
+    id="Contact"
+    ref="contactRef"
+    v-intersection="intersectionObserver"
+  >
     <div class="title">{{ contact.title }}</div>
     <div class="heading">{{ contact.subTitle }}</div>
     <p class="text">
@@ -12,14 +17,14 @@
   </article>
 </template>
 <script setup>
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import contact from "@/JSON/contact.json";
 import VBtn from "@/components/UI/v-btn.vue";
 
-const style = computed(() => ({
-  opacity: 1,
-  transform: "scale(1)",
-}));
+const contactRef = ref(null);
+function intersectionObserver() {
+  contactRef.value.style.opacity = 1;
+}
 </script>
 
 <style scoped>
@@ -29,12 +34,7 @@ const style = computed(() => ({
   flex-direction: column;
   align-items: center;
   opacity: 0;
-  transform: scale(0);
-  transition: all 1s;
-}
-.active {
-  opacity: 1;
-  transform: scale(1);
+  transition: opacity 1s ease-in-out;
 }
 .title {
   color: var(--green);
@@ -60,5 +60,14 @@ const style = computed(() => ({
 .btn {
   margin-top: 20px;
   padding: 20px 30px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 </style>

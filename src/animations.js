@@ -155,3 +155,21 @@ export const someThinksOptions = {
   external: "fadeInUpDown 0.5s ease-in-out 3.2s forwards",
   github: "fadeInUpDown 0.5s ease-in-out 3.4s forwards",
 };
+
+export const otherProjectsOptions = {
+  title: "fadeInRotateX 0.5s ease-in-out 1s forwards",
+  projectFade: "fadeInUpDown 0.5s ease-in-out 1.2s forwards",
+  projectHeader: [
+    "fadeInLeftRight 0.5s ease-in-out 1.2s forwards",
+    "fadeInLeftRight 0.5s ease-in-out 1.4s forwards",
+  ],
+  projectTitle: "fadeInUpDown 0.5s ease-in-out 1.6s forwards",
+  projectDesc: "fadeInUpDown 0.5s ease-in-out 1.8s forwards",
+  projectTags: [
+    "fadeInUpDown 0.5s ease-in-out 2s forwards",
+    "fadeInUpDown 0.5s ease-in-out 2.2s forwards",
+    "fadeInUpDown 0.5s ease-in-out 2.4s forwards",
+    "fadeInUpDown 0.5s ease-in-out 2.6s forwards",
+    "fadeInUpDown 0.5s ease-in-out 2.8s forwards",
+  ],
+};
