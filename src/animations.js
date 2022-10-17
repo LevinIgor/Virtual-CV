@@ -132,3 +132,26 @@ export const experienceOptions = {
   ],
   content: "fadeInRightLeft 0.2s ease-in-out 1.6s forwards",
 };
+
+export const someThinksOptions = {
+  title: "fadeInRotateX 0.5s ease-in-out 1s forwards",
+  img: "fadeInLeftRight 0.5s ease-in-out 1s forwards",
+  text: [
+    "fadeInUpDown 0.5s ease-in-out 1.2s forwards",
+    "fadeInUpDown 0.5s ease-in-out 1.4s forwards",
+    "fadeInUpDown 0.5s ease-in-out 1.6s forwards",
+  ],
+  tags: [
+    "fadeInUpDown 0.5s ease-in-out 1.8s forwards",
+    "fadeInUpDown 0.5s ease-in-out 2s forwards",
+    "fadeInUpDown 0.5s ease-in-out 2.2s forwards",
+    "fadeInUpDown 0.5s ease-in-out 2.4s forwards",
+    "fadeInUpDown 0.5s ease-in-out 2.6s forwards",
+  ],
+  icons: [
+    "fadeInUpDown 0.5s ease-in-out 2.8s forwards",
+    "fadeInUpDown 0.5s ease-in-out 3s forwards",
+  ],
+  external: "fadeInUpDown 0.5s ease-in-out 3.2s forwards",
+  github: "fadeInUpDown 0.5s ease-in-out 3.4s forwards",
+};
