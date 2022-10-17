@@ -1,6 +1,6 @@
 export const headerAnimation = {
   logo: {
-    duration: 3,
+    duration: 1,
     delay: 0.2,
   },
   links: [

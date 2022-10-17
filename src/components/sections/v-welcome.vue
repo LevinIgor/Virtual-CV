@@ -21,7 +21,7 @@ import VBtnResumeLink from "@/components/links/v-btn-resumeLink.vue";
 <style scoped>
 .welcome {
   margin-top: 100px;
-  margin-bottom: 150px;
+  padding-bottom: 150px;
   display: flex;
   flex-direction: column;
 }

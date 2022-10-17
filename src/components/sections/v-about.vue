@@ -1,5 +1,5 @@
 <template>
-  <article class="about" id="About" v-intersection>
+  <article class="about" v-intersection id="About">
     <div class="about__title">
       {{ about.title }}
     </div>
@@ -20,13 +20,8 @@
   </article>
 </template>
 <script setup>
-import { ref, computed } from "vue";
+import { computed } from "vue";
 import about from "@/JSON/about.json";
-
-const style = computed(() => ({
-  opacity: 1,
-  transform: "translateY(0px)",
-}));
 </script>
 
 <style scoped>
@@ -34,6 +29,7 @@ const style = computed(() => ({
   max-width: 900px;
   opacity: 0;
   margin-bottom: 150px;
+  transition: all 2s ease-in-out;
 }
 .active {
   opacity: 1;
