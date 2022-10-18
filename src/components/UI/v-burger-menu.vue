@@ -15,9 +15,6 @@ const emits = defineEmits(["onClick"]);
 .burger__menu {
   cursor: pointer;
   z-index: 400;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
   right: 0;
   height: 100%;
   display: flex;
@@ -57,7 +54,7 @@ const emits = defineEmits(["onClick"]);
   width: 30px !important;
   transform: translateY(-9px) rotate(-45deg);
 }
-.rotate{
+.rotate {
   transform: rotate(180deg);
 }
 </style>
