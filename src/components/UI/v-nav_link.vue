@@ -1,16 +1,10 @@
 <script setup>
-import { computed } from "vue";
-const props = defineProps(["number", "text", "animation"]);
-
-const animationStyle = computed(() => ({
-  "animation-delay": `${props.animation?.delay}s`,
-  "animation-duration": `${props.animation?.duration}s`,
-}));
+const props = defineProps(["value"]);
 </script>
 <template>
-  <div class="nav__link" :style="[animationStyle]">
-    <span class="link__count">0{{ props.number + 1 }}.</span
-    ><span class="link__text">{{ text }}</span>
+  <div class="nav__link">
+    <span class="link__count">0{{ props.value.index + 1 }}.</span
+    ><span class="link__text">{{ props.value.link }}</span>
   </div>
 </template>
 <style scoped>
@@ -19,10 +13,7 @@ const animationStyle = computed(() => ({
   padding: 10px;
   margin: 0 5px;
   color: var(--lightest-slate);
-  opacity: 0;
   transition: color 0.3s ease;
-  animation-name: fadeIn;
-  animation-fill-mode: forwards;
 }
 .nav__link:hover {
   color: var(--green);

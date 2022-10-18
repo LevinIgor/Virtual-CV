@@ -1,38 +1,33 @@
 <template>
   <header :class="{ hide: isHide, off__shadow: isBoxShadow }">
-    <nav>
-      <LogoIcon class="header__logo" :animation="headerAnimation.logo" />
-      <div class="header__nav">
-        <div
-          class="header__nav__link"
-          v-for="(item, index) in menu"
-          :key="item"
-          @click="onMenuClick(item)"
-        >
-          <VNav_link
-            :number="index"
-            :text="item"
-            :animation="headerAnimation.links[index]"
-          />
-        </div>
-        <VBtnResumeLink :animation="headerAnimation.button" />
-      </div>
-
-      <VBurgerMenu
-        class="burger"
-        @onClick="showMobileMenu()"
-        :isHide="isMobileMenu"
+    <LogoIcon class="header__logo" :animation="headerAnimation.logo" />
+    <nav class="header__nav">
+      <VNav_link
+        class="header__nav__link"
+        v-for="(link, index) in menu"
+        :key="link"
+        :value="{ link, index }"
+        ref="linksRefs"
+        @click="onMenuClick(link)"
       />
+      <VBtnResumeLink ref="buttonRef" />
     </nav>
+
+    <VBurgerMenu
+      class="burger"
+      @onClick="showMobileMenu()"
+      :isHide="isMobileMenu"
+    />
+
     <div class="blur" v-if="isMobileMenu" @click="showMobileMenu()" />
     <aside class="mobile__header__menu" :class="{ 'fade-in': isMobileMenu }">
       <ul class="mobile__menu">
         <li
-          v-for="(item, index) in menu"
-          :key="item"
-          @click="onMenuClick(item)"
+          v-for="(link, index) in menu"
+          :key="link"
+          @click="onMenuClick(link)"
         >
-          <VNav_link :number="index" :text="item" />
+          <VNav_link :value="{ link, index }" />
         </li>
       </ul>
       <VBtnResumeLink :fontSize="22" />
@@ -51,6 +46,8 @@ const isHide = ref(false);
 const isMobileMenu = ref(false);
 const isBoxShadow = ref(true);
 const menu = ref(["About", "Experience", "Work", "Contact"]);
+const linksRefs = ref([]);
+const buttonRef = ref(null);
 
 const emits = defineEmits(["onScroll", "offScroll"]);
 
@@ -74,9 +71,7 @@ function showMobileMenu() {
 
 function onMenuClick(id) {
   const el = document.getElementById(id);
-
   el.scrollIntoView({ behavior: "smooth" });
-
   isMobileMenu.value ? showMobileMenu() : hideHeader();
 }
 
@@ -94,7 +89,15 @@ onMounted(() => {
     },
     { passive: false }
   );
+  addAnimationsStyle();
 });
+
+function addAnimationsStyle() {
+  linksRefs.value.forEach((link, index) => {
+    link.$el.style.animation = headerAnimation.links[index] || "";
+  });
+  buttonRef.value.$el.style.animation = headerAnimation.button;
+}
 </script>
 
 <style scoped>
@@ -106,6 +109,7 @@ header {
   position: fixed;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
   top: 0;
   left: 0;
@@ -117,8 +121,6 @@ header {
   transition: transform 0.2s ease-in-out;
 }
 nav {
-  width: 100%;
-  height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -133,6 +135,9 @@ nav {
   font-family: "Roboto Mono", monospace;
   display: flex;
   align-items: center;
+}
+.header__nav__link {
+  opacity: 0;
 }
 
 .mobile__menu li {
@@ -192,19 +197,6 @@ nav {
   padding: 15px 40px;
   font-size: 20px;
   margin-top: 60px;
-}
-.fade-in {
-  transform: translateX(0vw);
-}
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(-100px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0px);
-  }
 }
 
 @media (max-width: 700px) {

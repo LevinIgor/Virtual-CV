@@ -1,30 +1,11 @@
 export const headerAnimation = {
-  logo: {
-    duration: 1,
-    delay: 0.2,
-  },
   links: [
-    {
-      duration: 1,
-      delay: 0.1,
-    },
-    {
-      duration: 1.5,
-      delay: 0.2,
-    },
-    {
-      duration: 2,
-      delay: 0.3,
-    },
-    {
-      duration: 2,
-      delay: 0.4,
-    },
+    "fadeInUpDown 0.5s ease-in-out 0.5s forwards",
+    "fadeInUpDown 0.5s ease-in-out 0.7s forwards",
+    "fadeInUpDown 0.5s ease-in-out 0.9s forwards",
+    "fadeInUpDown 0.5s ease-in-out 0.9s forwards",
   ],
-  button: {
-    duration: 2.2,
-    delay: 1,
-  },
+  button: "fadeInRightLeft 0.5s ease-in-out 1.1s forwards",
 };
 export const leftAsideAnimation = [
   {
