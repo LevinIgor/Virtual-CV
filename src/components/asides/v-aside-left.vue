@@ -47,18 +47,6 @@ aside {
 
 .line,
 .link {
-  animation-name: fadeIn;
-  animation-fill-mode: forwards;
   opacity: 0;
-}
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(100px) scale(4);
-  }
-  to {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-  }
 }
 </style>

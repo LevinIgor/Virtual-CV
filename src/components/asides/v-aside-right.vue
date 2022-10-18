@@ -3,20 +3,14 @@
     <a
       class="email"
       href="mailto:lytghzys@gmail.com"
-      :style="getAnimationStyle(0)"
+      :style="{ animation: rightAside.email }"
       >lytghzys@gmail.com</a
     >
-    <div class="line" :style="getAnimationStyle(1)" />
+    <div class="line" :style="{ animation: rightAside.line }" />
   </aside>
 </template>
 <script setup>
-import { rightAsideAnimation } from "@/animations.js";
-function getAnimationStyle(index) {
-  return {
-    animationDuration: `${rightAsideAnimation[index].duration}s`,
-    animationDelay: `${rightAsideAnimation[index].delay}s`,
-  };
-}
+import { rightAside } from "@/animations.js";
 </script>
 
 <style scoped>
@@ -33,7 +27,6 @@ function getAnimationStyle(index) {
 .email {
   font-size: 12px;
   writing-mode: vertical-rl;
-  animation-name: fadeIn;
 }
 .email:hover {
   color: var(--green);
@@ -50,27 +43,5 @@ function getAnimationStyle(index) {
 .line,
 .email {
   opacity: 0;
-  animation-fill-mode: forwards;
-}
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateX(100px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fadeDown {
-  from {
-    opacity: 0;
-    transform: translateY(100px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 </style>

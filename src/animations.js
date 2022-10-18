@@ -16,16 +16,10 @@ export const leftAside = {
   line: "fadeInLeftRight 0.5s ease-in-out 1.5s forwards",
 };
 
-export const rightAsideAnimation = [
-  {
-    duration: 0.5,
-    delay: 2.7,
-  },
-  {
-    duration: 1,
-    delay: 3.4,
-  },
-];
+export const rightAside = {
+  email: "fadeInRightLeft 0.5s ease-in-out 0.5s forwards",
+  line: "fadeInRightLeft 0.5s ease-in-out 0.7s forwards",
+};
 
 export const projectsAnimation = [
   {
