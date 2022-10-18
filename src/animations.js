@@ -82,18 +82,18 @@ export const someThinksOptions = {
 export const otherProjects = {
   title: "fadeInRotateX 0.5s ease-in-out 0.2s forwards",
   project: {
-    form: "fadeInLeftRight 0.5s ease-in-out 0.2s forwards",
+    form: "fadeInDownUp 0.5s ease-in-out 0.2s forwards",
     folder: "fadeInLeftRight 0.5s ease-in-out 0.3s forwards",
-    external: "fadeInUpDown 0.5s ease-in-out 0.4s forwards",
-    title: "fadeInUpDown 0.5s ease-in-out 0.5s forwards",
-    desc: "fadeInUpDown 0.5s ease-in-out 0.6s forwards",
+    external: "fadeInRightLeft 0.5s ease-in-out 0.4s forwards",
+    title: "fadeInUpDown 1s ease-in-out 0.5s forwards",
+    desc: "fadeInScaleSmallBig 1s ease-in-out 0.6s forwards",
     tags: [
-      "fadeInUpDown 0.5s ease-in-out 0.8s forwards",
-      "fadeInUpDown 0.5s ease-in-out 1s forwards",
-      "fadeInUpDown 0.5s ease-in-out 1.2s forwards",
-      "fadeInUpDown 0.5s ease-in-out 1.4s forwards",
-      "fadeInUpDown 0.5s ease-in-out 1.6s forwards",
-      "fadeInUpDown 0.5s ease-in-out 1.8s forwards",
+      "fadeInScaleSmallBig 0.5s ease-in-out 0.8s forwards",
+      "fadeInScaleSmallBig 0.5s ease-in-out 1s forwards",
+      "fadeInScaleSmallBig 0.5s ease-in-out 1.2s forwards",
+      "fadeInScaleSmallBig 0.5s ease-in-out 1.4s forwards",
+      "fadeInScaleSmallBig 0.5s ease-in-out 1.6s forwards",
+      "fadeInScaleSmallBig 0.5s ease-in-out 1.8s forwards",
     ],
   },
 };
