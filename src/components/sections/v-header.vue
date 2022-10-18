@@ -145,7 +145,6 @@ nav {
   padding: 10px;
   margin: 0 5px;
   color: var(--lightest-slate);
-  opacity: 0;
   animation-name: fadeIn;
   animation-fill-mode: forwards;
 }
@@ -160,6 +159,7 @@ nav {
 .hide {
   transform: translateY(-100%);
 }
+
 .off__shadow {
   box-shadow: none;
 }
@@ -188,6 +188,9 @@ nav {
   box-shadow: -10px 0px 30px -15px var(--navy-shadow);
   transform: translateX(100vw);
   transition: transform 0.2s ease-in-out;
+}
+.fade-in {
+  transform: translateX(0);
 }
 .mobile__header__menu li {
   margin: 10px 0;
