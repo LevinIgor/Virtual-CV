@@ -40,7 +40,7 @@ import VBurgerMenu from "@/components/UI/v-burger-menu.vue";
 import LogoIcon from "@/components/icons/logo.vue";
 import VNav_link from "@/components/UI/v-nav_link.vue";
 import VBtnResumeLink from "@/components/links/v-btn-resumeLink.vue";
-import { headerAnimation } from "@/animations";
+import { header as headerAnimation } from "@/animations";
 
 const isHide = ref(false);
 const isMobileMenu = ref(false);

@@ -1,4 +1,4 @@
-export const headerAnimation = {
+export const header = {
   links: [
     "fadeInUpDown 0.5s ease-in-out 0.5s forwards",
     "fadeInUpDown 0.5s ease-in-out 0.7s forwards",
@@ -28,6 +28,23 @@ export const welcome = {
   paragraph: "fadeInLeftRight 0.5s ease-in-out 1.1s forwards",
   button: "fadeInLeftRight 0.5s ease-in-out 1.3s forwards",
 };
+export const about = {
+  title: "fadeInLeftRight 0.5s ease-in-out 0.5s forwards",
+  paragraphs: [
+    "fadeInLeftRight 0.5s ease-in-out 0.7s forwards",
+    "fadeInLeftRight 0.5s ease-in-out 0.9s forwards",
+    "fadeInLeftRight 0.5s ease-in-out 1.1s forwards",
+    "fadeInLeftRight 0.5s ease-in-out 1.3s forwards",
+  ],
+  technologies: [
+    "fadeInLeftRight 0.5s ease-in-out 0.7s forwards",
+    "fadeInLeftRight 0.5s ease-in-out 0.9s forwards",
+    "fadeInLeftRight 0.5s ease-in-out 1.1s forwards",
+    "fadeInLeftRight 0.5s ease-in-out 1.3s forwards",
+    "fadeInLeftRight 0.5s ease-in-out 1.5s forwards",
+    "fadeInLeftRight 0.5s ease-in-out 1.7s forwards",
+  ],
+};
 
 export const projectsAnimation = [
   {
@@ -51,47 +68,6 @@ export const projectsAnimation = [
     delay: 1,
   },
 ];
-
-export const aboutAnimation = {
-  duration: "0.9s",
-  title: {
-    delay: "0.1s",
-  },
-  paragraphs: [
-    {
-      delay: "0.4s",
-    },
-    {
-      delay: "0.5s",
-    },
-    {
-      delay: "0.6s",
-    },
-    {
-      delay: "0.7s",
-    },
-  ],
-  technologies: [
-    {
-      delay: "1s",
-    },
-    {
-      delay: "1.1s",
-    },
-    {
-      delay: "1.2s",
-    },
-    {
-      delay: "1.3s",
-    },
-    {
-      delay: "1.4s",
-    },
-    {
-      delay: "1.5s",
-    },
-  ],
-};
 
 export const experienceOptions = {
   title: "fadeInRotateX 0.5s ease-in-out 1s forwards",
