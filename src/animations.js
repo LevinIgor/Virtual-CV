@@ -21,6 +21,14 @@ export const rightAside = {
   line: "fadeInRightLeft 0.5s ease-in-out 0.7s forwards",
 };
 
+export const welcome = {
+  name: "fadeInLeftRight 0.5s ease-in-out 0.5s forwards",
+  title: "fadeInLeftRight 0.5s ease-in-out 0.7s forwards",
+  build: "fadeInLeftRight 0.5s ease-in-out 0.9s forwards",
+  paragraph: "fadeInLeftRight 0.5s ease-in-out 1.1s forwards",
+  button: "fadeInLeftRight 0.5s ease-in-out 1.3s forwards",
+};
+
 export const projectsAnimation = [
   {
     duration: 0.5,

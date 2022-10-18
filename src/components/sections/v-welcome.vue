@@ -1,21 +1,33 @@
 <template>
   <article class="welcome" id="Welcome">
-    <span class="hi fade">{{ welcome.upTitle }} </span>
-    <span class="my__name fade">{{ welcome.name }}</span>
-    <span class="build__think fade">{{ welcome.downTitle }}</span>
-    <p class="fade">
+    <span class="hi fade" :style="getAnimation('title')"
+      >{{ welcome.upTitle }}
+    </span>
+    <span class="my__name fade" :style="getAnimation('name')">{{
+      welcome.name
+    }}</span>
+    <span class="build__think fade" :style="getAnimation('build')">{{
+      welcome.downTitle
+    }}</span>
+    <p class="fade" :style="getAnimation('paragraph')">
       {{ welcome.paragraph }}
     </p>
     <VBtnResumeLink
       class="resume__btn fade"
       :text="welcome.button"
       :fontSize="14"
+      :style="getAnimation('button')"
     />
   </article>
 </template>
 <script setup>
 import welcome from "@/JSON/welcome.json";
 import VBtnResumeLink from "@/components/links/v-btn-resumeLink.vue";
+import { welcome as animationOptions } from "@/animations.js";
+
+function getAnimation(key) {
+  return { animation: animationOptions[key] };
+}
 </script>
 
 <style scoped>
@@ -59,39 +71,5 @@ p {
 }
 .fade {
   opacity: 0;
-  transform: translateY(30px);
-  animation-name: fade;
-  animation-fill-mode: forwards;
-}
-.fade:nth-child(1) {
-  animation-delay: 0.5s;
-  animation-duration: 0.5s;
-}
-.fade:nth-child(2) {
-  animation-delay: 0.6s;
-  animation-duration: 0.5s;
-}
-.fade:nth-child(3) {
-  animation-delay: 0.7s;
-  animation-duration: 0.5s;
-}
-.fade:nth-child(4) {
-  animation-delay: 0.8s;
-  animation-duration: 0.5s;
-}
-.fade:nth-child(5) {
-  animation-delay: 0.9s;
-  animation-duration: 1.3s;
-}
-
-@keyframes fade {
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0px);
-  }
 }
 </style>
