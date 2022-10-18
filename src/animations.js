@@ -7,27 +7,14 @@ export const headerAnimation = {
   ],
   button: "fadeInRightLeft 0.5s ease-in-out 1.1s forwards",
 };
-export const leftAsideAnimation = [
-  {
-    duration: 0.2,
-    delay: 3,
-  },
-  {
-    duration: 0.2,
-    delay: 2.8,
-  },
-  {
-    duration: 0.2,
-    delay: 2.6,
-  },
-  {
-    duration: 0.2,
-    delay: 2.4,
-  },
-  { duration: 0.2, delay: 2.2 },
-
-  { duration: 1, delay: 3.4 },
-];
+export const leftAside = {
+  git: "fadeInLeftRight 0.5s ease-in-out 0.5s forwards",
+  linkedin: "fadeInLeftRight 0.5s ease-in-out 0.7s forwards",
+  instagram: "fadeInLeftRight 0.5s ease-in-out 0.9s forwards",
+  codewars: "fadeInLeftRight 0.5s ease-in-out 1.1s forwards",
+  telegram: "fadeInLeftRight 0.5s ease-in-out 1.3s forwards",
+  line: "fadeInLeftRight 0.5s ease-in-out 1.5s forwards",
+};
 
 export const rightAsideAnimation = [
   {

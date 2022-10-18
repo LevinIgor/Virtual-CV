@@ -1,32 +1,22 @@
 <template>
   <aside class="left">
-    <VGitLink class="link" :style="getAnimationOptions(0)" />
-
-    <VLinkedinLink class="link" :style="getAnimationOptions(1)" />
-
-    <VCodewarsLink class="link" :style="getAnimationOptions(2)" />
-
-    <VTelegramLink class="link" :style="getAnimationOptions(3)" />
-
-    <VInstagramLink class="link" :style="getAnimationOptions(4)" />
-
-    <div class="line" :style="getAnimationOptions(5)" />
+    <Github class="link" :style="{ animation: leftAside.git }" />
+    <Linkedin class="link" :style="{ animation: leftAside.linkedin }" />
+    <Codewars class="link" :style="{ animation: leftAside.codewars }" />
+    <Telegram class="link" :style="{ animation: leftAside.telegram }" />
+    <Instagram class="link" :style="{ animation: leftAside.instagram }" />
+    <div class="line" :style="{ animation: leftAside.line }" />
   </aside>
 </template>
 <script setup>
-import VGitLink from "@/components/links/v-gitLink.vue";
-import VLinkedinLink from "@/components/links/v-linkedinLink.vue";
-import VTelegramLink from "@/components/links/v-telegramLink.vue";
-import VInstagramLink from "@/components/links/v-instagramLink.vue";
-import VCodewarsLink from "@/components/links/v-codewarsLink.vue";
-import { leftAsideAnimation } from "@/animations.js";
-
-function getAnimationOptions(index) {
-  return {
-    animationDuration: `${leftAsideAnimation[index].duration}s`,
-    animationDelay: `${leftAsideAnimation[index].delay}s`,
-  };
-}
+import { leftAside } from "@/animations.js";
+import {
+  Github,
+  Telegram,
+  Instagram,
+  Codewars,
+  Linkedin,
+} from "@/components/links/v-links.js";
 </script>
 
 <style scoped>
