@@ -6,7 +6,7 @@
         v-for="(prj, index) in project.list"
         :key="index"
         :project="prj"
-        :animationOptions="otherProjectsOptions"
+        :animationOptions="animationsOptions.project"
       />
     </div>
   </div>
@@ -15,12 +15,12 @@
 import { ref } from "vue";
 import project from "@/JSON/projects.json";
 import VProject from "@/components/UI/v-project.vue";
-import { otherProjectsOptions } from "@/animations.js";
+import { otherProjects as animationsOptions } from "@/animations.js";
 
 const title = ref(null);
 
 function IntersectionObserver() {
-  title.value.style.animation = otherProjectsOptions.title;
+  title.value.style.animation = animationsOptions.title;
 }
 </script>
 <style scoped>

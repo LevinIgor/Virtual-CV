@@ -1,6 +1,6 @@
 <script setup>
 const props = defineProps(["title", "number"]);
-const number = JSON.stringify("0" + props.number);
+const number = JSON.stringify("0" + props.number + ".");
 </script>
 <template>
   <h2 class="title">{{ title }}</h2>

@@ -45,11 +45,33 @@
 
 @keyframes fadeInRotateX {
   from {
-    transform: rotateX(-90deg);
+    transform: rotateX(-180deg);
     opacity: 0;
   }
   to {
     transform: rotateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInScaleSmallBig {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInScaleBigSmall {
+  from {
+    transform: scale3d(5, 5, 1);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
     opacity: 1;
   }
 }

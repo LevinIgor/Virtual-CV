@@ -1,48 +1,56 @@
 <script setup>
 import FolderIcon from "@/components/icons/folder.vue";
 import VExternalLink from "@/components/links/v-externalLink.vue";
-import { ref } from "vue";
+import { ref, computed } from "vue";
 const props = defineProps(["project", "animationOptions"]);
 const projectRef = ref(null);
-const folderRef = ref(null);
-const externalRef = ref(null);
-const title = ref(null);
-const desc = ref(null);
-const tagsRef = ref([]);
-const defaultAnimation = "fadeInUpDown 1s ease-in-out 0.5s forward";
+const isIntersecting = ref(false);
+
+const animations = computed(() => {
+  return isIntersecting.value ? props.animationOptions : null;
+});
 function intersectionHandler() {
-  projectRef.value.style.animation = props.animationOptions.projectFade;
-  folderRef.value.$el.style.animation = props.animationOptions.projectHeader[0];
-  externalRef.value.$el.style.animation =
-    props.animationOptions.projectHeader[1];
-  title.value.style.animation = props.animationOptions.projectTitle;
-  desc.value.style.animation = props.animationOptions.projectDesc;
-  tagsRef.value.forEach((tag, index) => {
-    tag.style.animation =
-      props.animationOptions.projectTags[index] || defaultAnimation;
-  });
+  isIntersecting.value = true;
 }
 </script>
 <template>
-  <div class="project" v-intersection="intersectionHandler" ref="projectRef">
+  <div
+    class="project"
+    v-intersection="intersectionHandler"
+    :style="{ animation: animations?.form }"
+  >
     <div class="project__header">
-      <FolderIcon class="folder" style="opacity: 0" ref="folderRef" />
+      <FolderIcon
+        class="folder"
+        :style="{
+          animation: animations?.folder,
+        }"
+      />
       <VExternalLink
         class="external"
-        style="opacity: 0"
+        :style="{
+          animation: animations?.external,
+        }"
         :href="project.url"
-        ref="externalRef"
       />
     </div>
-    <a class="project__name" target="_blank" :href="project.url" ref="title">{{
-      project.title
-    }}</a>
-    <p class="project__desc" ref="desc">
+    <a
+      class="project__name"
+      target="_blank"
+      :href="project.url"
+      :style="{ animation: animations?.title }"
+      >{{ project.title }}</a
+    >
+    <p class="project__desc" :style="{ animation: animations?.desc }">
       {{ project.description }}
     </p>
 
     <ul class="project__tags">
-      <li v-for="(tag, index) in project.tags" :key="index" ref="tagsRef">
+      <li
+        v-for="(tag, i) in project.tags"
+        :key="i"
+        :style="{ animation: animations?.tags[i] }"
+      >
         {{ tag }}
       </li>
     </ul>
@@ -56,14 +64,12 @@ function intersectionHandler() {
   margin: 10px;
   opacity: 0;
 }
-.active {
-  animation-name: fadeIn;
-  animation-fill-mode: forwards;
-}
+
 .folder {
   width: 40px;
   height: 40px;
   transition: color 0.2s ease-in-out;
+  opacity: 0;
 }
 .external {
   cursor: pointer;
@@ -73,6 +79,7 @@ function intersectionHandler() {
 }
 .external:hover {
   color: #ff6b6b;
+  filter: drop-shadow(0 0 0.75rem #ff6b6b);
 }
 .project__header {
   display: flex;
@@ -126,16 +133,5 @@ function intersectionHandler() {
 }
 .project:hover .folder {
   color: var(--green);
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(100px);
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
 }
 </style>

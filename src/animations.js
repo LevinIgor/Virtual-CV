@@ -1,98 +1,75 @@
 export const header = {
   links: [
-    "fadeInUpDown 0.5s ease-in-out 0.5s forwards",
-    "fadeInUpDown 0.5s ease-in-out 0.7s forwards",
-    "fadeInUpDown 0.5s ease-in-out 0.9s forwards",
-    "fadeInUpDown 0.5s ease-in-out 0.9s forwards",
+    "fadeInUpDown 0.5s ease-in-out 1s forwards",
+    "fadeInUpDown 0.5s ease-in-out 1.1s forwards",
+    "fadeInUpDown 0.5s ease-in-out 1.2s forwards",
+    "fadeInUpDown 0.5s ease-in-out 1.3s forwards",
   ],
-  button: "fadeInRightLeft 0.5s ease-in-out 1.1s forwards",
+  button: "fadeInRightLeft 0.5s ease-in-out 1.4s forwards",
 };
 export const leftAside = {
-  git: "fadeInLeftRight 0.5s ease-in-out 0.5s forwards",
-  linkedin: "fadeInLeftRight 0.5s ease-in-out 0.7s forwards",
-  instagram: "fadeInLeftRight 0.5s ease-in-out 0.9s forwards",
-  codewars: "fadeInLeftRight 0.5s ease-in-out 1.1s forwards",
-  telegram: "fadeInLeftRight 0.5s ease-in-out 1.3s forwards",
-  line: "fadeInLeftRight 0.5s ease-in-out 1.5s forwards",
+  git: "fadeInScaleBigSmall 0.5s ease-in-out 1.9s forwards",
+  linkedin: "fadeInScaleBigSmall 0.5s ease-in-out 2.1s forwards",
+  codewars: "fadeInScaleBigSmall 0.5s ease-in-out 2.3s forwards",
+  telegram: "fadeInScaleBigSmall 0.5s ease-in-out 2.5s forwards",
+  instagram: "fadeInScaleBigSmall 0.5s ease-in-out 2.7s forwards",
+  line: "fadeInDownUp 0.5s ease-in-out 2.9s forwards",
 };
 
 export const rightAside = {
-  email: "fadeInRightLeft 0.5s ease-in-out 0.5s forwards",
-  line: "fadeInRightLeft 0.5s ease-in-out 0.7s forwards",
+  email: "fadeInRightLeft 0.5s ease-in-out 1.9s forwards",
+  line: "fadeInDownUp 0.5s ease-in-out 2.9s forwards",
 };
 
 export const welcome = {
-  name: "fadeInLeftRight 0.5s ease-in-out 0.5s forwards",
-  title: "fadeInLeftRight 0.5s ease-in-out 0.7s forwards",
-  build: "fadeInLeftRight 0.5s ease-in-out 0.9s forwards",
-  paragraph: "fadeInLeftRight 0.5s ease-in-out 1.1s forwards",
-  button: "fadeInLeftRight 0.5s ease-in-out 1.3s forwards",
+  name: "fadeInLeftRight 0.5s ease-in-out 0.1s forwards",
+  title: "fadeInUpDown 0.5s ease-in-out 0.5s forwards",
+  build: "fadeInLeftRight 0.5s ease-in-out 0.1s forwards",
+  paragraph: "fadeInRotateX 0.8s ease-in-out 0.4s forwards",
+  button: "fadeInDownUp 0.9s ease-in-out 0.5s forwards",
 };
 export const about = {
-  title: "fadeInLeftRight 0.5s ease-in-out 0.5s forwards",
+  title: "fadeInRotateX 0.5s ease-in-out 0.1s forwards",
   paragraphs: [
-    "fadeInLeftRight 0.5s ease-in-out 0.7s forwards",
-    "fadeInLeftRight 0.5s ease-in-out 0.9s forwards",
-    "fadeInLeftRight 0.5s ease-in-out 1.1s forwards",
-    "fadeInLeftRight 0.5s ease-in-out 1.3s forwards",
+    "fadeInDownUp 0.5s ease-in-out 0.3s forwards",
+    "fadeInDownUp 0.5s ease-in-out 0.4s forwards",
+    "fadeInDownUp 0.5s ease-in-out 0.5s forwards",
+    "fadeInDownUp 0.5s ease-in-out 0.6s forwards",
   ],
   technologies: [
-    "fadeInLeftRight 0.5s ease-in-out 0.7s forwards",
-    "fadeInLeftRight 0.5s ease-in-out 0.9s forwards",
-    "fadeInLeftRight 0.5s ease-in-out 1.1s forwards",
-    "fadeInLeftRight 0.5s ease-in-out 1.3s forwards",
-    "fadeInLeftRight 0.5s ease-in-out 1.5s forwards",
-    "fadeInLeftRight 0.5s ease-in-out 1.7s forwards",
+    "fadeInUpDown 0.5s ease-in-out 0.8s forwards",
+    "fadeInUpDown 0.5s ease-in-out 0.9s forwards",
+    "fadeInUpDown 0.5s ease-in-out 1s forwards",
+    "fadeInUpDown 0.5s ease-in-out 1.1s forwards",
+    "fadeInUpDown 0.5s ease-in-out 1.2s forwards",
+    "fadeInUpDown 0.5s ease-in-out 1.3s forwards",
   ],
 };
 
-export const projectsAnimation = [
-  {
-    duration: 0.5,
-    delay: 0.4,
-  },
-  {
-    duration: 0.5,
-    delay: 0.6,
-  },
-  {
-    duration: 0.5,
-    delay: 0.8,
-  },
-  {
-    duration: 0.5,
-    delay: 1,
-  },
-  {
-    duration: 0.5,
-    delay: 1,
-  },
-];
-
 export const experienceOptions = {
-  title: "fadeInRotateX 0.5s ease-in-out 1s forwards",
+  title: "fadeInRotateX 0.5s ease-in-out 0.1s forwards",
   tabs: [
-    "fadeInDownUp 0.5s ease-in-out 1s forwards",
-    "fadeInUpDown 0.5s ease-in-out 1.2s forwards",
-    "fadeInUpDown 0.5s ease-in-out 1.4s forwards",
+    "fadeInDownUp 0.5s ease-in-out 0.8s forwards",
+    "fadeInUpDown 0.5s ease-in-out 0.8s forwards",
+    "fadeInUpDown 0.5s ease-in-out 0.8s forwards",
   ],
-  content: "fadeInRightLeft 0.2s ease-in-out 1.6s forwards",
+  content: "fadeInRightLeft 0.2s ease-in-out 1s forwards",
 };
 
 export const someThinksOptions = {
-  title: "fadeInRotateX 0.5s ease-in-out 1s forwards",
-  img: "fadeInLeftRight 0.5s ease-in-out 1s forwards",
+  title: "fadeInRotateX 0.5s ease-in-out 0.1s forwards",
+  img: "fadeInLeftRight 0.5s ease-in-out 0.4s forwards",
   text: [
-    "fadeInUpDown 0.5s ease-in-out 1.2s forwards",
-    "fadeInUpDown 0.5s ease-in-out 1.4s forwards",
-    "fadeInUpDown 0.5s ease-in-out 1.6s forwards",
+    "fadeInUpDown 0.5s ease-in-out 0.6s forwards",
+    "fadeInUpDown 0.5s ease-in-out 0.7s forwards",
+    "fadeInUpDown 0.5s ease-in-out 0.8s forwards",
   ],
   tags: [
-    "fadeInUpDown 0.5s ease-in-out 1.8s forwards",
-    "fadeInUpDown 0.5s ease-in-out 2s forwards",
-    "fadeInUpDown 0.5s ease-in-out 2.2s forwards",
-    "fadeInUpDown 0.5s ease-in-out 2.4s forwards",
-    "fadeInUpDown 0.5s ease-in-out 2.6s forwards",
+    "fadeInUpDown 0.5s ease-in-out 1.1s forwards",
+    "fadeInUpDown 0.5s ease-in-out 1.2s forwards",
+    "fadeInUpDown 0.5s ease-in-out 1.3s forwards",
+    "fadeInUpDown 0.5s ease-in-out 1.4s forwards",
+    "fadeInUpDown 0.5s ease-in-out 1.6s forwards",
   ],
   icons: [
     "fadeInUpDown 0.5s ease-in-out 2.8s forwards",
@@ -102,20 +79,21 @@ export const someThinksOptions = {
   github: "fadeInUpDown 0.5s ease-in-out 3.4s forwards",
 };
 
-export const otherProjectsOptions = {
-  title: "fadeInRotateX 0.5s ease-in-out 1s forwards",
-  projectFade: "fadeInUpDown 0.5s ease-in-out 1.2s forwards",
-  projectHeader: [
-    "fadeInLeftRight 0.5s ease-in-out 1.2s forwards",
-    "fadeInLeftRight 0.5s ease-in-out 1.4s forwards",
-  ],
-  projectTitle: "fadeInUpDown 0.5s ease-in-out 1.6s forwards",
-  projectDesc: "fadeInUpDown 0.5s ease-in-out 1.8s forwards",
-  projectTags: [
-    "fadeInUpDown 0.5s ease-in-out 2s forwards",
-    "fadeInUpDown 0.5s ease-in-out 2.2s forwards",
-    "fadeInUpDown 0.5s ease-in-out 2.4s forwards",
-    "fadeInUpDown 0.5s ease-in-out 2.6s forwards",
-    "fadeInUpDown 0.5s ease-in-out 2.8s forwards",
-  ],
+export const otherProjects = {
+  title: "fadeInRotateX 0.5s ease-in-out 0.2s forwards",
+  project: {
+    form: "fadeInLeftRight 0.5s ease-in-out 0.2s forwards",
+    folder: "fadeInLeftRight 0.5s ease-in-out 0.3s forwards",
+    external: "fadeInUpDown 0.5s ease-in-out 0.4s forwards",
+    title: "fadeInUpDown 0.5s ease-in-out 0.5s forwards",
+    desc: "fadeInUpDown 0.5s ease-in-out 0.6s forwards",
+    tags: [
+      "fadeInUpDown 0.5s ease-in-out 0.8s forwards",
+      "fadeInUpDown 0.5s ease-in-out 1s forwards",
+      "fadeInUpDown 0.5s ease-in-out 1.2s forwards",
+      "fadeInUpDown 0.5s ease-in-out 1.4s forwards",
+      "fadeInUpDown 0.5s ease-in-out 1.6s forwards",
+      "fadeInUpDown 0.5s ease-in-out 1.8s forwards",
+    ],
+  },
 };

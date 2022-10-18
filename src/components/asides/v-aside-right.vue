@@ -31,6 +31,7 @@ import { rightAside } from "@/animations.js";
 .email:hover {
   color: var(--green);
   transform: translateY(-5px);
+  filter: drop-shadow(0 0 0.75rem var(--green));
 }
 .line {
   width: 1px;
