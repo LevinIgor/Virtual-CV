@@ -22,11 +22,11 @@ export const rightAside = {
 };
 
 export const welcome = {
-  name: "fadeInLeftRight 0.5s ease-in-out 0.1s forwards",
-  title: "fadeInUpDown 0.5s ease-in-out 0.5s forwards",
-  build: "fadeInLeftRight 0.5s ease-in-out 0.1s forwards",
-  paragraph: "fadeInRotateX 0.8s ease-in-out 0.4s forwards",
-  button: "fadeInDownUp 0.9s ease-in-out 0.5s forwards",
+  title: "fadeInUpDown 0.5s ease-in-out 0.1s forwards",
+  name: "fadeInUpDown 0.5s ease-in-out 0.3s forwards",
+  build: "fadeInUpDown 0.5s ease-in-out 0.5s forwards",
+  paragraph: "fadeInUpDown 0.5s ease-in-out 0.7s forwards",
+  button: "fadeInUpDown 0.5s ease-in-out 0.9s forwards",
 };
 export const about = {
   title: "fadeInRotateX 0.5s ease-in-out 0.1s forwards",

@@ -2,7 +2,7 @@
 
 @keyframes fadeInUpDown {
   from {
-    transform: translateY(-200%);
+    transform: translateY(-100%);
     opacity: 0;
   }
   to {
